@@ -137,7 +137,7 @@
                                     <td>GeoRSS Atom (Simple)</td><td>input and output of Points/Lines/Polygons (no rings/holes) in GeoRSS Simple (Atom). This allows one to take any GeoRSS Simple Atom feed and feed it to FeatureServer for storage.</td><td>comming</td>
                                 </tr>
                                 <tr>
-                                    <td>GML/WFS</td><td>Output-only support of WFS/GML.</td><td>yes</td>
+                                    <td>GML/WFS</td><td>Output-only support of WFS/GML.</td><td><a href="#wfs-exception-modal" role="button" class="btn" data-toggle="modal">example</a></td>
                                 </tr>
                                 <tr>
                                     <td>GPX</td><td>for Garmin devices</td><td>takes default serivce if supported, GML/WFS otherwise</td>
@@ -178,6 +178,29 @@
             </section>
         </div>
         
+        
+        <div class="modal hide" id="wfs-exception-modal" tabindex="-1" role="dialog" aria-labelledby="wfs-exception-modal" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h3 id="wfs-exception-modal-label">WFS Excpetion Example</h3>
+            </div>
+            <div class="modal-body">
+                <p><strong>Request:</strong></p>
+                <pre class="prettyprint"><code class="language-xml">http://localhost:8080/?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=featureserver</code></pre>
+                <p><strong>Response:</strong></p>
+<pre class="prettyprint"><code class="language-xml">&lt;ExceptionReport xmlns="http://www.opengis.net/ows/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/ows/1.1 owsExceptionReport.xsd" version="1.0.0" xml:lang="en"&gt;
+    &lt;Exception exceptionCode="" locator="Request" layer="featureserver"&gt;
+        &lt;ExceptionText&gt;
+            Could not find the layer 'featureserver': Check your config file for the missing layer. (Available layers are: polygon, pois, lines, wfs_t_poi, points, wfs_t_poly).
+        &lt;/ExceptionText&gt;
+        &lt;ExceptionDump/&gt;
+    &lt;/Exception&gt;
+&lt;/ExceptionReport&gt;</code></pre>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
         
         <footer class="footer">
             <div class="container">
