@@ -22,10 +22,25 @@
         
         <script type="text/javascript">
             $(function(){
+              $.ajax({
+                     url: "./cgi-bin/db_init_time.cgi",
+                     dataType: 'jsonp',
+                     success: function(data) {
+                     $('#counter').empty();
+                     $('#counter').countdown({
+                                             image: 'assets/img/filmstrip.png',
+                                             format: 'hh:mm:ss',
+                                             startTime: data.remaining_time,
+                                             digitImages: 6,
+                                             digitHeight: 103,
+                                             });
+                     }
+                     });
+              
               $('#counter').countdown({
                                       image: 'assets/img/filmstrip.png',
                                       format: 'hh:mm:ss',
-                                      startTime: '13:00:00',
+                                      startTime: '00:00:00',
                                       digitImages: 6,
                                       digitHeight: 103,
                                       });
