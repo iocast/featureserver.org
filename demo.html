@@ -7,6 +7,7 @@
         <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"></link>
         <link href="assets/css/docs.css" rel="stylesheet"></link>
         <link href="assets/css/prettify.css" rel="stylesheet"></link>
+        <link href="assets/css/application.css" rel="stylesheet"></link>
         
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
@@ -17,6 +18,9 @@
         <script src="assets/js/bootstrap.js"></script>
         <script src="assets/js/prettify.js"></script>
         <script src="assets/js/countdown.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="assets/libs/openlayers/OpenLayers.js" type="text/javascript" charset="utf-8"></script>
+        
         <script src="assets/js/application.js" type="text/javascript" charset="utf-8"></script>
         
         
@@ -115,6 +119,21 @@
                 <div id="counter"></div>
                 </p>
             </section>
+            
+            <section>
+                <header>
+                    <h1>Map</h1>
+                </header>
+            </section>
+            <div style="width:100%; height:600px;" id="map-canvas"></div>
+            <script defer="defer" type="text/javascript">
+                var map = new OpenLayers.Map('map-canvas', {
+                                             units : 'm',
+                                             projection: new OpenLayers.Projection("EPSG:4326"),
+                                             displayProjection: new OpenLayers.Projection("EPSG:4326")});
+                map.addLayer(new OpenLayers.Layer.OSM("OpenStreetMap"));
+                map.zoomToMaxExtent();
+                </script>
         </div>
         
         
