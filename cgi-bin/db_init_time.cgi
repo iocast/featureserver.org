@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 '''
-    test: python -m CGIHTTPServer 8000
+test: python -m CGIHTTPServer 8000
 '''
 
 import cgi
