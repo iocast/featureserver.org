@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>FeatureServer</title>
+        <!-- Bootstrap -->
+        <link href="assets/css/bootstrap.css" rel="stylesheet"></link>
+        <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"></link>
+        <link href="assets/css/docs.css" rel="stylesheet"></link>
+        <link href="assets/css/prettify.css" rel="stylesheet"></link>
+        
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+         <![endif]-->
+        
+        <script src="assets/js/jquery.js"></script>
+        <script src="assets/js/bootstrap.js"></script>
+        <script src="assets/js/prettify.js"></script>
+        <script src="assets/js/countdown.js" type="text/javascript" charset="utf-8"></script>
+        <script src="assets/js/application.js" type="text/javascript" charset="utf-8"></script>
+        
+        
+        <script type="text/javascript">
+            $(function(){
+              $('#counter').countdown({
+                                      image: 'assets/img/filmstrip.png',
+                                      format: 'hh:mm:ss',
+                                      startTime: '13:00:00',
+                                      digitImages: 6,
+                                      digitHeight: 103,
+                                      });
+              });
+            </script>
+        
+        
+        <style type="text/css">
+            br { clear: both; }
+            .cntSeparator {
+                font-size: 54px;
+                margin: 23px 7px;
+                color: #000;
+            }
+            .desc { margin: 7px 3px; }
+            .desc div {
+                float: left;
+                font-family: Arial;
+                width: 70px;
+                margin-right: 65px;
+                font-size: 13px;
+                font-weight: bold;
+                color: #000;
+            }
+            </style>
+        
+    </head>
+    <body data-spy="scroll" data-target=".navbar">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <div class="nav-collapse">
+                        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="brand" href="./index.html">FeatureServer</a>
+                        <ul class="nav">
+                            <li><a href="index.html">Overview</a></li>
+                            <li><a href="doc.html">Documentation</a></li>
+                            <li><a href="#demo">Demo</a></li>
+                            <li><a href="source.html">Source &amp; Download</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- Subhead
+         ================================================== -->
+        <header class="jumbotron subhead" id="overview">
+            <div class="container">
+                <h1>Demo</h1>
+                <p class="lead">Lets play ...</p>
+            </div>
+        </header>
+        
+        <div class="container">
+            <section id="demo">
+                <header>
+                    <h1><small>presenting some key features of the server</small></h1>
+                </header>
+                <p>
+                Initialization of the demo database in:
+                <div class="desc">
+                    <div>hours</div>
+                    <div>minutes</div>
+                    <div>seconds</div>
+                </div><br/>
+                <div id="counter"></div>
+                </p>
+            </section>
+        </div>
+        
+        
+        <footer class="footer">
+            <div class="container">
+                <p class="pull-right"><a href="#">Back to top</a></p>
+                <p>&copy; FeatureServer.org 2012</>
+                <ul class="footer-links">
+                    <li><a href="http://lists.osgeo.org/mailman/listinfo/featureserver" target="_new">Mailing List</a></li>
+                    <li>|</li>
+                    <li><a href="#" target="_new">Twitter</a></li>
+                    <li>|</li>
+                    <li><a href="http://github.com/iocast/featureserver" target="_new">Source Code</a></li>
+                </ul>
+            </div>
+        </footer>
+        
+    </body>
+</html>

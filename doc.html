@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>FeatureServer</title>
+        <!-- Bootstrap -->
+        <link href="assets/css/bootstrap.css" rel="stylesheet"></link>
+        <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"></link>
+        <link href="assets/css/docs.css" rel="stylesheet"></link>
+        <link href="assets/css/prettify.css" rel="stylesheet"></link>
+        
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+         <![endif]-->
+        
+        <script src="assets/js/jquery.js"></script>
+        <script src="assets/js/bootstrap.js"></script>
+        <script src="assets/js/prettify.js"></script>
+        <script src="assets/js/countdown.js" type="text/javascript" charset="utf-8"></script>
+        <script src="assets/js/application.js" type="text/javascript" charset="utf-8"></script>
+        
+    </head>
+    <body data-spy="scroll" data-target=".bs-docs-sidebar">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <div class="nav-collapse">
+                        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="brand" href="./index.html">FeatureServer</a>
+                        <ul class="nav">
+                            <li><a href="index.html">Overview</a></li>
+                            <li class="active"><a href="#">Documentation</a></li>
+                            <li><a href="demo.html">Demo</a></li>
+                            <li><a href="source.html">Source &amp; Download</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- Subhead
+         ================================================== -->
+        <header class="jumbotron subhead" id="overview">
+            <div class="container">
+                <h1>Documentation</h1>
+                <p class="lead">The what, how, where, ..., and why.</p>
+            </div>
+        </header>
+        
+        
+        <div class="container" id="documentation">
+            <div class="row">
+                <div class="span3 bs-docs-sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav affix"  data-spy="affix" data-target=".bs-docs-sidebar">
+                        <li class="nav-header">Installation</li>
+                        <li><a href="#doc-i-download"><i class="icon-chevron-right"></i> Download</a></li>
+                        <li><a href="#doc-i-dependencies"><i class="icon-chevron-right"></i> Dependencies</a></li>
+                        <li><a href="#doc-i-virtualenv"><i class="icon-chevron-right"></i> Virtual Environment</a></li>
+                        <li><a href="#doc-i-osx"><i class="icon-chevron-right"></i> OS X Mountain Lion</a></li>
+                        <li class="nav-header">Configuration</li>
+                        <li><a href="#doc-c-layer"><i class="icon-chevron-right"></i> Layer</a></li>
+                        <li><a href="#doc-c-workspace"><i class="icon-chevron-right"></i> Workspace</a></li>
+                        <li><a href="#doc-c-apache"><i class="icon-chevron-right"></i> Apache</a></li>
+                        <li class="nav-header">Usage</li>
+                        <li><a href="#doc-u-layer"><i class="icon-chevron-right"></i> Layer</a></li>
+                        <li><a href="#doc-u-workspace"><i class="icon-chevron-right"></i> Workspace</a></li>
+                    </ul>
+                </div>
+                
+                <div class="span9">
+                    <section id="doc-i-download">
+                        <header>
+                            <h2>Download <small>(installation)</small></h2>
+                        </header>
+                        <p>
+                        Download the latest development bild from <a href="http://github.com/iocast/featureserver" target="_new">github://iocast/featureserver</a> or take the <a href="#">latest release</a>.
+                        </p>
+                    </section>
+                    
+                    <section id="doc-i-dependencies">
+                        <header>
+                            <h2>Dependencies <small>(installation)</small></h2>
+                        </header>
+                        <p>
+                        The following dependendies are requrired and need to be installed:
+                        <ul>
+                            <li>dxfwrite</li>
+                            <li>lxml</li>
+                            <li>pyspatialite</li>
+                            <li>Cheetah</li>
+                            <li>simplejson</li>
+                            <li>psycopg2</li>
+                        </ul>
+                        </p>
+                    </section>
+                    
+                    <section id="doc-i-virtualenv">
+                        <header>
+                            <h2>Virtual Environment <small>(installation)</small></h2>
+                        </header>
+                        <p>
+                        download the recent version of virtualenv.py from <a href="http://pypi.python.org/pypi/virtualenv">http://pypi.python.org/pypi/virtualenv</a>
+                        <pre class="prettyprint"><code class="language-sh">curl https://raw.github.com/pypa/virtualenv/master/virtualenv.py -o virtualenv.py</code></pre>
+                        To create a new environment with the name <code>featureserver</code> run:
+                        <pre class="prettyprint"><code class="language-sh">python virtualenv.py featureserver</code></pre>
+                        To activate the virtual env call:
+                        <pre class="prettyprint"><code class="language-sh">source featureserver/bin/activate</code></pre>
+                        Now you can install the needed dependencies using the command <code class="language-sh">pip install</code> as follow:
+                        <pre class="prettyprint"><code class="language-sh">pip install lxml</code></pre>
+                        </p>
+                    </section>
+                    
+                    <section id="doc-i-osx">
+                        <header>
+                            <h2>Mac OS X Mountain Lion <small>(installation)</small></h2>
+                        </header>
+                        <p>GEOS and PROJ are required. Use the unix compatibility (OS X) frameworks from <a href="http://www.kyngchaos.com/software/frameworks" target="_new">http://www.kyngchaos.com/software/frameworks</a></p>
+                    </section>
+                    
+                    <section id="doc-c-layer">
+                        <header>
+                            <h2>Layer <small>(configuration)</small></h2>
+                        </header>
+                        <p>
+                        <p>
+                        A layer is a named section in the <small>featureserver.cfg</small> file. Using for a example WFS jargon, a layer is the value of the <code class="language-html">typename</code> parameter in the HTTP request
+                        <pre class="prettyprint"><code class="language-html">featureserver.cgi?typename=pois</code></pre>
+                        Every layer is bracket by <code>[&lt;layer&gt;]</code> and has to be on a sperate line as every of following keys:
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Key</th><th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>types</td>
+                                    <td>Datasource type which should be used by the FeatureServer. List of datasource types can be found <a href="index.html#datasources">here</a></td>
+                                </tr>
+                                <tr>
+                                    <td>title</td>
+                                    <td>Title of the layer</td>
+                                </tr>
+                                <tr>
+                                    <td>abstract</td>
+                                    <td>Short description of the layer</td>
+                                </tr>
+                                <tr>
+                                    <td>dsn</td>
+                                    <td>Data source name requried e.g. for logging into a database</td>
+                                </tr>
+                                <tr>
+                                    <td>layer</td>
+                                    <td>Name of the datasource's layer that holds the data (e.g. in a database it is the table name).</td>
+                                </tr>
+                                <tr>
+                                    <td>fid</td>
+                                    <td>Feature id attribute in the datasource's layer</td>
+                                </tr>
+                                <tr>
+                                    <td>geometry</td>
+                                    <td>Attribute that holds the geometry information</td>
+                                </tr>
+                                <tr>
+                                    <td>version</td>
+                                    <td>(optional) Version attribute</td>
+                                </tr>
+                                <tr>
+                                    <td>srid</td>
+                                    <td>Spatial Refernece System Identifier of the data stored in the datasource</td>
+                                </tr>
+                                <tr>
+                                    <td>srid_out</td>
+                                    <td>(optional) Spatial Refernece System Identifier of the data given back to the client. <div class="alert alert-info">Currently only supported by the datasource PostGIS.</div></td>
+                                </tr>
+                                <tr>
+                                    <td>hstore</td>
+                                    <td>(optional) Defines if Datasource uses hstore. Only in combination with <code>type=PostGIS</code> allowed.</td>
+                                </tr>
+                                <tr>
+                                    <td>hstore_attr</td>
+                                    <td>(required if <code>hstore=true</code> else optional) Defines the attribute of the hstore</td>
+                                </tr>
+                                <tr>
+                                    <td>ele</td>
+                                    <td>(optional) Elevation attribute</td>
+                                </tr>
+                                <tr>
+                                    <td>attribute_cols</td>
+                                    <td>A comma seperated list of attributes to be queried on the defined datasource</td>
+                                </tr>
+                                <tr>
+                                    <td>bbox</td>
+                                    <td>Max bounding box of the data in the format <code>min_x min_y max_x max_y</code></td>
+                                </tr>
+                                <tr>
+                                    <td>geometry_type</td>
+                                    <td>Comma seperated list of geometry types <code>Point</code>, <code>Line</code> and/or <code>Polygon</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </p>
+                    </section>
+                    
+                    <section id="doc-c-workspace">
+                        <header>
+                            <h2>Workspace <small>(configuration)</small></h2>
+                        </header>
+                    </section>
+                    
+                    <section id="doc-c-apache">
+                        <header>
+                            <h2>Apache <small>(configuration)</small></h2>
+                        </header>
+                    </section>
+                    
+                    <section id="doc-u-layer">
+                        <header>
+                            <h2>Layer <small>(usage)</small></h2>
+                        </header>
+                    </section>
+                    
+                    <section id="doc-u-workspace">
+                        <header>
+                            <h2>Worspace <small>(usage)</small></h2>
+                        </header>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <div class="container">
+                <p class="pull-right"><a href="#">Back to top</a></p>
+                <p>&copy; FeatureServer.org 2012</>
+                <ul class="footer-links">
+                    <li><a href="http://lists.osgeo.org/mailman/listinfo/featureserver" target="_new">Mailing List</a></li>
+                    <li>|</li>
+                    <li><a href="#" target="_new">Twitter</a></li>
+                    <li>|</li>
+                    <li><a href="http://github.com/iocast/featureserver" target="_new">Source Code</a></li>
+                </ul>
+            </div>
+        </footer>
+        
+    </body>
+</html>
