@@ -86,36 +86,54 @@
                                 <tr>
                                     <th>Datasource</th>
                                     <th>Description</th>
+                                    <th>Example</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>DBM</td>
                                     <td>The DBM datasource uses anydbm combined with pickle to store features in a file on disk. This works on any platform, and works right out of the box.</td>
+                                    <td><a href="#dbm-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
                                 <tr>
                                     <td>BerkleyDB</td>
                                     <td>The BerkleyDB datasource is a subclass of the DBM datasource. It uses a BerkleyDB module for storage.</td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td>PostGIS</td>
                                     <td>The PostGIS datasource implements a direct connection to PostGIS, allowing for full featured editing/updating.</td>
+                                    <td><a href="#postgis-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
                                 <tr>
                                     <td>WFS</td>
                                     <td>The WFS datasource implements read-only access to WFS servers.</td>
+                                    <td><a href="#wfs-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
                                 <tr>
                                     <td>OGR</td>
                                     <td>The OGR datasource allows you to take any OGR datasource -- such as a shapefile, PostGIS database, GML file, or other formats supported by OGR -- and use it as a backend for a FeatureServer layer.</td>
+                                    <td><a href="#ogr-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
                                 <tr>
                                     <td>Flickr</td>
                                     <td>Load images from flickr.</td>
+                                    <td><a href="#flickr-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
                                 <tr>
                                     <td>OSM</td>
                                     <td>Load streets from OpenStreetMap by area, id, or key/value pair.</td>
+                                    <td><a href="#osm-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
+                                </tr>
+                                <tr>
+                                    <td>GeoAlchemy</td>
+                                    <td>GeoAlchemy is an extension of SQLAlchemy, the python database toolkit, for spatial databases. GeoAlchemy datasource for FeatureServer allows you to access features stored in one of the supported spatial databases. As the moment GeoAlchemy supports PostGIS, MySQL and Spatialite.</td>
+                                    <td><a href="#geoalchemy-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
+                                </tr>
+                                <tr>
+                                    <td>SpatialLite</td>
+                                    <td>SpatiaLite is an open source library intended to extend the SQLite core to support fully fledged Spatial SQL capabilities.</td>
+                                    <td><a href="#spatiallite-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -180,9 +198,165 @@
         </div>
         
         
+        <div class="modal hide" id="dbm-config-modal" tabindex="-1" role="dialog" aria-labelledby="wfs-exception-modal" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 id="wfs-exception-modal-label">DBM Configuration Example</h3>
+            </div>
+            <div class="modal-body">
+                <pre class="prettyprint"><code>[scribble]
+type=DBM
+file=/home/example/scribble.db</code></pre>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+        
+        <div class="modal hide" id="postgis-config-modal" tabindex="-1" role="dialog" aria-labelledby="wfs-exception-modal" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 id="wfs-exception-modal-label">PostGIS Configuration Example</h3>
+            </div>
+            <div class="modal-body">
+                <pre class="prettyprint"><code>[mylayer]
+type=PostGIS
+dsn=host=localhost dbname=mydata user=myuser password=1234
+layer=mylayer
+fid=gid #defaults to ogc_fid
+geometry=wkb_geometry # defaults to the_geom
+srid=26910 #defaults to 4326
+encoding=utf-8 #defaults to utf-8
+attribute_cols=name,some_interesting_column #optional</code></pre>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+        
+        <div class="modal hide" id="wfs-config-modal" tabindex="-1" role="dialog" aria-labelledby="wfs-exception-modal" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 id="wfs-exception-modal-label">WFS Configuration Example</h3>
+            </div>
+            <div class="modal-body">
+                <pre class="prettyprint"><code>[wfs]
+type=WFS
+url=http://zuluviz.sdsu.edu:8080/geoserver/wfs
+typename=topp:states</code></pre>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+        
+        <div class="modal hide" id="ogr-config-modal" tabindex="-1" role="dialog" aria-labelledby="wfs-exception-modal" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 id="wfs-exception-modal-label">OGR Configuration Example</h3>
+            </div>
+            <div class="modal-body">
+                <pre class="prettyprint"><code>[myshape]
+type=OGR
+dsn=/home/example/myshape.shp
+layer=myshape
+attribute_cols=name,some_interesting_column #optional; only these columns will be returned.</code></pre>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+        
+        <div class="modal hide" id="flickr-config-modal" tabindex="-1" role="dialog" aria-labelledby="wfs-exception-modal" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 id="wfs-exception-modal-label">Flickr Configuration Example</h3>
+            </div>
+            <div class="modal-body">
+                <pre class="prettyprint"><code>[flickr]
+type=Flickr
+user_id=56541240@N00
+tags=mit,food,2007
+tag_mode=all</code></pre>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+        
+        <div class="modal hide" id="osm-config-modal" tabindex="-1" role="dialog" aria-labelledby="wfs-exception-modal" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 id="wfs-exception-modal-label">OSM Configuration Example</h3>
+            </div>
+            <div class="modal-body">
+                <pre class="prettyprint"><code>[osm]
+type=OSM
+osmxapi=no</code></pre>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+        
+
+        <div class="modal hide" id="geoalchemy-config-modal" tabindex="-1" role="dialog" aria-labelledby="wfs-exception-modal" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 id="wfs-exception-modal-label">GeoAlchemy Configuration Example</h3>
+            </div>
+            <div class="modal-body">
+                <p>The actual geoalchemy model definition may lie in a separate package. This makes it easy to integrate feature server with other applications / frameworks. A basic GeoAlchemy configuration might look like:
+                <pre class="prettyprint"><code>[mylayer]
+type=GeoAlchemy
+dburi=postgres://user:password@dbhost/dbname
+model=mypackage.mymodule
+cls=MyLayer
+fid=id
+geometry=geom # defaults to the_geom</code></pre></p>
+                <p>Instead of using dburi in the config it is possible to pass the sqlalchemy session to the datasource. Developers using the FeatureServer API may choose to pass the session object instead. GeoAlchemy also supports the use of relations where the geometry column may be in a related table. The config in this would be
+                <pre class="prettyprint"><code>[mylayerexterior]
+type=GeoAlchemy
+dburi=postgres://user:password@dbhost/dbname
+model=mypackage.mymodule
+cls=MyLayer
+fid=id
+geometry=geom # defaults to the_geom
+geom_cls=Exterior
+geom_rel=exterior</code></pre></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+        
+        
+        <div class="modal hide" id="spatiallite-config-modal" tabindex="-1" role="dialog" aria-labelledby="wfs-exception-modal" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 id="wfs-exception-modal-label">SpatialLite Configuration Example</h3>
+            </div>
+            <div class="modal-body">
+                <pre class="prettyprint"><code>[sqlite_test]
+type=SpatialLite
+file=/home/featureserver/test.sqlite
+layer=featureserver
+fid=fid
+srid=4326
+srid_out=432</code></pre>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+        
+
+        
+        
+        
         <div class="modal hide" id="wfs-exception-modal" tabindex="-1" role="dialog" aria-labelledby="wfs-exception-modal" aria-hidden="true">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h3 id="wfs-exception-modal-label">WFS Excpetion Example</h3>
             </div>
             <div class="modal-body">

@@ -2,6 +2,7 @@
 
 '''
 test: python -m CGIHTTPServer 8000
+doc: http://svn.osgeo.org/featureserver/trunk/featureserver/doc/
 '''
 
 import cgi
