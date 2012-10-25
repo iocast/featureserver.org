@@ -16,10 +16,15 @@ fmt = "%H:%M:%S"
 midnight = "23:59:59"
 now = datetime.now().strftime(fmt)
 
-out = str(callback) + "({"
 
+remaining = str(datetime.strptime(midnight, fmt) - datetime.strptime(now, fmt))
+
+if int(remaining.find(":")) < 10:
+    remaining = "0" + remaining
+
+out = str(callback) + "({"
 out = out + "remaining_time : "
-out = out + "'" + str(datetime.strptime(midnight, fmt) - datetime.strptime(now, fmt)) + "'"
+out = out + "'" + remaining + "'"
 out = out + "});"
 
 print 'Content-Type: application/json\n\n'
