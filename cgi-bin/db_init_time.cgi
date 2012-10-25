@@ -19,7 +19,7 @@ now = datetime.now().strftime(fmt)
 
 remaining = str(datetime.strptime(midnight, fmt) - datetime.strptime(now, fmt))
 
-if int(remaining.find(":")) < 10:
+if int(remaining[:remaining.find(":")]) < 10:
     remaining = "0" + remaining
 
 out = str(callback) + "({"
