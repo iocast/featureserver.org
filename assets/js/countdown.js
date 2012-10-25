@@ -37,8 +37,7 @@ jQuery.fn.countdown = function(userOptions)
           float: 'left', background: 'url(\'' + options.image + '\')',
           width: options.digitWidth});
         digits.push(elem);
-        margin(c, -((parseInt(options.startTime[i]) * options.digitHeight *
-                              options.digitImages)));
+        margin(c, -((parseInt(options.startTime[i]) * options.digitHeight * options.digitImages)));
         digits[c].__max = 9;
         // Add max digits, for example, first digit of minutes (mm) has 
         // a max of 5. Conditional max is used when the left digit has reach
@@ -59,8 +58,7 @@ jQuery.fn.countdown = function(userOptions)
         ++c;
       }
       else 
-        elem = $('<div class="cntSeparator"/>').css({float: 'left'})
-                .text(options.startTime[i]);
+        elem = $('<div class="cntSeparator"/>').css({float: 'left'}).text(options.startTime[i]);
 
       where.append(elem)
     }
@@ -91,8 +89,7 @@ jQuery.fn.countdown = function(userOptions)
           options.timerEnd();
           return;
         }
-        if ((elem > 0) && (digits[elem].__condmax !== undefined) && 
-            (digits[elem - 1]._digitInitial == margin(elem - 1)))
+        if ((elem > 0) && (digits[elem].__condmax !== undefined) && (digits[elem - 1]._digitInitial == margin(elem - 1)))
           margin(elem, -(digits[elem].__condmax * options.digitHeight * options.digitImages));
         return;
       }
