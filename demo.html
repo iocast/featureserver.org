@@ -7,6 +7,7 @@
         <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"></link>
         <link href="assets/css/docs.css" rel="stylesheet"></link>
         <link href="assets/css/prettify.css" rel="stylesheet"></link>
+        <link href="assets/libs/openlayers/theme/default/style.css" rel="stylesheet"></link>
         <link href="assets/css/application.css" rel="stylesheet"></link>
         
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -18,11 +19,11 @@
         <script src="assets/js/bootstrap.js"></script>
         <script src="assets/js/prettify.js"></script>
         <script src="assets/js/countdown.js" type="text/javascript" charset="utf-8"></script>
-        
         <script src="assets/libs/openlayers/OpenLayers.js" type="text/javascript" charset="utf-8"></script>
         
+        
         <script src="assets/js/application.js" type="text/javascript" charset="utf-8"></script>
-                
+        
         <script type="text/javascript">
             $(function(){
               $.ajax({
@@ -120,34 +121,10 @@
             </section>
             
             <section>
-                <header>
-                    <h1>Map</h1>
-                </header>
+                <div style="width:100%; height:600px;" id="map-canvas" class="img-polaroid"></div>
+                <script src="assets/js/map.js" type="text/javascript" charset="utf-8"></script>
             </section>
-            <div style="width:100%; height:600px;" id="map-canvas" class="img-polaroid"></div>
-            <script defer="defer" type="text/javascript">
-                 OpenLayers.ProxyHost = "/cgi-bin/proxy.cgi?url=";
-                var map = new OpenLayers.Map('map-canvas', {
-                                             units : 'm',
-                                             projection: new OpenLayers.Projection("EPSG:4326"),
-                                             displayProjection: new OpenLayers.Projection("EPSG:4326")});
-                map.addLayer(new OpenLayers.Layer.OSM("OpenStreetMap"));
-                
-                
-                var wfs = new OpenLayers.Layer.Vector("WFS", {
-                                                        strategies: [new OpenLayers.Strategy.BBOX()],
-                                                        protocol: new OpenLayers.Protocol.WFS({
-                                                                                              version: "1.1.0",
-                                                                                              url:  "http://localhost:8080/?SERVICE=WFS&VERSION=1.0.0&REQUEST=GetFeature&TYPENAME=sqlite_pois",
-                                                                                              featurePrefix: "fs",
-                                                                                              featureType: "sqlite_pois",
-                                                                                              featureNS: "http://example.com/featureserver"
-                                                                                              })
-                                                        });
-                map.addLayer(wfs);
-                var boundsCH = new OpenLayers.Bounds(662963,5751192,1168000,6075059);
-                map.zoomToExtent(boundsCH);
-                </script>
+            
         </div>
         
         
