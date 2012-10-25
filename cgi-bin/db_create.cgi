@@ -3,7 +3,7 @@
 from pyspatialite import dbapi2 as db
 import os
 
-file="/Users/michel/Documents/Projects/workspace.sqlite"
+file="/home/featureserver/workspace.sqlite"
 
 srs = 4326
 
