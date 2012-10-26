@@ -126,6 +126,11 @@
                                     <td><a href="#spatiallite-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
                                 <tr>
+                                    <td>SQLite</td>
+                                    <td>A simple SQLite datasource that can be used on any website with Python support for SQLite. Creates 2 tables for each layer: one for the features, and one for any attributes/properties pertaining to those features.</td>
+                                    <td><a href="#sqlite-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
+                                </tr>
+                                <tr>
                                     <td>Twitter</td>
                                     <td>Powered by Twittervision, the twitter datasource lets you use twittervision's API to display the current location of a user.</td>
                                     <td><a href="#twitter-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
@@ -330,7 +335,6 @@ geom_rel=exterior</code></pre></p>
             </div>
         </div>
         
-        
         <div class="modal hide" id="spatiallite-config-modal" tabindex="-1" role="dialog" aria-labelledby="wfs-exception-modal" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -345,6 +349,22 @@ fid=fid
 srid=4326
 srid_out=432
 attribute_cols=name</code></pre>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+        
+        <div class="modal hide" id="sqlite-config-modal" tabindex="-1" role="dialog" aria-labelledby="wfs-exception-modal" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 id="wfs-exception-modal-label">SQLite Configuration Example</h3>
+            </div>
+            <div class="modal-body">
+                <pre class="prettyprint"><code>[lines]
+type=SQLite
+file=/home/featureserver/features.sqlite # if already exists, features table will be added
+layer=lines # name of table; defaults to layer name</code></pre>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
