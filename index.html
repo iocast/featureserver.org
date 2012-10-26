@@ -47,7 +47,7 @@
                              </li>
                              -->
                             <li><a href="demo.html">Demo</a></li>
-                            <li><a href="source.html">Source &amp; Download</a></li>
+                            <li><a href="download.html">Source &amp; Download</a></li>
                         </ul>
                     </div>
                 </div>
@@ -92,28 +92,8 @@
                             <tbody>
                                 <tr>
                                     <td>DBM</td>
-                                    <td>The DBM datasource uses anydbm combined with pickle to store features in a file on disk. This works on any platform, and works right out of the box.</td>
+                                    <td>The DBM datasource uses anydbm combined with pickle to store features in a file on disk. This works on any platform, and works right out of the box.<br/><span class="label label-info">Info</span> The BerkleyDB datasource is a subclass of the DBM datasource. It uses a BerkleyDB module for storage.</td>
                                     <td><a href="#dbm-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
-                                </tr>
-                                <tr>
-                                    <td>BerkleyDB</td>
-                                    <td>The BerkleyDB datasource is a subclass of the DBM datasource. It uses a BerkleyDB module for storage.</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>PostGIS</td>
-                                    <td>The PostGIS datasource implements a direct connection to PostGIS, allowing for full featured editing/updating.</td>
-                                    <td><a href="#postgis-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
-                                </tr>
-                                <tr>
-                                    <td>WFS</td>
-                                    <td>The WFS datasource implements read-only access to WFS servers.</td>
-                                    <td><a href="#wfs-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
-                                </tr>
-                                <tr>
-                                    <td>OGR</td>
-                                    <td>The OGR datasource allows you to take any OGR datasource -- such as a shapefile, PostGIS database, GML file, or other formats supported by OGR -- and use it as a backend for a FeatureServer layer.</td>
-                                    <td><a href="#ogr-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
                                 <tr>
                                     <td>Flickr</td>
@@ -121,19 +101,39 @@
                                     <td><a href="#flickr-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
                                 <tr>
-                                    <td>OSM</td>
-                                    <td>Load streets from OpenStreetMap by area, id, or key/value pair.</td>
-                                    <td><a href="#osm-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
-                                </tr>
-                                <tr>
                                     <td>GeoAlchemy</td>
                                     <td>GeoAlchemy is an extension of SQLAlchemy, the python database toolkit, for spatial databases. GeoAlchemy datasource for FeatureServer allows you to access features stored in one of the supported spatial databases. As the moment GeoAlchemy supports PostGIS, MySQL and Spatialite.</td>
                                     <td><a href="#geoalchemy-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
                                 <tr>
-                                    <td>SpatialLite</td>
+                                    <td>OGR</td>
+                                    <td>The OGR datasource allows you to take any OGR datasource -- such as a shapefile, PostGIS database, GML file, or other formats supported by OGR -- and use it as a backend for a FeatureServer layer.</td>
+                                    <td><a href="#ogr-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
+                                </tr>
+                                <tr>
+                                    <td>OSM</td>
+                                    <td>Load streets from OpenStreetMap by area, id, or key/value pair.</td>
+                                    <td><a href="#osm-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
+                                </tr>
+                                <tr>
+                                    <td>PostGIS</td>
+                                    <td>The PostGIS datasource implements a direct connection to PostGIS, allowing for full featured editing/updating.</td>
+                                    <td><a href="#postgis-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">SpatialLite <span class="label label-success">new</span></td>
                                     <td>SpatiaLite is an open source library intended to extend the SQLite core to support fully fledged Spatial SQL capabilities.</td>
                                     <td><a href="#spatiallite-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Twitter</td>
+                                    <td>Powered by Twittervision, the twitter datasource lets you use twittervision's API to display the current location of a user.</td>
+                                    <td><a href="#twitter-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
+                                </tr>
+                                <tr>
+                                    <td>WFS</td>
+                                    <td>The <a href="#" rel="tooltip" data-placement="top" data-original-title="Web Feature Service">WFS</a> datasource implements read-only access to WFS servers.</td>
+                                    <td><a href="#wfs-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -147,40 +147,40 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>CSV</td><td></td><td>comming</td>
+                                    <td>CSV</td><td></td><td></td>
                                 </tr>
                                 <tr>
-                                    <td>GeoJSON</td><td>input and output in the emerging GeoJSON specification. FeatureServer supports GeoJSON Points, Lines, and Polygons with Rings, as both input and output.</td><td>comming</td>
+                                    <td style="white-space: nowrap;">DXF (AutoCAD) <span class="label label-success">new</span></td><td>Compatible with release 11 and 12, points, polyline (linestring), polygon</td><td></td>
                                 </tr>
                                 <tr>
-                                    <td>GeoRSS Atom (Simple)</td><td>input and output of Points/Lines/Polygons (no rings/holes) in GeoRSS Simple (Atom). This allows one to take any GeoRSS Simple Atom feed and feed it to FeatureServer for storage.</td><td>comming</td>
+                                    <td>GeoJSON</td><td>input and output in the emerging GeoJSON specification. FeatureServer supports GeoJSON Points, Lines, and Polygons with Rings, as both input and output.</td><td></td>
+                                </tr>
+                                <tr>
+                                    <td>GeoRSS Atom (Simple)</td><td>input and output of Points/Lines/Polygons (no rings/holes) in GeoRSS Simple (Atom). This allows one to take any GeoRSS Simple Atom feed and feed it to FeatureServer for storage.</td><td></td>
                                 </tr>
                                 <tr>
                                     <td>GML/WFS</td><td>Output-only support of WFS/GML.</td><td><a href="#wfs-exception-modal" role="button" class="btn" data-toggle="modal">example</a></td>
                                 </tr>
                                 <tr>
-                                    <td>GPX</td><td>for Garmin devices</td><td>takes default serivce if supported, GML/WFS otherwise</td>
+                                    <td>GPX <span class="label label-success">new</span></td><td>GPX (the GPS Exchange Format) is a light-weight XML data format for the interchange of GPS data (waypoints, routes, and tracks) between applications and Web services on the Internet. E.g. it can be used for Garmin devices.</td><td></td>
                                 </tr>
                                 <tr>
-                                    <td>HTML</td><td>Output-only support of features as HTML files, powered by Cheetah templates.</td><td>comming</td>
+                                    <td>HTML</td><td>Output-only support of features as HTML files, powered by Cheetah templates.</td><td></td>
                                 </tr>
                                 <tr>
                                     <td>KML</td><td>Input and output of Points, Lines, and Polygons from KML.</td><td></td>
                                 </tr>
                                 <tr>
-                                    <td>OSM</td><td>Output-only support of features as OpenStreetMap '.osm' files. (These files can be opened using JOSM and posted to the OSM server.)</td><td>unkown</td>
+                                    <td>OSM</td><td>Output-only support of features as OpenStreetMap '.osm' files. (These files can be opened using JOSM and posted to the OSM server.)</td><td></td>
                                 </tr>
                                 <tr>
-                                    <td>OV2</td><td>for TomTom devices</td><td>takes default serivce if supported, GML/WFS otherwise</td>
+                                    <td style="white-space: nowrap;">OV2 <span class="label label-success">new</span></td><td>TomTom Points of Interest Database</td><td></td>
                                 </tr>
                                 <tr>
-                                    <td>Shapefile</td><td>as zip</td><td></td>
+                                    <td style="white-space: nowrap;">Shapefile <span class="label label-success">new</span></td><td>The Esri shapefile or simply a shapefile is a popular geospatial vector data format for geographic information systems software. It is developed and regulated by Esri as a (mostly) open specification for data interoperability among Esri and other software products.</td><td></td>
                                 </tr>
                                 <tr>
-                                    <td>SQLite/SpatiaLite</td><td>points, polyline (linestring), polygon</td><td></td>
-                                </tr>
-                                <tr>
-                                    <td>DXF (AutoCAD)</td><td>Compatible with release 11 and 12, points, polyline (linestring), polygon</td><td></td>
+                                    <td style="white-space: nowrap;">SQLite/SpatiaLite <span class="label label-success">new</span></td><td>SpatiaLite is an open source library intended to extend the SQLite core to support fully fledged Spatial SQL capabilities.</td><td></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -343,7 +343,23 @@ file=/home/featureserver/test.sqlite
 layer=featureserver
 fid=fid
 srid=4326
-srid_out=432</code></pre>
+srid_out=432
+attribute_cols=name</code></pre>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+        
+        <div class="modal hide" id="twitter-config-modal" tabindex="-1" role="dialog" aria-labelledby="wfs-exception-modal" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 id="wfs-exception-modal-label">Twitter Configuration Example</h3>
+            </div>
+            <div class="modal-body">
+                <pre class="prettyprint"><code>[twitter_test]
+type=Twitter
+username=featureserver</code></pre>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -361,7 +377,7 @@ srid_out=432</code></pre>
             </div>
             <div class="modal-body">
                 <p><strong>Request:</strong></p>
-                <pre class="prettyprint"><code class="language-xml">http://localhost:8080/?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=featureserver</code></pre>
+                <pre class="prettyprint"><code class="language-xml">http://featureserver.org?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=featureserver</code></pre>
                 <p><strong>Response:</strong></p>
 <pre class="prettyprint"><code class="language-xml">&lt;ExceptionReport xmlns="http://www.opengis.net/ows/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/ows/1.1 owsExceptionReport.xsd" version="1.0.0" xml:lang="en"&gt;
     &lt;Exception exceptionCode="" locator="Request" layer="featureserver"&gt;
@@ -383,8 +399,6 @@ srid_out=432</code></pre>
                 <p>&copy; FeatureServer.org 2012</>
                 <ul class="footer-links">
                     <li><a href="http://lists.osgeo.org/mailman/listinfo/featureserver" target="_new">Mailing List</a></li>
-                    <li>|</li>
-                    <li><a href="#" target="_new">Twitter</a></li>
                     <li>|</li>
                     <li><a href="http://github.com/iocast/featureserver" target="_new">Source Code</a></li>
                 </ul>
