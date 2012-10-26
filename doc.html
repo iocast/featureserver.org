@@ -72,6 +72,7 @@
                         <li><a href="#doc-c-dc-osm"><i class="icon-chevron-right"></i> OSM</a></li>
                         <li><a href="#doc-c-dc-postgis"><i class="icon-chevron-right"></i> PostGIS</a></li>
                         <li><a href="#doc-c-dc-spatiallite"><i class="icon-chevron-right"></i> SpatialLite</a></li>
+                        <li><a href="#doc-c-dc-sqlite"><i class="icon-chevron-right"></i> SQLite</a></li>
                         <li><a href="#doc-c-dc-twitter"><i class="icon-chevron-right"></i> Twitter</a></li>
                         <li><a href="#doc-c-dc-wfs"><i class="icon-chevron-right"></i> WFS</a></li>
                         <!--
@@ -535,6 +536,44 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                 <tr>
                                     <td>geometry_type</td>
                                     <td>Comma seperated list of geometry types <code>Point</code>, <code>Line</code> and/or <code>Polygon</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </p>
+                    </section>
+                    
+                    <section id="doc-c-dc-sqlite">
+                        <header>
+                            <h2>SQLite <small>(configuration)</small></h2>
+                        </header>
+                        <p>A simple SQLite datasource that can be used on any website with Python support for SQLite. Creates 2 tables for each layer: one for the features, and one for any attributes/properties pertaining to those features. The features table can be used as input to OGR.
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Key</th><th>Value/Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>types</td>
+                                    <td><code>SQLite</code></td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">title <span class="label label-success">new</span></td>
+                                    <td>Title of the layer</td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">abstract <span class="label label-success">new</span></td>
+                                    <td>Short description of the layer</td>
+                                </tr>
+                                <tr>
+                                    <td>file</td>
+                                    <td>(required) path including file name</td>
+                                </tr>
+                                <tr>
+                                    <td>layer</td>
+                                    <td>Name of table. Defaults to layer name <pre class="prettyprint"><code>[lines]
+type=SQLite</code></pre> goes to <code>layer=lines</code></td>
                                 </tr>
                             </tbody>
                         </table>
