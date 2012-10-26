@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 
-from pyspatialite import dbapi2 as db
 import os
+import cgi
+
+from pyspatialite import dbapi2 as db
+from datetime import datetime
+
 
 file="/home/featureserver/workspace.sqlite"
 
@@ -30,6 +34,14 @@ cursor.execute('''SELECT AddGeometryColumn('fs_line', 'geometry', %i, '%s', 2);'
 cursor.execute(sql_polygon)
 cursor.execute('''SELECT AddGeometryColumn('fs_polygon', 'geometry', %i, '%s', 2);''' % (int(srs), "POLYGON"))
 
+
+sql_clean = "CREATE TABLE fs_clean (id INTEGER PRIMARY KEY AUTOINCREMENT, clean_date TEXT);"
+cursor.execute(sql_clean)
+
+fmt = "%Y-%m-%d"
+now = datetime.now().strftime(fmt)
+
+cursor.execute("INSERT INTO fs_clean(\"clean_date\") VALUES(date('"+now+"'));")
 
 
 connection.commit()
