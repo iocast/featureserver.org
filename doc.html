@@ -36,7 +36,7 @@
                             <li><a href="index.html">Overview</a></li>
                             <li class="active"><a href="#">Documentation</a></li>
                             <li><a href="demo.html">Demo</a></li>
-                            <li><a href="source.html">Source &amp; Download</a></li>
+                            <li><a href="download.html">Source &amp; Download</a></li>
                         </ul>
                     </div>
                 </div>
@@ -65,11 +65,20 @@
                         <li><a href="#doc-i-osx"><i class="icon-chevron-right"></i> OS X Mountain Lion</a></li>
                         <li class="nav-header">Configuration</li>
                         <li><a href="#doc-c-layer"><i class="icon-chevron-right"></i> Layer</a></li>
-                        <li><a href="#doc-c-workspace"><i class="icon-chevron-right"></i> Workspace</a></li>
-                        <li><a href="#doc-c-apache"><i class="icon-chevron-right"></i> Apache</a></li>
+                        <li><a href="#doc-c-dc-dbm"><i class="icon-chevron-right"></i> DBM (BerkleyDB)</a></li>
+                        <li><a href="#doc-c-dc-flickr"><i class="icon-chevron-right"></i> Flickr</a></li>
+                        <li><a href="#doc-c-dc-geoalchemy"><i class="icon-chevron-right"></i> GeoAlchemy</a></li>
+                        <li><a href="#doc-c-dc-ogr"><i class="icon-chevron-right"></i> OGR</a></li>
+                        <li><a href="#doc-c-dc-osm"><i class="icon-chevron-right"></i> OSM</a></li>
+                        <li><a href="#doc-c-dc-postgis"><i class="icon-chevron-right"></i> PostGIS</a></li>
+                        <li><a href="#doc-c-dc-spatiallite"><i class="icon-chevron-right"></i> SpatialLite</a></li>
+                        <li><a href="#doc-c-dc-twitter"><i class="icon-chevron-right"></i> Twitter</a></li>
+                        <li><a href="#doc-c-dc-wfs"><i class="icon-chevron-right"></i> WFS</a></li>
+                        <!--
                         <li class="nav-header">Usage</li>
                         <li><a href="#doc-u-layer"><i class="icon-chevron-right"></i> Layer</a></li>
                         <li><a href="#doc-u-workspace"><i class="icon-chevron-right"></i> Workspace</a></li>
+                        -->
                     </ul>
                 </div>
                 
@@ -79,7 +88,7 @@
                             <h2>Download <small>(installation)</small></h2>
                         </header>
                         <p>
-                        Download the latest development bild from <a href="http://github.com/iocast/featureserver" target="_new">github://iocast/featureserver</a> or take the <a href="#">latest release</a>.
+                        Download the latest development bild from <a href="http://github.com/iocast/featureserver" target="_new">github://iocast/featureserver</a> or take the <a href="download.html">latest release</a>.
                         </p>
                     </section>
                     
@@ -105,43 +114,383 @@
                             <h2>Virtual Environment <small>(installation)</small></h2>
                         </header>
                         <p>
-                        download the recent version of virtualenv.py from <a href="http://pypi.python.org/pypi/virtualenv">http://pypi.python.org/pypi/virtualenv</a>
+                        download the recent version of virtualenv.py from <a href="http://pypi.python.org/pypi/virtualenv">http://pypi.python.org/pypi/virtualenv</a></p>
                         <pre class="prettyprint"><code class="language-sh">curl https://raw.github.com/pypa/virtualenv/master/virtualenv.py -o virtualenv.py</code></pre>
-                        To create a new environment with the name <code>featureserver</code> run:
+                        <p>To create a new environment with the name <code>featureserver</code> run:</p>
                         <pre class="prettyprint"><code class="language-sh">python virtualenv.py featureserver</code></pre>
-                        To activate the virtual env call:
+                        <p>To activate the virtual env call:</p>
                         <pre class="prettyprint"><code class="language-sh">source featureserver/bin/activate</code></pre>
-                        Now you can install the needed dependencies using the command <code class="language-sh">pip install</code> as follow:
+                        <p>Now you can install the needed dependencies using the command <code class="language-sh">pip install</code> as follow:</p>
                         <pre class="prettyprint"><code class="language-sh">pip install lxml</code></pre>
-                        </p>
                     </section>
                     
                     <section id="doc-i-osx">
                         <header>
                             <h2>Mac OS X Mountain Lion <small>(installation)</small></h2>
                         </header>
-                        <p>GEOS and PROJ are required. Use the unix compatibility (OS X) frameworks from <a href="http://www.kyngchaos.com/software/frameworks" target="_new">http://www.kyngchaos.com/software/frameworks</a></p>
+                        <p><a href="http://geos.osgeo.org" target="_new" rel="popover" data-placement="bottom" data-original-title="Geometry Engine - Open Source" data-content="GEOS is a C++ port of the  Java Topology Suite (JTS). As such, it aims to contain the complete functionality of JTS in C++. This includes all the  OpenGIS Simple Features for SQL spatial predicate functions and spatial operators, as well as specific JTS enhanced topology functions.">GEOS</a> and <a href="http://proj.osgeo.org" target="_new" rel="popover" data-placement="bottom" data-original-title="Cartographic Projections Library" data-content="Proj and invproj perform respective forward  and inverse  transformation  of cartographic data to or from cartesian data  with  a  wide  range  of selectable projection functions.">PROJ</a> are required. Use the unix compatibility (OS X) frameworks from <a href="http://www.kyngchaos.com/software/frameworks" target="_new">http://www.kyngchaos.com/software/frameworks</a></p>
                     </section>
                     
                     <section id="doc-c-layer">
                         <header>
                             <h2>Layer <small>(configuration)</small></h2>
                         </header>
-                        <p>
-                        <p>
-                        A layer is a named section in the <small>featureserver.cfg</small> file. Using for a example WFS jargon, a layer is the value of the <code class="language-html">typename</code> parameter in the HTTP request
+                        <p>A layer is a named section in the <small>featureserver.cfg</small> file. Using for a example WFS jargon, a layer is the value of the <code class="language-html">typename</code> parameter in the HTTP request</p>
                         <pre class="prettyprint"><code class="language-html">featureserver.cgi?typename=pois</code></pre>
-                        Every layer is bracket by <code>[&lt;layer&gt;]</code> and has to be on a sperate line as every of following keys:
+                        
+                        <p>Every layer is bracket by <code>[&lt;layer&gt;]</code> and has to be on a sperate line as every key. Keys can vary from datasource to datasource. E.g. SpatialLite does not need to have a <code>dsn</code> in contrast for PostGIS it is mandatory to connect to the database. The following example shows a sample configuration for a SpatialLite datasource.</p>
+                        <pre class="prettyprint linenums"><code>[sqlite_layer]
+type=SpatialLite
+file=/home/featureserver/test.sqlite
+layer=featureserver // table name
+fid=fid // id attribute
+attribute_cols=name // additional attributes to be displayed</code></pre>
+                        <p>The follwing sections describes all the possible keys for each supported datasource.</p>
+                    </section>
+                    
+                    
+                    <section id="doc-c-dc-dbm">
+                        <header>
+                            <h2>DBM (BerkleyDB) <small>(configuration)</small></h2>
+                        </header>
+                        <p>
+                        The DBM datasource uses anydbm combined with pickle to store features in a file on disk. This works on any platform, and works right out of the box.<br/><span class="label label-info">Info</span> The BerkleyDB datasource is a subclass of the DBM datasource. It uses a BerkleyDB module for storage.
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Key</th><th>Description</th>
+                                    <th>Key</th><th>Value/Description</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>types</td>
-                                    <td>Datasource type which should be used by the FeatureServer. List of datasource types can be found <a href="index.html#datasources">here</a></td>
+                                    <td><code>DBM</code></td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">title <span class="label label-success">new</span></td>
+                                    <td>Title of the layer</td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">abstract <span class="label label-success">new</span></td>
+                                    <td>Short description of the layer</td>
+                                </tr>
+                                <tr>
+                                    <td>file</td>
+                                    <td>path to the file on disk</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </p>
+                    </section>
+
+                    <section id="doc-c-dc-flickr">
+                        <header>
+                            <h2>Flickr <small>(configuration)</small></h2>
+                        </header>
+                        <p>The Flickr datasource loads data from geotagged Flickr photos. Filtering the results can be done by using any of the parameters listed at: <a href="http://flickr.com/services/api/flickr.photos.search.html" target="_new">http://flickr.com/services/api/flickr.photos.search.html</a>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Key</th><th>Value/Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>types</td>
+                                    <td><code>Flickr</code></td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">title <span class="label label-success">new</span></td>
+                                    <td>Title of the layer</td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">abstract <span class="label label-success">new</span></td>
+                                    <td>Short description of the layer</td>
+                                </tr>
+                                <tr>
+                                    <td>user_id</td>
+                                    <td>Flickr user id</td>
+                                </tr>
+                                <tr>
+                                    <td>tags</td>
+                                    <td>Comma seperated list of tags that need to be matched according to <code>tag_mode</code>.</td>
+                                </tr>
+                                <tr>
+                                    <td>tag_mode</td>
+                                    <td>Mode of matching <code>tags</code>. Either 'any' for an OR combination of tags, or 'all' for an AND combination. Defaults to 'any' if not specified.</td>
+                                </tr>
+                                <tr>
+                                    <td>...</td>
+                                    <td>more parameters see <a href="http://flickr.com/services/api/flickr.photos.search.html" target="_new">Flickr's API</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </p>
+                        <p>
+                        <span class="label label-important">Important</span> By default, this only shows public photos. To grant the datasource access to your non-public photos, you must fetch a 'read' permissions token from the API. You can use the Flickr.py as a command line application to do this:
+                        <pre class="prettyprint"><code>./FeatureServer/DataSource/Flickr.py</code></pre>
+                        Open the following URL in a browser:
+                        <pre class="prettyprint"><code>http://flickr.com/services/auth/?api_key=[...]&amp;perms=read&amp;frob=[...]</code></pre>
+                        Press enter when complete.
+                        The result of this will be something like:
+                        
+                        <pre class="prettyprint linenums">Your token is:
+                        
+721576-5d6044
+                        
+Add the following line to a Flickr data source to complete configuration:
+                        
+auth_token=721576-5d6044</pre>
+                        With this example, the the key/value <code>auth_token=721576-5d6044</code> need to be added to the Flickr datasource.
+                        </p>
+                    </section>
+                    
+                    <section id="doc-c-dc-geoalchemy">
+                        <header>
+                            <h2>GeoAlchemy <small>(configuration)</small></h2>
+                        </header>
+                        <p>GeoAlchemy is an extension of SQLAlchemy, the python database toolkit, for spatial databases. GeoAlchemy datasource for FeatureServer allows you to access features stored in one of the supported spatial databases. As the moment GeoAlchemy supports PostGIS, MySQL and Spatialite.</p>
+                        <p>The actual geoalchemy model definition may lie in a separate package. This makes it easy to integrate feature server with other applications/frameworks. A basic GeoAlchemy configuration might look like:
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Key</th><th>Value/Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>types</td>
+                                    <td><code>GeoAlchemy</code></td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">title <span class="label label-success">new</span></td>
+                                    <td>Title of the layer</td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">abstract <span class="label label-success">new</span></td>
+                                    <td>Short description of the layer</td>
+                                </tr>
+                                <tr>
+                                    <td>dburi</td>
+                                    <td>Connection information to the respective database. E.g. <code>postgres://user:password@dbhost/dbname</code></td>
+                                </tr>
+                                <tr>
+                                    <td>model</td>
+                                    <td>Path to the model definition. E.g. <code>mypackage.mymodule</code></td>
+                                </tr>
+                                <tr>
+                                    <td>cls</td>
+                                    <td>Class name inside the model definition. E.g. <code>MyLayer</code></td>
+                                </tr>
+                                <tr>
+                                    <td>fid</td>
+                                    <td>Attribute name of the feature id.</td>
+                                </tr>
+                                <tr>
+                                    <td>geometry</td>
+                                    <td>Attribute name of the geometry data. Default is <code>the_geom</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </p>
+                        <p><span class="label">Note</span> Instead of using dburi in the config it is possible to pass the sqlalchemy session to the datasource. Developers using the FeatureServer API may choose to pass the session object instead. GeoAlchemy also supports the use of relations where the geometry column may be in a related table. The config in this would be:
+                        <pre class="prettyprint linenums"><code>[mylayerexterior]
+type=GeoAlchemy
+dburi=postgres://user:password@dbhost/dbname
+model=mypackage.mymodule
+cls=MyLayer
+fid=id
+geometry=geom # defaults to the_geom
+geom_cls=Exterior
+geom_rel=exterior</code></pre>
+                        </p>
+                    </section>
+                    
+                    
+                    <section id="doc-c-dc-ogr">
+                        <header>
+                            <h2>OGR <small>(configuration)</small></h2>
+                        </header>
+                        <p>The OGR datasource allows you to take any OGR datasource - such as a shapefile, PostGIS database, GML file, or other formats supported by OGR - and use it as a backend for a FeatureServer layer.</p>
+                        <p>The OGR layer requires a <code>dsn</code> property and a <code>layer</code> property. In many cases, the layer is part of the DSN.
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Key</th><th>Value/Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>types</td>
+                                    <td><code>OGR</code></td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">title <span class="label label-success">new</span></td>
+                                    <td>Title of the layer</td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">abstract <span class="label label-success">new</span></td>
+                                    <td>Short description of the layer</td>
+                                </tr>
+                                <tr>
+                                    <td>dsn</td>
+                                    <td>(Required) Connnection information to the datasource.</td>
+                                </tr>
+                                <tr>
+                                    <td>layer</td>
+                                    <td>(Required) layer (table name) inside the datasource.</td>
+                                </tr>
+                                <tr>
+                                    <td>attribute_cols</td>
+                                    <td>A comma seperated list of attributes to be queried on the defined datasource. Default is <code>attribute_cols=*</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </p>
+                        <p> An example OGR configuration might look like:
+                        <pre class="prettyprint linenums"><code>[myshape]
+type=OGR
+dsn=/home/example/myshape.shp
+layer=myshape
+attribute_cols=name,some_interesting_column #optional; only these columns will be returned.</code></pre>
+                        </p>
+                    </section>
+                    
+                    <section id="doc-c-dc-osm">
+                        <header>
+                            <h2>OSM <small>(configuration)</small></h2>
+                        </header>
+                        <p>Allows for requests to hit the OpenStreetMap API to request data. No configuration necessary. Only supports query-by-bounding-box and query-by-id. The latter will only search for 'ways', not nodes or relations. Relations are not handled at all.</p>
+                        <p>It is possible to add an <code>osmxapi=yes</code> option. This will use the OSM Extended API instead of the main API. This API may be several hours out of date, but it does allow attribute queries: see <a href="http://wiki.openstreetmap.org/index.php/Osmxapi" target="_new">http://wiki.openstreetmap.org/index.php/Osmxapi</a> . It does not support ID queries, and if one is sent, it will instead be redirected to the main API.
+                        
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Key</th><th>Value/Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>types</td>
+                                    <td><code>OSM</code></td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">title <span class="label label-success">new</span></td>
+                                    <td>Title of the layer</td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">abstract <span class="label label-success">new</span></td>
+                                    <td>Short description of the layer</td>
+                                </tr>
+                                <tr>
+                                    <td>osmxapi</td>
+                                    <td><code>[yes|no]</code> uses OSM Extended API and the main API respectively.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </p>
+                    </section>
+                    
+                    <section id="doc-c-dc-postgis">
+                        <header>
+                            <h2>PostGIS <small>(configuration)</small></h2>
+                        </header>
+                        <p>The PostGIS datasource implements a direct connection to PostGIS. This datasource requires a <code>dsn</code> parameter and a <code>layer</code> parameter. It also accepts a variety of optional parameters, some of which you may need to override the default value of, depending on your schema.
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Key</th><th>Value/Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>types</td>
+                                    <td><code>PostGIS</code></td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">title <span class="label label-success">new</span></td>
+                                    <td>Title of the layer</td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">abstract <span class="label label-success">new</span></td>
+                                    <td>Short description of the layer</td>
+                                </tr>
+                                <tr>
+                                    <td>dsn</td>
+                                    <td>(required) connection information to the database.</td>
+                                </tr>
+                                <tr>
+                                    <td>layer</td>
+                                    <td>(required) Name of the datasource's layer aka. table name.</td>
+                                </tr>
+                                <tr>
+                                    <td>fid</td>
+                                    <td>Attribute name of the feature's id. Default is <code>fid=gid</code></td>
+                                </tr>
+                                <tr>
+                                    <td>geometry</td>
+                                    <td>Attribute name that holds the geometry information. Default is <code>geometry=the_geom</code></td>
+                                </tr>
+                                <tr>
+                                    <td>srid</td>
+                                    <td>Spatial Refernece System Identifier of the data stored in the datasource. Default is <code>srid=4326</code></td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">srid_out <span class="label label-success">new</span></td>
+                                    <td>Spatial Refernece System Identifier of the data given back to the client. Default is <code>srid=4326</code></td>
+                                </tr>
+                                <tr>
+                                    <td>attribute_cols</td>
+                                    <td>A comma seperated list of attributes to be queried on the defined datasource. Default is <code>attribute_cols=*</code>. If <code>hstore=true</code> then hstore syntax is allowed e.g. <pre class="prettyprint"><code>attribute_cols=name, gtype as "geometry_type", hstore(tags)->'operator' as "operator", hstore(tags)->'highway' as "highway"</code></pre></td>
+                                </tr>
+                                <tr>
+                                    <td>encoding</td>
+                                    <td>Default is <code>encoding=utf-8</code></td>
+                                </tr>
+                                <tr>
+                                    <td>order</td>
+                                    <td>Order data by a attribute.</td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">hstore <span class="label label-success">new</span></td>
+                                    <td>Defines if datasource uses hstore. Possible values: <code>[true|false]</code></td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">version <span class="label label-success">new</span></td>
+                                    <td>Version attribute. If <code>hstore=true</code> then hstore syntax is allowed e.g. <pre class="prettyprint"><code>version=hstore(tags)->'version'</code></pre></td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">ele <span class="label label-success">new</span></td>
+                                    <td>Elevation attribute. If <code>hstore=true</code> then hstore syntax is allowed e.g. <pre class="prettyprint"><code>ele=hstore(tags)->'ele'</code></pre></td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">bbox <span class="label label-success">new</span></td>
+                                    <td>Max bounding box of the data in the format <code>min_x min_y max_x max_y</code></td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">geometry_type <span class="label label-success">new</span></td>
+                                    <td>Comma seperated list of geometry types <code>Point</code>, <code>Line</code> and/or <code>Polygon</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </p>
+                    </section>
+                    
+                    <section id="doc-c-dc-spatiallite">
+                        <header>
+                            <h2>SpatialLite <span class="label label-success">new</span> <small>(configuration)</small></h2>
+                        </header>
+                        <p>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Key</th><th>Value/Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>types</td>
+                                    <td><code>SpatialLite</code></td>
                                 </tr>
                                 <tr>
                                     <td>title</td>
@@ -152,52 +501,32 @@
                                     <td>Short description of the layer</td>
                                 </tr>
                                 <tr>
-                                    <td>dsn</td>
-                                    <td>Data source name requried e.g. for logging into a database. If <code>type=OGR</code> then the path to the file e.g. *.shp is required as dsn.</td>
-                                </tr>
-                                <tr>
-                                    <td>file</td>
-                                    <td>requried if <code>type=DBM</code></td>
-                                </tr>
-                                <tr>
-                                    <td>layer</td>
-                                    <td>Name of the datasource's layer that holds the data (e.g. in a database it is the table name).</td>
-                                </tr>
-                                <tr>
                                     <td>fid</td>
-                                    <td>Feature id attribute in the datasource's layer</td>
+                                    <td>Attribute name of the feature's id. Default is <code>fid=gid</code></td>
                                 </tr>
                                 <tr>
                                     <td>geometry</td>
-                                    <td>Attribute that holds the geometry information</td>
-                                </tr>
-                                <tr>
-                                    <td>version</td>
-                                    <td>(optional) Version attribute</td>
+                                    <td>Attribute name that holds the geometry information. Default is <code>geometry=the_geom</code></td>
                                 </tr>
                                 <tr>
                                     <td>srid</td>
-                                    <td>Spatial Refernece System Identifier of the data stored in the datasource</td>
+                                    <td>Spatial Refernece System Identifier of the data stored in the datasource. Default is <code>srid=4326</code></td>
                                 </tr>
                                 <tr>
                                     <td>srid_out</td>
-                                    <td>(optional) Spatial Refernece System Identifier of the data given back to the client. <div class="alert alert-info">Currently only supported by the datasource PostGIS.</div></td>
-                                </tr>
-                                <tr>
-                                    <td>hstore</td>
-                                    <td>(optional) Defines if Datasource uses hstore. Only in combination with <code>type=PostGIS</code> allowed.</td>
-                                </tr>
-                                <tr>
-                                    <td>hstore_attr</td>
-                                    <td>(required if <code>hstore=true</code> else optional) Defines the attribute of the hstore</td>
-                                </tr>
-                                <tr>
-                                    <td>ele</td>
-                                    <td>(optional) Elevation attribute</td>
+                                    <td>Spatial Refernece System Identifier of the data given back to the client. Default is <code>srid=4326</code></td>
                                 </tr>
                                 <tr>
                                     <td>attribute_cols</td>
-                                    <td>A comma seperated list of attributes to be queried on the defined datasource</td>
+                                    <td>A comma seperated list of attributes to be queried on the defined datasource. Default is <code>attribute_cols=*</code></td>
+                                </tr>
+                                <tr>
+                                    <td>version</td>
+                                    <td>Version attribute.</td>
+                                </tr>
+                                <tr>
+                                    <td>ele</td>
+                                    <td>Elevation attribute.</td>
                                 </tr>
                                 <tr>
                                     <td>bbox</td>
@@ -212,18 +541,79 @@
                         </p>
                     </section>
                     
-                    <section id="doc-c-workspace">
+                    <section id="doc-c-dc-twitter">
                         <header>
-                            <h2>Workspace <small>(configuration)</small></h2>
+                            <h2>Twitter <small>(configuration)</small></h2>
                         </header>
+                        <p>Powered by Twittervision, the twitter datasource lets you use twittervision's API to display the current location of a user.</p>
+                        <p>Very simplistic, doesn't do much:
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Key</th><th>Value/Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>types</td>
+                                    <td><code>Twitter</code></td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">title <span class="label label-success">new</span></td>
+                                    <td>Title of the layer</td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">abstract <span class="label label-success">new</span></td>
+                                    <td>Short description of the layer</td>
+                                </tr>
+                                <tr>
+                                    <td>username></td>
+                                    <td>(required) name of the Twitter user</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </p>
                     </section>
                     
-                    <section id="doc-c-apache">
+                    <section id="doc-c-dc-wfs">
                         <header>
-                            <h2>Apache <small>(configuration)</small></h2>
+                            <h2>WFS <small>(configuration)</small></h2>
                         </header>
+                        <p>The WFS datasource implements read-only access to WFS servers.
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Key</th><th>Value/Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>types</td>
+                                    <td><code>WFS</code></td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">title <span class="label label-success">new</span></td>
+                                    <td>Title of the layer</td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space: nowrap;">abstract <span class="label label-success">new</span></td>
+                                    <td>Short description of the layer</td>
+                                </tr>
+                                <tr>
+                                    <td>url</td>
+                                    <td>(required) url to the WFS service.</td>
+                                </tr>
+                                <tr>
+                                    <td>typename</td>
+                                    <td>(required) typename/layer of of the requested WFS service</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </p>
                     </section>
                     
+                    
+                    <!--
                     <section id="doc-u-layer">
                         <header>
                             <h2>Layer <small>(usage)</small></h2>
@@ -235,6 +625,7 @@
                             <h2>Worspace <small>(usage)</small></h2>
                         </header>
                     </section>
+                    -->
                 </div>
             </div>
         </div>
@@ -245,8 +636,6 @@
                 <p>&copy; FeatureServer.org 2012</>
                 <ul class="footer-links">
                     <li><a href="http://lists.osgeo.org/mailman/listinfo/featureserver" target="_new">Mailing List</a></li>
-                    <li>|</li>
-                    <li><a href="#" target="_new">Twitter</a></li>
                     <li>|</li>
                     <li><a href="http://github.com/iocast/featureserver" target="_new">Source Code</a></li>
                 </ul>
