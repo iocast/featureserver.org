@@ -1,4 +1,4 @@
 featureserver.org
 =================
 
-website for the featureserver
+website for the featureserver. see http://featureserver.org
