@@ -86,6 +86,7 @@
                                 <tr>
                                     <th>Datasource</th>
                                     <th>Description</th>
+                                    <th>Support</th>
                                     <th>Example</th>
                                 </tr>
                             </thead>
@@ -93,51 +94,61 @@
                                 <tr>
                                     <td>DBM</td>
                                     <td>The DBM datasource uses anydbm combined with pickle to store features in a file on disk. This works on any platform, and works right out of the box.<br/><span class="label label-info">Info</span> The BerkleyDB datasource is a subclass of the DBM datasource. It uses a BerkleyDB module for storage.</td>
+                                    <td></td>
                                     <td><a href="#dbm-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
                                 <tr>
                                     <td>Flickr</td>
                                     <td>Load images from flickr.</td>
+                                    <td></td>
                                     <td><a href="#flickr-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
                                 <tr>
                                     <td>GeoAlchemy</td>
                                     <td>GeoAlchemy is an extension of SQLAlchemy, the python database toolkit, for spatial databases. GeoAlchemy datasource for FeatureServer allows you to access features stored in one of the supported spatial databases. As the moment GeoAlchemy supports PostGIS, MySQL and Spatialite.</td>
+                                    <td></td>
                                     <td><a href="#geoalchemy-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
                                 <tr>
                                     <td>OGR</td>
                                     <td>The OGR datasource allows you to take any OGR datasource -- such as a shapefile, PostGIS database, GML file, or other formats supported by OGR -- and use it as a backend for a FeatureServer layer.</td>
+                                    <td></td>
                                     <td><a href="#ogr-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
                                 <tr>
                                     <td>OSM</td>
                                     <td>Load streets from OpenStreetMap by area, id, or key/value pair.</td>
+                                    <td></td>
                                     <td><a href="#osm-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
                                 <tr>
                                     <td>PostGIS</td>
                                     <td>The PostGIS datasource implements a direct connection to PostGIS, allowing for full featured editing/updating.</td>
+                                    <td><div style="white-space: nowrap;"><span class="label label-success">WFS</span> <span class="label label-success">WFS-T</span></div></td>
                                     <td><a href="#postgis-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
                                 <tr>
                                     <td style="white-space: nowrap;">SpatialLite <span class="label label-success">new</span></td>
                                     <td>SpatiaLite is an open source library intended to extend the SQLite core to support fully fledged Spatial SQL capabilities.</td>
+                                    <td><div style="white-space: nowrap;"><span class="label label-success">WFS</span> <span class="label label-success">WFS-T</span></div></td>
                                     <td><a href="#spatiallite-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
                                 <tr>
                                     <td>SQLite</td>
                                     <td>A simple SQLite datasource that can be used on any website with Python support for SQLite. Creates 2 tables for each layer: one for the features, and one for any attributes/properties pertaining to those features.</td>
+                                    <td></td>
                                     <td><a href="#sqlite-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
                                 <tr>
                                     <td>Twitter</td>
                                     <td>Powered by Twittervision, the twitter datasource lets you use twittervision's API to display the current location of a user.</td>
+                                    <td></td>
                                     <td><a href="#twitter-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
                                 <tr>
                                     <td>WFS</td>
                                     <td>The <a href="#" rel="tooltip" data-placement="top" data-original-title="Web Feature Service">WFS</a> datasource implements read-only access to WFS servers.</td>
+                                    <td></td>
                                     <td><a href="#wfs-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
                             </tbody>
