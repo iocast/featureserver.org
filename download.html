@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>FeatureServer</title>
+        <!-- Bootstrap -->
+        <link href="assets/css/bootstrap.css" rel="stylesheet"></link>
+        <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"></link>
+        <link href="assets/css/docs.css" rel="stylesheet"></link>
+        <link href="assets/css/prettify.css" rel="stylesheet"></link>
+        <link href="assets/css/application.css" rel="stylesheet"></link>
+        
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+         <![endif]-->
+        
+        <script src="assets/js/jquery.js"></script>
+        <script src="assets/js/bootstrap.js"></script>
+        <script src="assets/js/prettify.js"></script>
+        <script src="assets/js/countdown.js" type="text/javascript" charset="utf-8"></script>
+        <script src="assets/js/application.js" type="text/javascript" charset="utf-8"></script>
+        
+    </head>
+    <body data-spy="scroll" data-target=".navbar">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <div class="nav-collapse">
+                        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="brand" href="./index.html">FeatureServer</a>
+                        <ul class="nav">
+                            <li><a href="index.html">Overview</a></li>
+                            <li><a href="doc.html">Documentation</a></li>
+                            <!--
+                             <li class="dropdown">
+                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Documentation <b class="caret"></b></a>
+                             <ul class="dropdown-menu">
+                             <li><a href="#">Installation</a></li>
+                             <li><a href="#">Configuration</a></li>
+                             <li><a href="#">Datasources</a></li>
+                             <li><a href="#">Services</a></li>
+                             </ul>
+                             </li>
+                             -->
+                            <li><a href="demo.html">Demo</a></li>
+                            <li class="active"><a href="#">Source &amp; Download</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- Subhead
+         ================================================== -->
+        <header class="jumbotron subhead" id="overview">
+            <div class="container">
+                <h1>Source</h1>
+                <p class="lead">I want that ...</p>
+            </div>
+        </header>
+        
+        
+        
+        <div class="container">
+            
+            <section id="source">
+                <p>Current source is available at the new location <a href="http://github.com/iocast/featureserver" target="_new">github://iocast/featureserver</a> or take the <a href="/download/featureserver.zip">latest version</a></p>
+            </section>
+            
+            
+            <section id="releases">
+                <p><span class="label label-info">Info</span> If you have wishes, found bugs, or want to give some comments, please feel free to use the <a href="http://lists.osgeo.org/mailman/listinfo/featureserver" target="_new">mailing list</a> to do so.
+                <div class="dropdown">A list of all <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="">Releases <b class="caret"></b></a> can be found below:
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <li><a href="#upcoming">Upcoming</a></li>
+                        <li><a href="#r1.0.1">1.0.1: current</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#r1.0.0">1.0.0</a></li>
+                    </ul>
+                </div></p>
+            </section>
+            
+            <section id="upcoming">
+                <header>
+                    <h3>Upcoming <sup style="font-weight:normal;"><a href="#releases">up <span class="icon-chevron-up"></span></a></sup></h3>
+                </header>
+                <ul>
+                    <li>All new <b>exception/error handling</b>:<br/>
+                        Returning error messages in format of the requested service if it is supported. Else it takes the default format if supported, WFS/GML otherweise.</li>
+                </ul>
+            </section>
+            
+            
+            <section id="r1.0.1">
+                <header>
+                    <h3>R 1.0.1 <sup style="font-weight:normal;"><a href="#releases">up <span class="icon-chevron-up"></span></a></sup></h3>
+                </header>
+                <ul>
+                    <li>Addtional Service:
+                        <ul>
+                            <li><b>DXF (AutoCAD)</b></li>
+                        </ul>
+                    </li>
+                    <li>Additional Datasource:
+                        <ul>
+                            <li><b>SpatialLite</b>  is an open source library intended to extend the SQLite core to support fully fledged Spatial SQL capabilities.</li>
+                        </ul>
+                    </li>
+                    <li><b>WFS-T 1.1.0</b> support for datasource SpatialLite.</li>
+                </ul>
+                <p>Download <a href="/download/featureserver.zip">here</a></p>
+            </section>
+            
+            <section id="r1.0.0">
+                <header>
+                    <h3>R 1.0.0 <sup style="font-weight:normal;"><a href="#releases">up <span class="icon-chevron-up"></span></a></sup></h3>
+                </header>
+                <ul>
+                    <li><b>WFS-T 1.1.0</b> support for datasource PostGIS.</li>
+                    <li>Addtional Services:
+                        <ul>
+                            <li><b>GPX</b> a light-weight XML-based GPS Exchange Format for the interchange of waypoints, routes, and tracks.</li>
+                            <li><b>SQLite/SpatiaLite</b> is an open source library intended to extend the SQLite core to support fully fledged Spatial SQL capabilities.</li>
+                            <li><b>Shapefile</b> is a popular geospatial vector data format for geographic information systems software developed and regulated by Esri.</li>
+                            <li><b>OV2</b> is TomTom's points of interest database.</li>
+                        </ul>
+                    </li>
+                    <li><b>hstore</b> support for datasource PostGIS.</li>
+                </ul>
+                <p>Download <a href="/download/featureserver-r1.0.0.zip">here</a></p>
+            </section>
+        </div>
+        
+        
+        <footer class="footer">
+            <div class="container">
+                <p class="pull-right"><a href="#">Back to top</a></p>
+                <p>&copy; FeatureServer.org 2012</>
+                <ul class="footer-links">
+                    <li><a href="http://lists.osgeo.org/mailman/listinfo/featureserver" target="_new">Mailing List</a></li>
+                    <li>|</li>
+                    <li><a href="http://github.com/iocast/featureserver" target="_new">Source Code</a></li>
+                </ul>
+            </div>
+        </footer>
+        
+    </body>
+</html>
