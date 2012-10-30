@@ -22,32 +22,33 @@ class DBHandler(object):
             return
         elif os.path.exists(self.file):
             os.remove(self.file)
+        try:
+            connection = db.connect(self.file, check_same_thread = False)
+            cursor = connection.cursor()
+    
+            cursor.execute('SELECT InitSpatialMetadata()')
+    
+            cursor.execute(self.sql_point)
+            cursor.execute('''SELECT AddGeometryColumn('fs_point', 'geometry', %i, '%s', 2);''' % (int(self.srs), "POINT"))
+    
+            cursor.execute(self.sql_line)
+            cursor.execute('''SELECT AddGeometryColumn('fs_line', 'geometry', %i, '%s', 2);''' % (int(self.srs), "LINESTRING"))
+    
+            cursor.execute(self.sql_polygon)
+            cursor.execute('''SELECT AddGeometryColumn('fs_polygon', 'geometry', %i, '%s', 2);''' % (int(self.srs), "POLYGON"))
+    
+    
+            sql_clean = "CREATE TABLE fs_clean (id INTEGER PRIMARY KEY AUTOINCREMENT, clean_date TEXT);"
+            cursor.execute(sql_clean)
+    
+            now = datetime.now().strftime(self.fmt)
+    
+            cursor.execute("INSERT INTO fs_clean(\"clean_date\") VALUES(date('"+now+"'));")
 
-        connection = db.connect(self.file)
-        cursor = connection.cursor()
-    
-        cursor.execute('SELECT InitSpatialMetadata()')
-    
-        cursor.execute(self.sql_point)
-        cursor.execute('''SELECT AddGeometryColumn('fs_point', 'geometry', %i, '%s', 2);''' % (int(self.srs), "POINT"))
-    
-        cursor.execute(self.sql_line)
-        cursor.execute('''SELECT AddGeometryColumn('fs_line', 'geometry', %i, '%s', 2);''' % (int(self.srs), "LINESTRING"))
-    
-        cursor.execute(self.sql_polygon)
-        cursor.execute('''SELECT AddGeometryColumn('fs_polygon', 'geometry', %i, '%s', 2);''' % (int(self.srs), "POLYGON"))
-    
-    
-        sql_clean = "CREATE TABLE fs_clean (id INTEGER PRIMARY KEY AUTOINCREMENT, clean_date TEXT);"
-        cursor.execute(sql_clean)
-    
-        now = datetime.now().strftime(self.fmt)
-    
-        cursor.execute("INSERT INTO fs_clean(\"clean_date\") VALUES(date('"+now+"'));")
-    
-    
-        connection.commit()
-        connection.close()
+            connection.commit()
+            connection.close()
+        except Exception as e:
+            raise
 
     
     def reset(self):
@@ -56,14 +57,17 @@ class DBHandler(object):
         
         now = datetime.now().strftime(self.fmt)
 
-        connection = db.connect(self.file)
-        cursor = connection.cursor()
+        try:
+            connection = db.connect(self.file, check_same_thread = False)
+            cursor = connection.cursor()
             
-        cursor.execute("SELECT MAX(id) AS \"id\", \"clean_date\" FROM fs_clean;")
-        clean_date = cursor.fetchone()[1]
+            cursor.execute("SELECT MAX(id) AS \"id\", \"clean_date\" FROM fs_clean;")
+            clean_date = cursor.fetchone()[1]
 
-        connection.close();
+            connection.close()
 
-        if now > clean_date:
-            self.create()
+            if now > clean_date:
+                self.create()
+        except Exception as e:
+            raise
         
