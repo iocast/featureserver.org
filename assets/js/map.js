@@ -1,5 +1,14 @@
 OpenLayers.ProxyHost = "/cgi-bin/proxy.cgi?url=";
 
+//var featureserver = "http://localhost:8080/"
+var featureserver = "http://featureserver.org/fs"
+
+
+OpenLayers.Util.extend(OpenLayers.Request,{
+                       makeSameOrigin : function(url, proxy) {
+                       return proxy + encodeURIComponent(url);
+                       }
+                       });
 
 
 var DeleteFeature = OpenLayers.Class(OpenLayers.Control.SelectFeature, {
@@ -50,11 +59,12 @@ var wfstPoint = new OpenLayers.Layer.Vector("Editable Points", {
                                             protocol: new OpenLayers.Protocol.WFS({
                                                                                   version: "1.1.0",
                                                                                   srsName: "EPSG:4326",
-                                                                                  url:  "http://localhost:8080/?SERVICE=WFS&VERSION=1.0.0&REQUEST=GetFeature&TYPENAME=fs_point",
-                                                                                  featurePrefix: "fs",
+                                                                                  url: featureserver + "?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=fs_point",
+                                                                                  //featurePrefix: "fs",
                                                                                   featureType: "fs_point",
                                                                                   featureNS :  "http://example.com/featureserver",
                                                                                   geometryName: "geometry"
+                                                                                  //schema: featureserver + "?SERVICE=WFS&REQUEST=DescribeFeatureType?VERSION=1.1.0&TYPENAME=fs_point"
                                                                                   })
                                             });
 wfstPoint.id = "point";
@@ -67,11 +77,12 @@ var wfstLine = new OpenLayers.Layer.Vector("Editable Lines", {
                                            protocol: new OpenLayers.Protocol.WFS({
                                                                                  version: "1.1.0",
                                                                                  srsName: "EPSG:4326",
-                                                                                 url:  "http://localhost:8080/?SERVICE=WFS&VERSION=1.0.0&REQUEST=GetFeature&TYPENAME=fs_line",
-                                                                                 featurePrefix: "fs",
+                                                                                 url: featureserver + "?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=fs_line",
+                                                                                 //featurePrefix: "fs",
                                                                                  featureType: "fs_line",
                                                                                  featureNS :  "http://example.com/featureserver",
                                                                                  geometryName: "geometry"
+                                                                                 //schema: featureserver + "?SERVICE=WFS&REQUEST=DescribeFeatureType?VERSION=1.1.0&TYPENAME=fs_line"
                                                                                  })
                                            });
 wfstLine.id = "line";
@@ -84,11 +95,12 @@ var wfstPolygon= new OpenLayers.Layer.Vector("Editable Polygons", {
                                              protocol: new OpenLayers.Protocol.WFS({
                                                                                    version: "1.1.0",
                                                                                    srsName: "EPSG:4326",
-                                                                                   url:  "http://localhost:8080/?SERVICE=WFS&VERSION=1.0.0&REQUEST=GetFeature&TYPENAME=fs_polygon",
-                                                                                   featurePrefix: "fs",
-                                                                                   featureType: "fs_polygon",
+                                                                                   url: featureserver + "?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=fs_polygon",
+                                                                                   //featurePrefix: "fs",
                                                                                    featureNS :  "http://example.com/featureserver",
+                                                                                   featureType: "fs_polygon",
                                                                                    geometryName: "geometry"
+                                                                                   //schema: featureserver + "?SERVICE=WFS&REQUEST=DescribeFeatureType?VERSION=1.1.0&TYPENAME=fs_polygon"
                                                                                    })
                                              });
 wfstPolygon.id = "polygon";
@@ -204,7 +216,7 @@ map.addControl(panel);
  protocol: new OpenLayers.Protocol.WFS({
  version: "1.1.0",
  srsName: "EPSG:4326",
- url:  "http://localhost:8080/?SERVICE=WFS&VERSION=1.0.0&REQUEST=GetFeature&TYPENAME=sqlite_pois",
+ url:  "http://featureserver.org/fs?SERVICE=WFS&VERSION=1.0.0&REQUEST=GetFeature&TYPENAME=sqlite_pois",
  featurePrefix: "fs",
  featureType: "sqlite_pois",
  featureNS: "http://example.com/featureserver"
