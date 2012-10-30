@@ -15,14 +15,10 @@ import sys, os
 
 # Designed to prevent Open Proxy type stuff.
 
-allowedHosts = ['www.openlayers.org', 'openlayers.org', 
-                'labs.metacarta.com', 'world.freemap.in', 
-                'prototype.openmnnd.org', 'geo.openplans.org',
-                'sigma.openplans.org', 'demo.opengeo.org',
-                'www.openstreetmap.org', 'sample.azavea.com',
-                'v2.suite.opengeo.org', 'v-swe.uni-muenster.de:8080', 
-                'vmap0.tiles.osgeo.org', 'www.openrouteservice.org',
-		 'localhost:8080']
+allowedHosts = ['localhost:8080',
+                'featureserver.org',
+                'featureserver.org/fs',
+                'featureserver.org/db']
 
 method = os.environ["REQUEST_METHOD"]
 
@@ -32,10 +28,10 @@ if method == "POST":
     if d.has_key("url"):
         url = d["url"][0]
     else:
-        url = "http://www.openlayers.org"
+        url = "http://featureserver.org"
 else:
     fs = cgi.FieldStorage()
-    url = fs.getvalue('url', "http://www.openlayers.org")
+    url = fs.getvalue('url', "http://featureserver.org")
 
 try:
     host = url.split("/")[2]
