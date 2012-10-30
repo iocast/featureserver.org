@@ -15,14 +15,16 @@ def application(environ, start_response):
     output = str(callback) + "({"
     
     
-    
     # check reset
-    db = DBHandler("/osgeo/featureserver/fs-server/workspace.sqlite", 4326)
+    db = DBHandler("/osgeo/featureserver/server/workspace.sqlite", 4326)
     try:
         db.reset()
     except Exception as e:
-        db.create()
-        output = output + "\"remaining_time\" : \"" + str(e) + "\", "
+        try:
+            db.create()
+            output = output + "\"error\" : \"" + str(e) + "\", "
+        except Exception as e:
+            output = output + "\"error\" : \"" + str(e) + "\", "
     
     # calcualte remaining time
 
@@ -45,6 +47,8 @@ def application(environ, start_response):
                         ('Content-Length', str(len(output)))]
     start_response('200 OK', response_headers)
 
-    #return [output]
-    yield output
-    
+    return [output]
+    #yield output
+
+
+
