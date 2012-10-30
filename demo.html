@@ -27,7 +27,7 @@
         <script type="text/javascript">
             $(function(){
               $.ajax({
-                     url: "./cgi-bin/db_reset.cgi",
+                     url: "http://featureserver.org/db",
                      dataType: 'jsonp',
                      success: function(data) {
                      $('#counter').empty();
@@ -93,7 +93,7 @@
                 </div>
             </div>
         </div>
-        
+
         
         <!-- Subhead
          ================================================== -->
@@ -103,6 +103,22 @@
                 <p class="lead">Lets play ...</p>
             </div>
         </header>
+        
+        <!--
+        <div class="container">
+            <section>
+                <header>
+                    <h1><small>coming soon</small></h1>
+                </header>
+            </section>
+        </div>
+        
+        <section style="display:none;">
+            <div style="width:100%; height:600px;" id="map-canvas" class="img-polaroid"></div>
+            <script src="assets/js/map.js" type="text/javascript" charset="utf-8"></script>
+        </section>
+         -->
+
         
         <div class="container">
             <section id="demo">
@@ -124,10 +140,9 @@
                 <div style="width:100%; height:600px;" id="map-canvas" class="img-polaroid"></div>
                 <script src="assets/js/map.js" type="text/javascript" charset="utf-8"></script>
             </section>
-            
         </div>
-        
-        
+
+ 
         <footer class="footer">
             <div class="container">
                 <p class="pull-right"><a href="#">Back to top</a></p>
