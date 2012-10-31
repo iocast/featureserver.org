@@ -27,6 +27,8 @@
                         var list = $('#featureserver-events');
                         var i = 0;
                         
+                        $(list).next().remove();
+                        
                         $.each(data.data, function(key, val) {
                                if (val.type == "PushEvent") {
                                $.each(val.payload.commits, function(key2, val2) {
