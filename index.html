@@ -163,40 +163,64 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>CSV</td><td></td><td></td>
+                                    <td>CSV</td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
-                                    <td style="white-space: nowrap;">DXF (AutoCAD) <span class="label label-success">new</span></td><td>Compatible with release 11 and 12, points, polyline (linestring), polygon</td><td></td>
+                                    <td style="white-space: nowrap;">DXF (AutoCAD) <span class="label label-success">new</span></td>
+                                    <td>Compatible with release 11 and 12, points, polyline (linestring), polygon</td>
+                                    <td></td>
                                 </tr>
                                 <tr>
-                                    <td>GeoJSON</td><td>input and output in the emerging GeoJSON specification. FeatureServer supports GeoJSON Points, Lines, and Polygons with Rings, as both input and output.</td><td><a href="#geojson-exception-modal" role="button" class="btn" data-toggle="modal">example</a></td>
+                                    <td>GeoJSON</td>
+                                    <td>input and output in the emerging GeoJSON specification. FeatureServer supports GeoJSON Points, Lines, and Polygons with Rings, as both input and output.</td>
+                                    <td><a href="#geojson-exception-modal" role="button" class="btn" data-toggle="modal">example</a></td>
                                 </tr>
                                 <tr>
-                                    <td>GeoRSS Atom (Simple)</td><td>input and output of Points/Lines/Polygons (no rings/holes) in GeoRSS Simple (Atom). This allows one to take any GeoRSS Simple Atom feed and feed it to FeatureServer for storage.</td><td></td>
+                                    <td>GeoRSS Atom (Simple)</td>
+                                    <td>input and output of Points/Lines/Polygons (no rings/holes) in GeoRSS Simple (Atom). This allows one to take any GeoRSS Simple Atom feed and feed it to FeatureServer for storage.</td>
+                                    <td><a href="#georss-exception-modal" role="button" class="btn" data-toggle="modal">example</a></td>
                                 </tr>
                                 <tr>
-                                    <td>GML/WFS</td><td>Output-only support of WFS/GML.</td><td><a href="#wfs-exception-modal" role="button" class="btn" data-toggle="modal">example</a></td>
+                                    <td>GML/WFS</td>
+                                    <td>Output-only support of WFS/GML.</td>
+                                    <td><a href="#wfs-exception-modal" role="button" class="btn" data-toggle="modal">example</a></td>
                                 </tr>
                                 <tr>
-                                    <td style="white-space: nowrap;">GPX <span class="label label-success">new</span></td><td>GPX (the GPS Exchange Format) is a light-weight XML data format for the interchange of GPS data (waypoints, routes, and tracks) between applications and Web services on the Internet. E.g. it can be used for Garmin devices.</td><td></td>
+                                    <td style="white-space: nowrap;">GPX <span class="label label-success">new</span></td>
+                                    <td>GPX (the GPS Exchange Format) is a light-weight XML data format for the interchange of GPS data (waypoints, routes, and tracks) between applications and Web services on the Internet. E.g. it can be used for Garmin devices.</td>
+                                    <td></td>
                                 </tr>
                                 <tr>
-                                    <td>HTML</td><td>Output-only support of features as HTML files, powered by Cheetah templates.</td><td></td>
+                                    <td>HTML</td>
+                                    <td>Output-only support of features as HTML files, powered by Cheetah templates.</td>
+                                    <td></td>
                                 </tr>
                                 <tr>
-                                    <td>KML</td><td>Input and output of Points, Lines, and Polygons from KML.</td><td></td>
+                                    <td>KML</td>
+                                    <td>Input and output of Points, Lines, and Polygons from KML.</td>
+                                    <td></td>
                                 </tr>
                                 <tr>
-                                    <td>OSM</td><td>Output-only support of features as OpenStreetMap '.osm' files. (These files can be opened using JOSM and posted to the OSM server.)</td><td></td>
+                                    <td>OSM</td>
+                                    <td>Output-only support of features as OpenStreetMap '.osm' files. (These files can be opened using JOSM and posted to the OSM server.)</td>
+                                    <td></td>
                                 </tr>
                                 <tr>
-                                    <td style="white-space: nowrap;">OV2 <span class="label label-success">new</span></td><td>TomTom Points of Interest Database</td><td></td>
+                                    <td style="white-space: nowrap;">OV2 <span class="label label-success">new</span></td>
+                                    <td>TomTom Points of Interest Database</td>
+                                    <td></td>
                                 </tr>
                                 <tr>
-                                    <td style="white-space: nowrap;">Shapefile <span class="label label-success">new</span></td><td>The Esri shapefile or simply a shapefile is a popular geospatial vector data format for geographic information systems software. It is developed and regulated by Esri as a (mostly) open specification for data interoperability among Esri and other software products.</td><td></td>
+                                    <td style="white-space: nowrap;">Shapefile <span class="label label-success">new</span></td>
+                                    <td>The Esri shapefile or simply a shapefile is a popular geospatial vector data format for geographic information systems software. It is developed and regulated by Esri as a (mostly) open specification for data interoperability among Esri and other software products.</td>
+                                    <td></td>
                                 </tr>
                                 <tr>
-                                    <td style="white-space: nowrap;">SQLite/SpatiaLite <span class="label label-success">new</span></td><td>SpatiaLite is an open source library intended to extend the SQLite core to support fully fledged Spatial SQL capabilities.</td><td></td>
+                                    <td style="white-space: nowrap;">SQLite/SpatiaLite <span class="label label-success">new</span></td>
+                                    <td>SpatiaLite is an open source library intended to extend the SQLite core to support fully fledged Spatial SQL capabilities.</td>
+                                    <td></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -412,9 +436,7 @@ username=featureserver</code></pre>
                 <p><strong>Response:</strong></p>
 <pre class="prettyprint"><code class="language-xml">&lt;ExceptionReport xmlns="http://www.opengis.net/ows/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/ows/1.1 owsExceptionReport.xsd" version="1.0.0" xml:lang="en"&gt;
     &lt;Exception exceptionCode="" locator="Request" layer="featureserver"&gt;
-        &lt;ExceptionText&gt;
-            Could not find the layer 'featureserver': Check your config file for the missing layer. (Available layers are: polygon, pois, lines, wfs_t_poi, points, wfs_t_poly).
-        &lt;/ExceptionText&gt;
+        &lt;ExceptionText&gt;Could not find the layer ...&lt;/ExceptionText&gt;
         &lt;ExceptionDump/&gt;
     &lt;/Exception&gt;
 &lt;/ExceptionReport&gt;</code></pre>
@@ -451,6 +473,36 @@ username=featureserver</code></pre>
             </div>
         </div>
         
+        
+        
+        <div class="modal hide" id="georss-exception-modal" tabindex="-1" role="dialog" aria-labelledby="georss-exception-modal" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 id="wfs-exception-modal-label">GeoRSS Excpetion Example</h3>
+            </div>
+            <div class="modal-body">
+                <p><strong>Request:</strong></p>
+                <pre class="prettyprint"><code class="language-xml">http://featureserver.org?SERVICE=GeoRSSN&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=featureserver</code></pre>
+                <p><strong>Response:</strong></p>
+                <pre class="prettyprint"><code>&lt;feed xmlns="http://www.w3.org/2005/Atom" xmlns:app="http://www.w3.org/2007/app"
+xmlns:georss="http://www.georss.org/georss"&gt;
+    &lt;title&gt;No title&lt;/title&gt;
+    &lt;id&gt;http://localhost:8080&lt;/id&gt;
+    &lt;link rel="self" href="http://localhost:8080" /&gt;
+    &lt;author&gt;&lt;name&gt;FeatureServer&lt;/name&gt;&lt;/author&gt;
+    &lt;updated&gt;2012-10-31T11:12:04Z&lt;/updated&gt;
+    &lt;Exception exceptionCode="" layer="fs_line" locator="Request"&gt;
+        &lt;ExceptionText>Could not find the layer ...&lt;/ExceptionText&gt;
+        &lt;ExceptionDump>&lt;/ExceptionDump&gt;
+    &lt;/Exception&gt;
+&lt;/feed&gt;</code></pre>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+        
+
         
         
         <footer class="footer">
