@@ -158,19 +158,19 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Service</th><th>Description</th><th>Exception/Error Output</th>
+                                    <th>Service</th><th>Description</th><th style="white-space: nowrap;">Exception/Error Output <span class="label label-success">new</span></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>CSV</td>
                                     <td>Outputs each attribute of a feature as a separate column and the geomtry as WKT.</td>
-                                    <td></td>
+                                    <td><a href="#csv-exception-modal" role="button" class="btn" data-toggle="modal">example</a></td>
                                 </tr>
                                 <tr>
                                     <td style="white-space: nowrap;">DXF (AutoCAD) <span class="label label-success">new</span></td>
                                     <td>Compatible with release 11 and 12, points, polyline (linestring), polygon</td>
-                                    <td></td>
+                                    <td><a href="#georss-exception-modal" role="button" class="btn" data-toggle="modal">example</a></td>
                                 </tr>
                                 <tr>
                                     <td>GeoJSON</td>
@@ -241,7 +241,7 @@
         <div class="modal hide" id="dbm-config-modal" tabindex="-1" role="dialog" aria-labelledby="dbm-config-modal" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 id="wfs-exception-modal-label">DBM Configuration Example</h3>
+                <h3 id="dbm-config-modal-label">DBM Configuration Example</h3>
             </div>
             <div class="modal-body">
                 <pre class="prettyprint"><code>[scribble]
@@ -256,7 +256,7 @@ file=/home/example/scribble.db</code></pre>
         <div class="modal hide" id="postgis-config-modal" tabindex="-1" role="dialog" aria-labelledby="postgis-config-modal" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 id="wfs-exception-modal-label">PostGIS Configuration Example</h3>
+                <h3 id="postgis-config-modal-label">PostGIS Configuration Example</h3>
             </div>
             <div class="modal-body">
                 <pre class="prettyprint"><code>[mylayer]
@@ -277,7 +277,7 @@ attribute_cols=name,some_interesting_column #optional</code></pre>
         <div class="modal hide" id="wfs-config-modal" tabindex="-1" role="dialog" aria-labelledby="wfs-config-modal" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 id="wfs-exception-modal-label">WFS Configuration Example</h3>
+                <h3 id="wfs-config-modal-label">WFS Configuration Example</h3>
             </div>
             <div class="modal-body">
                 <pre class="prettyprint"><code>[wfs]
@@ -293,7 +293,7 @@ typename=topp:states</code></pre>
         <div class="modal hide" id="ogr-config-modal" tabindex="-1" role="dialog" aria-labelledby="ogr-config-modal" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 id="wfs-exception-modal-label">OGR Configuration Example</h3>
+                <h3 id="ogr-config-modal-label">OGR Configuration Example</h3>
             </div>
             <div class="modal-body">
                 <pre class="prettyprint"><code>[myshape]
@@ -310,7 +310,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
         <div class="modal hide" id="flickr-config-modal" tabindex="-1" role="dialog" aria-labelledby="flickr-config-modal" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 id="wfs-exception-modal-label">Flickr Configuration Example</h3>
+                <h3 id="flickr-config-modal-label">Flickr Configuration Example</h3>
             </div>
             <div class="modal-body">
                 <pre class="prettyprint"><code>[flickr]
@@ -327,7 +327,7 @@ tag_mode=all</code></pre>
         <div class="modal hide" id="osm-config-modal" tabindex="-1" role="dialog" aria-labelledby="osm-config-modal" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 id="wfs-exception-modal-label">OSM Configuration Example</h3>
+                <h3 id="osm-config-modal-label">OSM Configuration Example</h3>
             </div>
             <div class="modal-body">
                 <pre class="prettyprint"><code>[osm]
@@ -343,7 +343,7 @@ osmxapi=no</code></pre>
         <div class="modal hide" id="geoalchemy-config-modal" tabindex="-1" role="dialog" aria-labelledby="geoalchemy-config-modal" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 id="wfs-exception-modal-label">GeoAlchemy Configuration Example</h3>
+                <h3 id="geoalchemy-config-modal-label">GeoAlchemy Configuration Example</h3>
             </div>
             <div class="modal-body">
                 <p>The actual geoalchemy model definition may lie in a separate package. This makes it easy to integrate feature server with other applications / frameworks. A basic GeoAlchemy configuration might look like:
@@ -373,7 +373,7 @@ geom_rel=exterior</code></pre></p>
         <div class="modal hide" id="spatiallite-config-modal" tabindex="-1" role="dialog" aria-labelledby="spatiallite-config-modal" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 id="wfs-exception-modal-label">SpatialLite Configuration Example</h3>
+                <h3 id="spatiallite-config-modal-label">SpatialLite Configuration Example</h3>
             </div>
             <div class="modal-body">
                 <pre class="prettyprint"><code>[sqlite_test]
@@ -393,7 +393,7 @@ attribute_cols=name</code></pre>
         <div class="modal hide" id="sqlite-config-modal" tabindex="-1" role="dialog" aria-labelledby="sqlite-config-modal" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 id="wfs-exception-modal-label">SQLite Configuration Example</h3>
+                <h3 id="sqlite-config-modal-label">SQLite Configuration Example</h3>
             </div>
             <div class="modal-body">
                 <pre class="prettyprint"><code>[lines]
@@ -409,7 +409,7 @@ layer=lines # name of table; defaults to layer name</code></pre>
         <div class="modal hide" id="twitter-config-modal" tabindex="-1" role="dialog" aria-labelledby="twitter-config-modal" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 id="wfs-exception-modal-label">Twitter Configuration Example</h3>
+                <h3 id="twitter-config-modal-label">Twitter Configuration Example</h3>
             </div>
             <div class="modal-body">
                 <pre class="prettyprint"><code>[twitter_test]
@@ -450,7 +450,7 @@ username=featureserver</code></pre>
         <div class="modal hide" id="geojson-exception-modal" tabindex="-1" role="dialog" aria-labelledby="geojson-exception-modal" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 id="wfs-exception-modal-label">GeoJSON Excpetion Example</h3>
+                <h3 id="geojson-exception-modal-label">GeoJSON Excpetion Example</h3>
             </div>
             <div class="modal-body">
                 <p><strong>Request:</strong></p>
@@ -478,7 +478,7 @@ username=featureserver</code></pre>
         <div class="modal hide" id="georss-exception-modal" tabindex="-1" role="dialog" aria-labelledby="georss-exception-modal" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 id="wfs-exception-modal-label">GeoRSS Excpetion Example</h3>
+                <h3 id="georss-exception-modal-label">GeoRSS Excpetion Example</h3>
             </div>
             <div class="modal-body">
                 <p><strong>Request:</strong></p>
@@ -496,6 +496,23 @@ xmlns:georss="http://www.georss.org/georss"&gt;
         &lt;ExceptionDump>&lt;/ExceptionDump&gt;
     &lt;/Exception&gt;
 &lt;/feed&gt;</code></pre>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+        
+        <div class="modal hide" id="csv-exception-modal" tabindex="-1" role="dialog" aria-labelledby="csv-exception-modal" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 id="csv-exception-modal-label">CSV Excpetion Example</h3>
+            </div>
+            <div class="modal-body">
+                <p><strong>Request:</strong></p>
+                <pre class="prettyprint"><code class="language-xml">http://featureserver.org?SERVICE=CSV&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=featureserver</code></pre>
+                <p><strong>Response:</strong></p>
+                <pre class="prettyprint"><code>exceptionCode,locator,layer,ExceptionText,ExceptionDump
+,SpatialLite,fs_polygon,Connection to the layer ...,</code></pre>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
