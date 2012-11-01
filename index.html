@@ -170,7 +170,7 @@
                                 <tr>
                                     <td style="white-space: nowrap;">DXF (AutoCAD) <span class="label label-success">new</span></td>
                                     <td>Compatible with release 11 and 12, points, polyline (linestring), polygon</td>
-                                    <td><a href="#georss-exception-modal" role="button" class="btn" data-toggle="modal">example</a></td>
+                                    <td>not supported</td>
                                 </tr>
                                 <tr>
                                     <td>GeoJSON</td>
@@ -195,7 +195,7 @@
                                 <tr>
                                     <td>HTML</td>
                                     <td>Output-only support of features as HTML files, powered by Cheetah templates.</td>
-                                    <td></td>
+                                    <td><a href="#html-exception-modal" role="button" class="btn" data-toggle="modal">example</a></td>
                                 </tr>
                                 <tr>
                                     <td>KML</td>
@@ -210,17 +210,17 @@
                                 <tr>
                                     <td style="white-space: nowrap;">OV2 <span class="label label-success">new</span></td>
                                     <td>TomTom Points of Interest Database</td>
-                                    <td></td>
+                                    <td>not supported</td>
                                 </tr>
                                 <tr>
                                     <td style="white-space: nowrap;">Shapefile <span class="label label-success">new</span></td>
                                     <td>The Esri shapefile or simply a shapefile is a popular geospatial vector data format for geographic information systems software. It is developed and regulated by Esri as a (mostly) open specification for data interoperability among Esri and other software products.</td>
-                                    <td></td>
+                                    <td>not supported</td>
                                 </tr>
                                 <tr>
                                     <td style="white-space: nowrap;">SQLite/SpatiaLite <span class="label label-success">new</span></td>
                                     <td>SpatiaLite is an open source library intended to extend the SQLite core to support fully fledged Spatial SQL capabilities.</td>
-                                    <td></td>
+                                    <td>not supported</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -520,6 +520,69 @@ xmlns:georss="http://www.georss.org/georss"&gt;
         </div>
         
 
+        <div class="modal hide" id="csv-exception-modal" tabindex="-1" role="dialog" aria-labelledby="csv-exception-modal" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 id="csv-exception-modal-label">CSV Excpetion Example</h3>
+            </div>
+            <div class="modal-body">
+                <p><strong>Request:</strong></p>
+                <pre class="prettyprint"><code class="language-xml">http://featureserver.org?SERVICE=CSV&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=featureserver</code></pre>
+                <p><strong>Response:</strong></p>
+                <pre class="prettyprint"><code>exceptionCode,locator,layer,ExceptionText,ExceptionDump
+                    ,SpatialLite,fs_polygon,Connection to the layer ...,</code></pre>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+        
+        
+        <div class="modal hide" id="html-exception-modal" tabindex="-1" role="dialog" aria-labelledby="html-exception-modal" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 id="html-exception-modal-label">HTML Excpetion Example</h3>
+            </div>
+            <div class="modal-body">
+                <p><strong>Request:</strong></p>
+                <pre class="prettyprint"><code class="language-xml">http://featureserver.org?SERVICE=HTML&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=featureserver</code></pre>
+                <p><strong>Response:</strong></p>
+                <pre class="prettyprint"><code>&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;FeatureServer : Exception Report&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;FeatureServer : Exception Report&lt;/h1&gt;
+        &lt;hr noshade="noshade" /&gt;
+        &lt;table cellpadding="5" border="0"&gt;
+            &lt;thead&gt;
+                &lt;tr&gt;
+                    &lt;th&gt;exceptionCode&lt;/th&gt;
+                    &lt;th&gt;locator&lt;/th&gt;
+                    &lt;th&gt;layer&lt;/th&gt;
+                    &lt;th&gt;ExceptionText&lt;/th&gt;
+                    &lt;th&gt;ExceptionDump&lt;/th&gt;
+                &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;&lt;/td&gt;
+                    &lt;td&gt;SpatialLite&lt;/td&gt;
+                    &lt;td&gt;fs_line&lt;/td&gt;
+                    &lt;td&gt;Connection to the layer ...&lt;/td&gt;
+                    &lt;td&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+        &lt;hr noshade="noshade" /&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+        
         
         
         <footer class="footer">
