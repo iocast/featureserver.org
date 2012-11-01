@@ -65,6 +65,7 @@
                         <li><a href="#doc-i-osx"><i class="icon-chevron-right"></i> OS X Mountain Lion</a></li>
                         <li class="nav-header">Configuration</li>
                         <li><a href="#doc-c-layer"><i class="icon-chevron-right"></i> Layer</a></li>
+                        <li><a href="#doc-c-metadata"><i class="icon-chevron-right"></i> Metadata</a></li>
                         <li><a href="#doc-c-dc-dbm"><i class="icon-chevron-right"></i> DBM (BerkleyDB)</a></li>
                         <li><a href="#doc-c-dc-flickr"><i class="icon-chevron-right"></i> Flickr</a></li>
                         <li><a href="#doc-c-dc-geoalchemy"><i class="icon-chevron-right"></i> GeoAlchemy</a></li>
@@ -147,6 +148,36 @@ layer=featureserver // table name
 fid=fid // id attribute
 attribute_cols=name // additional attributes to be displayed</code></pre>
                         <p>The follwing sections describes all the possible keys for each supported datasource.</p>
+                    </section>
+                    
+                    
+                    <section id="doc-c-metadata">
+                        <header>
+                            <h2>Metadata <small>(configuration)</small></h2>
+                        </header>
+                        <p>This is not a realy serive as all the others. This section (have to be called <coce>[metadata]</code>) in the configuration file is used to define some meta information for the FeatureServer. The following keys could be used:
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Key</th><th>Value/Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>default_service</td>
+                                        <td>(required) Is used if no service or typename is given in the reuqest.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>default_exception</td>
+                                        <td>(optional) Use it to define a service that is able to return a excpetion report. If it is <b>not</b> set, then FeatureServer would try to return the exception report in the format of the requested service. If that is not possible too, it takes the <code>default_service</code> if it is able and WFS otherwise.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>error_log</td>
+                                        <td>(required) Path to the log file.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </p>
                     </section>
                     
                     
