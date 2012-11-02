@@ -129,7 +129,20 @@
                             </header>
                             <ul>
                                 <li>All new <b>exception/error handling</b>:<br/>
-                                    Returning error messages in format of the requested service if it is supported. Else it takes the default format if supported, WFS/GML otherweise.</li>
+                                    Returning error messages in format of the requested service if it is supported. Else it takes the default format if supported, WFS/GML otherweise.
+                                    <ul>
+                                        <li>CSV, GeoJSON, GeoRSS, GML/WFS, HTML</li>
+                                        <li>Addtional key <code>default_exception</code> (optional) indicates the service to be used if an error occures.</li>
+                                    </ul>
+                                </li>
+                                <li>Several bug fixes:
+                                    <ul>
+                                        <li>OSM service now supports <b>LineString</b></li>
+                                        <li>GPX service does not crash anymore if elevation attribute is not given (ele is now an optional parameter)</li>
+                                        <li>Every parameter in FE is converted to string beforehand</li>
+                                        <li>GPX supports LineString and Polygon. Polygons are converted to LineString and then treated as LineString.</li>
+                                    </ul>
+                                </li>
                             </ul>
                         </section>
                         
