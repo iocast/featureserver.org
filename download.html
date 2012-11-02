@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>FeatureServer</title>
+        <title>FeatureServer :: Download</title>
         <!-- Bootstrap -->
         <link href="assets/css/bootstrap.css" rel="stylesheet"></link>
         <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"></link>
@@ -17,7 +17,6 @@
         <script src="assets/js/jquery.js"></script>
         <script src="assets/js/bootstrap.js"></script>
         <script src="assets/js/prettify.js"></script>
-        <script src="assets/js/countdown.js" type="text/javascript" charset="utf-8"></script>
         <script src="assets/js/application.js" type="text/javascript" charset="utf-8"></script>
         
         <script type="text/javascript">
@@ -82,8 +81,20 @@
          ================================================== -->
         <header class="jumbotron subhead" id="overview">
             <div class="container">
-                <h1>Source</h1>
+                <header>
+                    <h1>Source</h1>
+                </header>
                 <p class="lead">I want that ...</p>
+                
+                <div style="position:absolute; width: 100%; text-align: right; top: 0px">
+                    <p style="margin-bottom: 0px;">Please support this project:</p>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                        <input type="hidden" name="cmd" value="_s-xclick"/>
+                        <input type="hidden" name="hosted_button_id" value="BT79LEYB844FJ"/>
+                        <input type="image" src="/assets/img/donation.png" border="0" height="70px;" name="submit" alt="PayPal - The safer, easier way to pay online!"/>
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"/>
+                    </form>
+                </div>
             </div>
         </header>
         
@@ -168,7 +179,7 @@
                         <section>
                             <header>
                                 <h3>What's going on</h3><h4>(dev feed)</h4>
-                                    </header>
+                            </header>
                             <p id="featureserver-events"><div><span class="ajax-loader"></span> Loading events ...</div></p>
                         </section>
                     </div>
