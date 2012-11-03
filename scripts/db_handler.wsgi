@@ -16,7 +16,7 @@ def application(environ, start_response):
     
     
     # check reset
-    db = DBHandler("/osgeo/featureserver/server/workspace.sqlite", 4326)
+    db = DBHandler("/Users/michel/Documents/Projects/workspace.sqlite", 4326)
     try:
         db.reset()
     except Exception as e:

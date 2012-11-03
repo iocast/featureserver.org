@@ -1,8 +1,6 @@
 OpenLayers.ProxyHost = "/cgi-bin/proxy.cgi?url=";
 
-//var featureserver = "http://localhost:8080/"
-var featureserver = "http://featureserver.org/fs"
-
+var featureserver = "http://localhost:8080/"
 
 OpenLayers.Util.extend(OpenLayers.Request,{
                        makeSameOrigin : function(url, proxy) {
