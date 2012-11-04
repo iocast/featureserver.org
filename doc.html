@@ -266,11 +266,9 @@ attribute_cols=name // additional attributes to be displayed</code></pre>
                         The result of this will be something like:
                         
                         <pre class="prettyprint linenums">Your token is:
-                        
 721576-5d6044
                         
 Add the following line to a Flickr data source to complete configuration:
-                        
 auth_token=721576-5d6044</pre>
                         With this example, the the key/value <code>auth_token=721576-5d6044</code> need to be added to the Flickr datasource.
                         </p>
@@ -463,6 +461,10 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                     <td>Attribute name that holds the geometry information. Default is <code>geometry=the_geom</code></td>
                                 </tr>
                                 <tr>
+                                    <td>fe_attributes</td>
+                                    <td>Indicates whether the filter encoding attributes should be queried and included into the result or not. Values: <code>[true|false]</code>. Default is <code>geometry=true</code></td>
+                                </tr>
+                                <tr>
                                     <td>srid</td>
                                     <td>Spatial Refernece System Identifier of the data stored in the datasource. Default is <code>srid=4326</code></td>
                                 </tr>
@@ -538,6 +540,10 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                 <tr>
                                     <td>geometry</td>
                                     <td>Attribute name that holds the geometry information. Default is <code>geometry=the_geom</code></td>
+                                </tr>
+                                <tr>
+                                    <td>fe_attributes</td>
+                                    <td>Indicates whether the filter encoding attributes should be queried and included into the result or not. Values: <code>[true|false]</code>. Default is <code>geometry=true</code></td>
                                 </tr>
                                 <tr>
                                     <td>srid</td>
