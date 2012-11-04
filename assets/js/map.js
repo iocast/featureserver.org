@@ -60,7 +60,7 @@ var wfstPoint = new OpenLayers.Layer.Vector("Editable Points", {
                                                                                   url: featureserver + "?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=fs_point",
                                                                                   //featurePrefix: "fs",
                                                                                   featureType: "fs_point",
-                                                                                  featureNS :  "http://example.com/featureserver",
+                                                                                  featureNS :  "http://featureserver.org/fs",
                                                                                   geometryName: "geometry"
                                                                                   //schema: featureserver + "?SERVICE=WFS&REQUEST=DescribeFeatureType?VERSION=1.1.0&TYPENAME=fs_point"
                                                                                   })
@@ -78,7 +78,7 @@ var wfstLine = new OpenLayers.Layer.Vector("Editable Lines", {
                                                                                  url: featureserver + "?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=fs_line",
                                                                                  //featurePrefix: "fs",
                                                                                  featureType: "fs_line",
-                                                                                 featureNS :  "http://example.com/featureserver",
+                                                                                 featureNS :  "http://featureserver.org/fs",
                                                                                  geometryName: "geometry"
                                                                                  //schema: featureserver + "?SERVICE=WFS&REQUEST=DescribeFeatureType?VERSION=1.1.0&TYPENAME=fs_line"
                                                                                  })
@@ -95,7 +95,7 @@ var wfstPolygon= new OpenLayers.Layer.Vector("Editable Polygons", {
                                                                                    srsName: "EPSG:4326",
                                                                                    url: featureserver + "?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=fs_polygon",
                                                                                    //featurePrefix: "fs",
-                                                                                   featureNS :  "http://example.com/featureserver",
+                                                                                   featureNS :  "http://featureserver.org/fs",
                                                                                    featureType: "fs_polygon",
                                                                                    geometryName: "geometry"
                                                                                    //schema: featureserver + "?SERVICE=WFS&REQUEST=DescribeFeatureType?VERSION=1.1.0&TYPENAME=fs_polygon"
@@ -217,7 +217,7 @@ map.addControl(panel);
  url:  "http://featureserver.org/fs?SERVICE=WFS&VERSION=1.0.0&REQUEST=GetFeature&TYPENAME=sqlite_pois",
  featurePrefix: "fs",
  featureType: "sqlite_pois",
- featureNS: "http://example.com/featureserver"
+ featureNS: "http://featureserver.org/fs"
  })
  });
  map.addLayer(wfs);
