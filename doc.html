@@ -106,6 +106,7 @@
                             <li>Cheetah</li>
                             <li>simplejson</li>
                             <li>psycopg2</li>
+                            <li>oauth2</li>
                         </ul>
                         </p>
                     </section>
@@ -216,9 +217,9 @@ attribute_cols=name // additional attributes to be displayed</code></pre>
 
                     <section id="doc-c-dc-flickr">
                         <header>
-                            <h2>Flickr <small>(configuration)</small></h2>
+                            <h2>Flickr <span class="label label-success">new</span> <small>(configuration)</small></h2>
                         </header>
-                        <p>The Flickr datasource loads data from geotagged Flickr photos. Filtering the results can be done by using any of the parameters listed at: <a href="http://flickr.com/services/api/flickr.photos.search.html" target="_new">http://flickr.com/services/api/flickr.photos.search.html</a>
+                        <p>The Flickr datasource loads data from geotagged Flickr photos.
                         <table class="table">
                             <thead>
                                 <tr>
@@ -227,50 +228,68 @@ attribute_cols=name // additional attributes to be displayed</code></pre>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>types</td>
+                                    <td>types<br/><small>required</small></td>
                                     <td><code>Flickr</code></td>
                                 </tr>
                                 <tr>
-                                    <td style="white-space: nowrap;">title <span class="label label-success">new</span></td>
+                                    <td>title<br/><small>optional</small></td>
                                     <td>Title of the layer</td>
                                 </tr>
                                 <tr>
-                                    <td style="white-space: nowrap;">abstract <span class="label label-success">new</span></td>
+                                    <td>abstract<br/><small>optional</small></td>
                                     <td>Short description of the layer</td>
                                 </tr>
                                 <tr>
-                                    <td>user_id</td>
-                                    <td>Flickr user id</td>
+                                    <td>api_key<br/><small>required</small></td>
+                                    <td>Application's API key.</td>
                                 </tr>
                                 <tr>
-                                    <td>tags</td>
-                                    <td>Comma seperated list of tags that need to be matched according to <code>tag_mode</code>.</td>
+                                    <td>api_secret<br/><small>required</small></td>
+                                    <td>Application's API secret key.</td>
                                 </tr>
                                 <tr>
-                                    <td>tag_mode</td>
-                                    <td>Mode of matching <code>tags</code>. Either 'any' for an OR combination of tags, or 'all' for an AND combination. Defaults to 'any' if not specified.</td>
+                                    <td>user_id<br/><small>optional</small></td>
+                                    <td>Flickr user id. If it is not set, then it searches for any photo of the user and optionally matching given tags and/or bbox</td>
                                 </tr>
                                 <tr>
-                                    <td>...</td>
-                                    <td>more parameters see <a href="http://flickr.com/services/api/flickr.photos.search.html" target="_new">Flickr's API</a></td>
+                                    <td>tags<br/><small>optional</small></td>
+                                    <td>Comma seperated list of tags that need to be matched according to the search strategy <code>tag_mode</code>. For example you could use <code>tags=zurich,outdoor</code></td>
+                                </tr>
+                                <tr>
+                                    <td>tag_mode<br/><small>optional</small></td>
+                                    <td>Mode / strategy of matching <code>tags</code>. Either any for an OR combination of tags, or 'all' for an AND combination.
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td><code>[any|all]</code></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Default:</td><td><code>tag_mode=any</code>, if <code>tags</code> is set.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>attributes<br/><small>optional</small></td>
+                                    <td>Attributes which need to be returned from the Flickr's response XML. For details consult the example responses at <a href="http://www.flickr.com/services/api/flickr.photos.search.html" target="_new">flickr.photos.getInfo</a> if you are reequesting a single image by id or <a href="http://www.flickr.com/services/api/flickr.photos.search.html" target="_new">flickr.photos.search</a> otherwise.
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td>comma seperated list</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Default:</td><td><code>attributes=*</code></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                         </p>
                         <p>
-                        <span class="label label-important">Important</span> By default, this only shows public photos. To grant the datasource access to your non-public photos, you must fetch a 'read' permissions token from the API. You can use the Flickr.py as a command line application to do this:
-                        <pre class="prettyprint"><code>./FeatureServer/DataSource/Flickr.py</code></pre>
-                        Open the following URL in a browser:
-                        <pre class="prettyprint"><code>http://flickr.com/services/auth/?api_key=[...]&amp;perms=read&amp;frob=[...]</code></pre>
-                        Press enter when complete.
-                        The result of this will be something like:
-                        
-                        <pre class="prettyprint linenums">Your token is:
-721576-5d6044
-                        
-Add the following line to a Flickr data source to complete configuration:
-auth_token=721576-5d6044</pre>
-                        With this example, the the key/value <code>auth_token=721576-5d6044</code> need to be added to the Flickr datasource.
+                        <span class="label label-info">Info</span> You can request a new <code>api_key</code> and <code>api_secret</code> for your application on Flickr's API website <a href="http://www.flickr.com/services/api/keys/" target="_new">services/api/keys</a>.
                         </p>
                     </section>
                     
@@ -618,10 +637,11 @@ type=SQLite</code></pre> goes to <code>layer=lines</code></td>
                     
                     <section id="doc-c-dc-twitter">
                         <header>
-                            <h2>Twitter <small>(configuration)</small></h2>
+                            <h2>Twitter <span class="label label-success">new</span> <small>(configuration)</small></h2>
                         </header>
-                        <p>Powered by Twittervision, the twitter datasource lets you use twittervision's API to display the current location of a user.</p>
-                        <p>Very simplistic, doesn't do much:
+                        <p>
+                        <span class="label label-important">Important</span> Old Twitter datasource using Twitervision API is not supported anymore. Instead Twitter's orginial API is used.
+                        </p>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -630,25 +650,68 @@ type=SQLite</code></pre> goes to <code>layer=lines</code></td>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>types</td>
+                                    <td>types<br/><small>required</small></td>
                                     <td><code>Twitter</code></td>
                                 </tr>
                                 <tr>
-                                    <td style="white-space: nowrap;">title <span class="label label-success">new</span></td>
+                                    <td>title<br/><small>optional</small></td>
                                     <td>Title of the layer</td>
                                 </tr>
                                 <tr>
-                                    <td style="white-space: nowrap;">abstract <span class="label label-success">new</span></td>
+                                    <td>abstract<br/><small>optional</small></td>
                                     <td>Short description of the layer</td>
                                 </tr>
                                 <tr>
-                                    <td>username</td>
-                                    <td>(required) name of the Twitter user</td>
+                                    <td>consumer_key<br/><small>required</small></td>
+                                    <td>OAuth key</td>
+                                </tr>
+                                <tr>
+                                    <td>consumer_secret<br/><small>required</small></td>
+                                    <td>OAuth secret</td>
+                                </tr>
+                                <tr>
+                                    <td>token_key<br/><small>required</small></td>
+                                    <td>Access token needed to sign requests with your own Twitter account</td>
+                                </tr>
+                                <tr>
+                                    <td>token_secret<br/><small>required</small></td>
+                                    <td>Access token secret needed to sign requests with your own Twitter account</td>
+                                </tr>
+                                <tr>
+                                    <td>user_id<br/><small>optional</small></td>
+                                    <td>If it is set, it ignores every other GET or POST parameter.</td>
+                                </tr>
+                                <tr>
+                                    <td>screen_name<br/><small>optional</small></td>
+                                    <td>Username without the @ sign. If it is set, it ignores every other GET or POST parameter.</td>
+                                </tr>
+                                <tr>
+                                    <td>query<br/><small>optional</small></td>
+                                    <td>Search query of 1,000 characters maximum, including operators. E.g. <code>query=#zurich</code></td>
+                                </tr>
+                                <tr>
+                                    <td>attributes<br/><small>optional</small></td>
+                                    <td>A comma seperated list of attributes that need to be returned. E.g. <code>attribute_cols=user.name,source,place.name,place.place_type,place.country</code> where the dot indicates the seperator to traverse the JSON tree. If <code>user_id</code> or <code>screen_name</code> is set a list of possible attributes can be found on section example request at <a href="http://dev.twitter.com/docs/api/1.1/get/statuses/user_timeline" target="_new">statuses/user_timeline</a>, if a specific tweet is reuqested using its <code>id</code> consult <a href="http://dev.twitter.com/docs/api/1.1/get/statuses/show/%3Aid" target="_new">statuses/show/:id</a> and <a href="http://dev.twitter.com/docs/api/1.1/get/search/tweets" target="_new">search/tweets</a> oterwhise.
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td>comma seperated list</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Default:</td><td><code>attributes=*</code></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                         </p>
+                        <p>
+                        <span class="label label-info">Info</span> You can request a new keys and tokens for your application on Twitter's development site <a href="http://dev.twitter.com/apps" target="_new">twitter/apps</a>.
+                        </p>
                     </section>
+                    
                     
                     <section id="doc-c-dc-wfs">
                         <header>

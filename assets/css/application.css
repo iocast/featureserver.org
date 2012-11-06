@@ -1,3 +1,22 @@
+/* doc.css enhancement
+-------------------------------------------------- */
+.table td small {
+    color: #7F7F7F;
+}
+
+.config-kvp td:first-child {
+    font-weight: bold;
+}
+.config-kvp tr:first-child td {
+    padding-top: 8px;
+    border-top: 0px;
+}
+.config-kvp td {
+    padding: 0px;
+    padding-left: 8px;
+}
+
+
 /* Ajax Loading Indicator
 -------------------------------------------------- */
 .ajax-loader {

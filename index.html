@@ -140,7 +140,7 @@
                                 </tr>
                                 <tr>
                                     <td>Twitter</td>
-                                    <td>Powered by Twittervision, the twitter datasource lets you use twittervision's API to display the current location of a user.</td>
+                                    <td><span class="label label-important">Important</span> Old Twitter datasource using Twitervision API is not supported anymore. Instead Twitter's orginial API is used.</td>
                                     <td></td>
                                     <td><a href="#twitter-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
@@ -312,11 +312,14 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                 <h3 id="flickr-config-modal-label">Flickr Configuration Example</h3>
             </div>
             <div class="modal-body">
-                <pre class="prettyprint"><code>[flickr]
+                <pre class="prettyprint"><code>[fs_flickr]
 type=Flickr
-user_id=56541240@N00
-tags=mit,food,2007
-tag_mode=all</code></pre>
+api_key=&lt;api_key&gt;
+api_secret=&lt;api_secret&gt;
+user_id=89665068@N04
+tags=zurich,outdoor
+tag_mode=any
+attributes=title,description</code></pre>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -411,9 +414,14 @@ layer=lines # name of table; defaults to layer name</code></pre>
                 <h3 id="twitter-config-modal-label">Twitter Configuration Example</h3>
             </div>
             <div class="modal-body">
-                <pre class="prettyprint"><code>[twitter_test]
+                <pre class="prettyprint"><code>[fs_twitter]
 type=Twitter
-username=featureserver</code></pre>
+consumer_key=&lt;consumer_key&gt;
+consumer_secret=&lt;consumer_secret&gt;
+token_key=&lt;token_key&gt;
+token_secret=&lt;token_secret&gt;
+screen_name=eFeatureServer
+attributes=user.name,source</code></pre>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
