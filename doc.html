@@ -496,6 +496,10 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                     <td>A comma seperated list of attributes to be queried on the defined datasource. Default is <code>attribute_cols=*</code>. If <code>hstore=true</code> then hstore syntax is allowed e.g. <pre class="prettyprint"><code>attribute_cols=name, gtype as "geometry_type", hstore(tags)->'operator' as "operator", hstore(tags)->'highway' as "highway"</code></pre></td>
                                 </tr>
                                 <tr>
+                                    <td>addtional_cols</td>
+                                    <td>It is also possible to add addtional columns to the output. This can be used, if you want to do some math like the following: <code>additional_cols=round(ST_Area2d(ST_Transform(the_geog, 21781))) as sqm</code></td>
+                                </tr>
+                                <tr>
                                     <td>encoding</td>
                                     <td>Default is <code>encoding=utf-8</code></td>
                                 </tr>
@@ -575,6 +579,10 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                 <tr>
                                     <td>attribute_cols</td>
                                     <td>A comma seperated list of attributes to be queried on the defined datasource. Default is <code>attribute_cols=*</code></td>
+                                </tr>
+                                <tr>
+                                    <td>addtional_cols</td>
+                                    <td>It is also possible to add addtional columns to the output. This can be used, if you want to do some math like the following: <code>additional_cols=round(Area(Transform(the_geog, 21781))) as sqm</code></td>
                                 </tr>
                                 <tr>
                                     <td>version</td>
