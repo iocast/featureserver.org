@@ -31,7 +31,7 @@
                         $.each(data.data, function(key, val) {
                                if (val.type == "PushEvent") {
                                $.each(val.payload.commits, function(key2, val2) {
-                                      if(i <= 10) {
+                                      if(i <= 15) {
                                       list.append('<p id="' + key + '.' + key2 + '"><a href="https://github.com/iocast/featureserver/commit/' + val2.sha + '" target="_new">' + val2.message + '</a> [' + val.actor.login + ' @ ' + val.created_at + ']</p>');
                                       }
                                       i++;
@@ -57,6 +57,7 @@
                         <ul class="nav">
                             <li><a href="index.html">Overview</a></li>
                             <li><a href="doc.html">Documentation</a></li>
+                            <li><a href="usage.html">Usage</a></li>
                             <!--
                              <li class="dropdown">
                              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Documentation <b class="caret"></b></a>
@@ -130,9 +131,15 @@
                             <ul>
                                 <li>Multi-layer support</li>
                                 <li>Addtional configuration key to indicate if requested FE attributes should be included into result list <code>fe_attributes=[true|false]</code></li>
+                                <li>Addtional configuration key for Twitter and Flickr. Key <code>attributes</code> defines which values should be included in the response.</li>
+                                <li>Several bug fixes:
+                                    <ul>
+                                        <li>Twitter datasource uses now Twitter API 1.1 instead of the twittervision API</li>
+                                    </ul>
+                                </li>
                                 <li>Miscellaneous:
                                     <ul>
-                                        <li>Namespace change to "http://featureserver.org/fs"</li>
+                                        <li>Namespace changed to "http://featureserver.org/fs"</li>
                                     </ul>
                                 </li>
                             </ul>

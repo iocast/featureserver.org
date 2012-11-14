@@ -34,6 +34,7 @@
                         <ul class="nav">
                             <li><a href="index.html">Overview</a></li>
                             <li class="active"><a href="#">Documentation</a></li>
+                            <li><a href="usage.html">Usage</a></li>
                             <li><a href="demo.html">Demo</a></li>
                             <li><a href="download.html">Source &amp; Download</a></li>
                         </ul>
@@ -164,16 +165,16 @@ attribute_cols=name // additional attributes to be displayed</code></pre>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>default_service</td>
-                                        <td>(required) Is used if no service or typename is given in the reuqest.</td>
+                                        <td>default_service<br/><small>required</small></td>
+                                        <td>Is used if no service or typename is given in the reuqest.</td>
                                     </tr>
                                     <tr>
-                                        <td>default_exception</td>
+                                        <td>default_exception<br/><small>optional</small></td>
                                         <td>(optional) Use it to define a service that is able to return a excpetion report. If it is <b>not</b> set, then FeatureServer would try to return the exception report in the format of the requested service. If that is not possible too, it takes the <code>default_service</code> if it is able and WFS otherwise.</td>
                                     </tr>
                                     <tr>
-                                        <td>error_log</td>
-                                        <td>(required) Path to the log file.</td>
+                                        <td>error_log<br/><small>optional</small></td>
+                                        <td>Path to the log file.</td>
                                     </tr>
                                 </tbody>
                             </table>
