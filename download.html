@@ -44,6 +44,7 @@
         
     </head>
     <body data-spy="scroll" data-target=".navbar">
+        
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
@@ -53,22 +54,18 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="brand" href="./index.html">FeatureServer</a>
+                        <a class="brand" href="index.html">FeatureServer</a>
                         <ul class="nav">
-                            <li><a href="index.html">Overview</a></li>
-                            <li><a href="doc.html">Documentation</a></li>
-                            <li><a href="usage.html">Usage</a></li>
-                            <!--
-                             <li class="dropdown">
-                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Documentation <b class="caret"></b></a>
-                             <ul class="dropdown-menu">
-                             <li><a href="#">Installation</a></li>
-                             <li><a href="#">Configuration</a></li>
-                             <li><a href="#">Datasources</a></li>
-                             <li><a href="#">Services</a></li>
-                             </ul>
-                             </li>
-                             -->
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="overview.html">Overview</a></li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Documentation <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="configuration.html">Configuration</a></li>
+                                    <li><a href="api.html">API 1.0</a></li>
+                                    <li><a href="development.html">Development</a></li>
+                                </ul>
+                            </li>
                             <li><a href="demo.html">Demo</a></li>
                             <li class="active"><a href="#">Source &amp; Download</a></li>
                         </ul>
@@ -76,6 +73,7 @@
                 </div>
             </div>
         </div>
+
         
         
         <!-- Subhead
@@ -114,7 +112,7 @@
                             <p><span class="label label-info">Info</span> If you have wishes, found bugs, or want to give some comments, please feel free to use the <a href="http://lists.osgeo.org/mailman/listinfo/featureserver" target="_new">mailing list</a> to do so.
                             <div class="dropdown">A list of all <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="">Releases <b class="caret"></b></a> can be found below:
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                    <li><a href="#upcoming">Upcoming</a></li>
+                                    <li><a href="#upcoming">Upcoming (2.0)</a></li>
                                     <li><a href="#r1.15">1.15: current</a></li>
                                     <li class="divider"></li>
                                     <li><a href="#r1.14">1.14</a></li>
@@ -129,9 +127,16 @@
                                 <h3>Upcoming <sup style="font-weight:normal;"><a href="#releases">up <span class="icon-chevron-up"></span></a></sup></h3>
                             </header>
                             <ul>
-                                <li>Multi-layer support</li>
+                                <li><b>Multi-layer</b> support as defined in WFS 1.1.0 and 2.0.0. </li>
                                 <li>Addtional configuration key to indicate if requested FE attributes should be included into result list <code>fe_attributes=[true|false]</code></li>
                                 <li>Addtional configuration key for Twitter and Flickr. Key <code>attributes</code> defines which values should be included in the response.</li>
+                                <li>Renamings / Definitions:
+                                    <ul>
+                                        <li>Servcie was renamed to <b>OutputFormat</b></li>
+                                        <li>Vector format and output format 'SQLite' was renamed to <b>SpatialLite</b></li>
+                                        <li><b>Service</b> became the same definition as descried by OGC. Each servcie can be called as the first parameter in the URL e.g. <cdoe>http://featureserver.org/{service}/...</code> or a <code>servcie</code> attribute need to be set in the GET parameters or POST payload which should be parsable.</li>
+                                    </ul>
+                                </li>
                                 <li>Several bug fixes:
                                     <ul>
                                         <li>Twitter datasource uses now Twitter API 1.1 instead of the twittervision API</li>
@@ -231,14 +236,16 @@
         <footer class="footer">
             <div class="container">
                 <p class="pull-right"><a href="#">Back to top</a></p>
-                <p>&copy; FeatureServer.org 2012</>
+                <p>&copy; 2012 FeatureServer.org. Design by <a href="http://twitter.github.com/bootstrap/" target="_new">Twitter Bootstrap</a></p>
                 <ul class="footer-links">
                     <li><a href="http://lists.osgeo.org/mailman/listinfo/featureserver" target="_new">Mailing List</a></li>
+                    <li>|</li>
+                    <li><a href="http://twitter.com/feature_server" target="_new">Twitter</a></li>
                     <li>|</li>
                     <li><a href="http://github.com/iocast/featureserver" target="_new">Source Code</a></li>
                 </ul>
             </div>
         </footer>
-        
+
     </body>
 </html>

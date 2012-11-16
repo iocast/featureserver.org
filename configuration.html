@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>FeatureServer :: Documentation</title>
+        <title>FeatureServer :: Configuration</title>
         <!-- Bootstrap -->
         <link href="assets/css/bootstrap.css" rel="stylesheet"></link>
         <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"></link>
@@ -30,11 +30,18 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="brand" href="./index.html">FeatureServer</a>
+                        <a class="brand" href="index.html">FeatureServer</a>
                         <ul class="nav">
-                            <li><a href="index.html">Overview</a></li>
-                            <li class="active"><a href="#">Documentation</a></li>
-                            <li><a href="usage.html">Usage</a></li>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="overview.html">Overview</a></li>
+                            <li class="dropdown active">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Documentation <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Configuration</a></li>
+                                    <li><a href="api.html">API 1.0</a></li>
+                                    <li><a href="development.html">Development</a></li>
+                                </ul>
+                            </li>
                             <li><a href="demo.html">Demo</a></li>
                             <li><a href="download.html">Source &amp; Download</a></li>
                         </ul>
@@ -48,13 +55,13 @@
          ================================================== -->
         <header class="jumbotron subhead" id="overview">
             <div class="container">
-                <h1>Documentation</h1>
+                <h1>Configuration</h1>
                 <p class="lead">The what, how, where, ..., and why.</p>
             </div>
         </header>
         
         
-        <div class="container" id="documentation">
+        <div class="container" id="configuration">
             <div class="row">
                 <div class="span3 bs-docs-sidebar">
                     <ul class="nav nav-list bs-docs-sidenav affix"  data-spy="affix" data-target=".bs-docs-sidebar">
@@ -76,11 +83,6 @@
                         <li><a href="#doc-c-dc-sqlite"><i class="icon-chevron-right"></i> SQLite</a></li>
                         <li><a href="#doc-c-dc-twitter"><i class="icon-chevron-right"></i> Twitter</a></li>
                         <li><a href="#doc-c-dc-wfs"><i class="icon-chevron-right"></i> WFS</a></li>
-                        <!--
-                        <li class="nav-header">Usage</li>
-                        <li><a href="#doc-u-layer"><i class="icon-chevron-right"></i> Layer</a></li>
-                        <li><a href="#doc-u-workspace"><i class="icon-chevron-right"></i> Workspace</a></li>
-                        -->
                     </ul>
                 </div>
                 
@@ -143,11 +145,11 @@
                         
                         <p>Every layer is bracket by <code>[&lt;layer&gt;]</code> and has to be on a sperate line as every key. Keys can vary from datasource to datasource. E.g. SpatialLite does not need to have a <code>dsn</code> in contrast for PostGIS it is mandatory to connect to the database. The following example shows a sample configuration for a SpatialLite datasource.</p>
                         <pre class="prettyprint linenums"><code>[sqlite_layer]
-type=SpatialLite
-file=/home/featureserver/test.sqlite
-layer=featureserver // table name
-fid=fid // id attribute
-attribute_cols=name // additional attributes to be displayed</code></pre>
+                            type=SpatialLite
+                            file=/home/featureserver/test.sqlite
+                            layer=featureserver // table name
+                            fid=fid // id attribute
+                            attribute_cols=name // additional attributes to be displayed</code></pre>
                         <p>The follwing sections describes all the possible keys for each supported datasource.</p>
                     </section>
                     
@@ -178,8 +180,8 @@ attribute_cols=name // additional attributes to be displayed</code></pre>
                                     </tr>
                                 </tbody>
                             </table>
-                        </p>
-                    </section>
+                            </p>
+                            </section>
                     
                     
                     <section id="doc-c-dc-dbm">
@@ -215,7 +217,7 @@ attribute_cols=name // additional attributes to be displayed</code></pre>
                         </table>
                         </p>
                     </section>
-
+                    
                     <section id="doc-c-dc-flickr">
                         <header>
                             <h2>Flickr <span class="label label-success">new</span> <small>(configuration)</small></h2>
@@ -344,14 +346,14 @@ attribute_cols=name // additional attributes to be displayed</code></pre>
                         </p>
                         <p><span class="label">Note</span> Instead of using dburi in the config it is possible to pass the sqlalchemy session to the datasource. Developers using the FeatureServer API may choose to pass the session object instead. GeoAlchemy also supports the use of relations where the geometry column may be in a related table. The config in this would be:
                         <pre class="prettyprint linenums"><code>[mylayerexterior]
-type=GeoAlchemy
-dburi=postgres://user:password@dbhost/dbname
-model=mypackage.mymodule
-cls=MyLayer
-fid=id
-geometry=geom # defaults to the_geom
-geom_cls=Exterior
-geom_rel=exterior</code></pre>
+                            type=GeoAlchemy
+                            dburi=postgres://user:password@dbhost/dbname
+                            model=mypackage.mymodule
+                            cls=MyLayer
+                            fid=id
+                            geometry=geom # defaults to the_geom
+                            geom_cls=Exterior
+                            geom_rel=exterior</code></pre>
                         </p>
                     </section>
                     
@@ -398,10 +400,10 @@ geom_rel=exterior</code></pre>
                         </p>
                         <p> An example OGR configuration might look like:
                         <pre class="prettyprint linenums"><code>[myshape]
-type=OGR
-dsn=/home/example/myshape.shp
-layer=myshape
-attribute_cols=name,some_interesting_column #optional; only these columns will be returned.</code></pre>
+                            type=OGR
+                            dsn=/home/example/myshape.shp
+                            layer=myshape
+                            attribute_cols=name,some_interesting_column #optional; only these columns will be returned.</code></pre>
                         </p>
                     </section>
                     
@@ -637,7 +639,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                 <tr>
                                     <td>layer</td>
                                     <td>Name of table. Defaults to layer name <pre class="prettyprint"><code>[lines]
-type=SQLite</code></pre> goes to <code>layer=lines</code></td>
+                                        type=SQLite</code></pre> goes to <code>layer=lines</code></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -759,20 +761,6 @@ type=SQLite</code></pre> goes to <code>layer=lines</code></td>
                         </p>
                     </section>
                     
-                    
-                    <!--
-                    <section id="doc-u-layer">
-                        <header>
-                            <h2>Layer <small>(usage)</small></h2>
-                        </header>
-                    </section>
-                    
-                    <section id="doc-u-workspace">
-                        <header>
-                            <h2>Worspace <small>(usage)</small></h2>
-                        </header>
-                    </section>
-                    -->
                 </div>
             </div>
         </div>
@@ -780,9 +768,11 @@ type=SQLite</code></pre> goes to <code>layer=lines</code></td>
         <footer class="footer">
             <div class="container">
                 <p class="pull-right"><a href="#">Back to top</a></p>
-                <p>&copy; FeatureServer.org 2012</>
+                <p>&copy; 2012 FeatureServer.org. Design by <a href="http://twitter.github.com/bootstrap/" target="_new">Twitter Bootstrap</a></p>
                 <ul class="footer-links">
                     <li><a href="http://lists.osgeo.org/mailman/listinfo/featureserver" target="_new">Mailing List</a></li>
+                    <li>|</li>
+                    <li><a href="http://twitter.com/feature_server" target="_new">Twitter</a></li>
                     <li>|</li>
                     <li><a href="http://github.com/iocast/featureserver" target="_new">Source Code</a></li>
                 </ul>

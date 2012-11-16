@@ -15,7 +15,8 @@
       $('.bs-docs-sidenav').affix({
                                   offset: {
                                   top: function() {
-                                  return $("#documentation").position().top;
+                                  //return $("#configuration").position().top;
+                                  return $(".bs-docs-sidebar").parent().parent().position().top;
                                   
                                   },
                                   bottom:270,

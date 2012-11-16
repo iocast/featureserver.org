@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>FeatureServer :: Usage</title>
+        <title>FeatureServer :: Development</title>
         <!-- Bootstrap -->
         <link href="assets/css/bootstrap.css" rel="stylesheet"></link>
         <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"></link>
@@ -30,11 +30,18 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="brand" href="./index.html">FeatureServer</a>
+                        <a class="brand" href="index.html">FeatureServer</a>
                         <ul class="nav">
-                            <li><a href="index.html">Overview</a></li>
-                            <li><a href="doc.html">Documentation</a></li>
-                            <li class="active"><a href="#">Usage</a></li>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="overview.html">Overview</a></li>
+                            <li class="dropdown active">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Documentation <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="configuration.html">Configuration</a></li>
+                                    <li><a href="api.html">API 1.0</a></li>
+                                    <li><a href="#">Development</a></li>
+                                </ul>
+                            </li>
                             <li><a href="demo.html">Demo</a></li>
                             <li><a href="download.html">Source &amp; Download</a></li>
                         </ul>
@@ -42,24 +49,25 @@
                 </div>
             </div>
         </div>
+
         
         
         <!-- Subhead
          ================================================== -->
         <header class="jumbotron subhead" id="overview">
             <div class="container">
-                <h1>Usage</h1>
-                <p class="lead">FeatureServer is installed ... and now ....</p>
+                <h1>Development</h1>
+                <p class="lead">I have some ideas, how can I add them ...</p>
             </div>
         </header>
         
         
-        <div class="container" id="usage">
+        <div class="container" id="development">
             <div class="row">
                 <div class="span3 bs-docs-sidebar">
                     <ul class="nav nav-list bs-docs-sidenav affix"  data-spy="affix" data-target=".bs-docs-sidebar">
                         <li class="nav-header">???</li>
-                        <li><a href="#usage-kvp"><i class="icon-chevron-right"></i> KVP</a></li>
+                        <li><a href="#dev"><i class="icon-chevron-right"></i> KVP</a></li>
                     </ul>
                 </div>
                 
@@ -72,7 +80,7 @@
                         a
                         </p>
                     </section>
-
+                    
                 </div>
             </div>
         </div>
@@ -80,14 +88,16 @@
         <footer class="footer">
             <div class="container">
                 <p class="pull-right"><a href="#">Back to top</a></p>
-                <p>&copy; FeatureServer.org 2012</>
+                <p>&copy; 2012 FeatureServer.org. Design by <a href="http://twitter.github.com/bootstrap/" target="_new">Twitter Bootstrap</a></p>
                 <ul class="footer-links">
                     <li><a href="http://lists.osgeo.org/mailman/listinfo/featureserver" target="_new">Mailing List</a></li>
+                    <li>|</li>
+                    <li><a href="http://twitter.com/feature_server" target="_new">Twitter</a></li>
                     <li>|</li>
                     <li><a href="http://github.com/iocast/featureserver" target="_new">Source Code</a></li>
                 </ul>
             </div>
         </footer>
-        
+
     </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>FeatureServer :: Thanks a lot</title>
+        <title>FeatureServer :: API</title>
         <!-- Bootstrap -->
         <link href="assets/css/bootstrap.css" rel="stylesheet"></link>
         <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"></link>
@@ -17,11 +17,10 @@
         <script src="assets/js/jquery.js"></script>
         <script src="assets/js/bootstrap.js"></script>
         <script src="assets/js/prettify.js"></script>
-        
         <script src="assets/js/application.js" type="text/javascript" charset="utf-8"></script>
         
     </head>
-    <body data-spy="scroll" data-target=".navbar">
+    <body data-spy="scroll" data-target=".bs-docs-sidebar">
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
@@ -35,11 +34,11 @@
                         <ul class="nav">
                             <li><a href="index.html">Home</a></li>
                             <li><a href="overview.html">Overview</a></li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Documentation <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="configuration.html">Configuration</a></li>
-                                    <li><a href="api.html">API 1.0</a></li>
+                                    <li><a href="#">API 1.0</a></li>
                                     <li><a href="development.html">Development</a></li>
                                 </ul>
                             </li>
@@ -51,22 +50,42 @@
             </div>
         </div>
 
-
         
-        <!-- Masthead
+        <!-- Subhead
          ================================================== -->
-        <div class="jumbotron masthead" id="donation-thanks">
+        <header class="jumbotron subhead" id="overview">
             <div class="container">
-                <h1>Thanks a lot for your support</h1>
-                <p class="lead">You really helped this project.</p>
+                <h1>API</h1>
+                <p class="lead">FeatureServer is installed ... and now ...</p>
+            </div>
+        </header>
+        
+        
+        <div class="container" id="api">
+            <div class="row">
+                <div class="span3 bs-docs-sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav affix"  data-spy="affix" data-target=".bs-docs-sidebar">
+                        <li class="nav-header">RESTful</li>
+                        <li><a href="#api-rest-basic"><i class="icon-chevron-right"></i> Basic</a></li>
+                        <li class="nav-header">XML</li>
+                        <li><a href="#api-xml-basic"><i class="icon-chevron-right"></i> Basic</a></li>
+                    </ul>
+                </div>
                 
-                <ul class="masthead-links">
-                    <li><a href="/download.html">back to download page</a></li>
-                </ul>
+                <div class="span9">
+                    <section id="api-rest-basci">
+                        <header>
+                            <h2>Basic <small>(RESTful)</small></h2>
+                        </header>
+                        <p>
+                        For all RESTful calls the <code>service</code> which should be invoked by the server is the first parameter after the base url as follow:<br/>
+                        <pre class="prettyprint linenums"><code>http://featureserver.org/{service}/</code></pre>
+                        </p>
+                    </section>
 
+                </div>
             </div>
         </div>
-        
         
         <footer class="footer">
             <div class="container">
@@ -81,6 +100,6 @@
                 </ul>
             </div>
         </footer>
-
+        
     </body>
 </html>
