@@ -79,6 +79,7 @@
                         <li><a href="#doc-c-dc-ogr"><i class="icon-chevron-right"></i> OGR</a></li>
                         <li><a href="#doc-c-dc-osm"><i class="icon-chevron-right"></i> OSM</a></li>
                         <li><a href="#doc-c-dc-postgis"><i class="icon-chevron-right"></i> PostGIS</a></li>
+                        <li><a href="#doc-c-dc-postgishstore"><i class="icon-chevron-right"></i> PostGISHstore</a></li>
                         <li><a href="#doc-c-dc-spatiallite"><i class="icon-chevron-right"></i> SpatialLite</a></li>
                         <li><a href="#doc-c-dc-sqlite"><i class="icon-chevron-right"></i> SQLite</a></li>
                         <li><a href="#doc-c-dc-twitter"><i class="icon-chevron-right"></i> Twitter</a></li>
@@ -180,8 +181,8 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            </p>
-                            </section>
+                        </p>
+                    </section>
                     
                     
                     <section id="doc-c-dc-dbm">
@@ -455,85 +456,216 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>types</td>
+                                    <td>type<br/><small>required</small></td>
                                     <td><code>PostGIS</code></td>
                                 </tr>
                                 <tr>
-                                    <td style="white-space: nowrap;">title <span class="label label-success">new</span></td>
+                                    <td style="white-space: nowrap;">title <span class="label label-success">new</span><br/><small>optional</small></td>
                                     <td>Title of the layer</td>
                                 </tr>
                                 <tr>
-                                    <td style="white-space: nowrap;">abstract <span class="label label-success">new</span></td>
+                                    <td style="white-space: nowrap;">abstract <span class="label label-success">new</span><br/><small>optional</small></td>
                                     <td>Short description of the layer</td>
                                 </tr>
                                 <tr>
-                                    <td>dsn</td>
-                                    <td>(required) connection information to the database.</td>
+                                    <td>dsn<br/><small>required</small></td>
+                                    <td>Connection information to the database.</td>
                                 </tr>
                                 <tr>
-                                    <td>layer</td>
-                                    <td>(required) Name of the datasource's layer aka. table name.</td>
+                                    <td>layer<br/><small>required</small></td>
+                                    <td>Name of the datasource's layer aka. table name.</td>
                                 </tr>
                                 <tr>
-                                    <td>fid</td>
-                                    <td>Attribute name of the feature's id. Default is <code>fid=gid</code></td>
+                                    <td>fid<br/><small>optional</small></td>
+                                    <td>Attribute name of the feature's id.
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td>String value</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Default:</td><td><code>fid=gid</code></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>geometry</td>
-                                    <td>Attribute name that holds the geometry information. Default is <code>geometry=the_geom</code></td>
+                                    <td>geometry<br/><small>optional</small></td>
+                                    <td>Attribute name that holds the geometry information.
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td>String value</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Default:</td><td><code>geometry=the_geom</code></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>fe_attributes</td>
-                                    <td>Indicates whether the filter encoding attributes should be queried and included into the result or not. Values: <code>[true|false]</code>. Default is <code>geometry=true</code></td>
+                                    <td>fe_attributes<br/><small>optional</small></td>
+                                    <td>Indicates whether the filter encoding attributes should be queried and included into the result or not.
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td><code>[true|false]</code></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Default:</td><td><code>fe_attributes=true</code></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>srid</td>
-                                    <td>Spatial Refernece System Identifier of the data stored in the datasource. Default is <code>srid=4326</code></td>
+                                    <td>srid<br/><small>optional</small></td>
+                                    <td>Spatial Refernece System Identifier of the data stored in the datasource.
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td>Valid SRS integer value useed by PostGIS</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Default:</td><td><code>srid=4326</code></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td style="white-space: nowrap;">srid_out <span class="label label-success">new</span></td>
-                                    <td>Spatial Refernece System Identifier of the data given back to the client. Default is <code>srid=4326</code></td>
+                                    <td style="white-space: nowrap;">srid_out <span class="label label-success">new</span><br/><small>optional</small></td>
+                                    <td>Spatial Refernece System Identifier of the data given back to the client (srs transformation).
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td>Valid SRS integer value used by PostGIS</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Default:</td><td><code>srid_out=4326</code></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>attribute_cols</td>
-                                    <td>A comma seperated list of attributes to be queried on the defined datasource. Default is <code>attribute_cols=*</code>. If <code>hstore=true</code> then hstore syntax is allowed e.g. <pre class="prettyprint"><code>attribute_cols=name, gtype as "geometry_type", hstore(tags)->'operator' as "operator", hstore(tags)->'highway' as "highway"</code></pre></td>
+                                    <td>attribute_cols<br/><small>optional</small></td>
+                                    <td>A comma seperated list of attributes to be queried on the defined datasource.
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td>comma seperated list</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Default:</td><td><code>attribute_cols=*</code></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>addtional_cols</td>
-                                    <td>It is also possible to add addtional columns to the output. This can be used, if you want to do some math like the following: <code>additional_cols=round(ST_Area2d(ST_Transform(the_geog, 21781))) as sqm</code></td>
+                                    <td>addtional_cols<br/><small>optional</small></td>
+                                    <td>It is also possible to add addtional information to the output. These information are only used for quering and ignored when updating or inserting a new feature into the data source. It can be used, if you want to do e.g. some math like the following: <code>additional_cols=round(ST_Area2d(ST_Transform(the_geog, 21781))) as sqm</code>
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td>comma seperated list</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>encoding</td>
-                                    <td>Default is <code>encoding=utf-8</code></td>
+                                    <td>encoding<br><small>optional</small></td>
+                                    <td>
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td>Valid encoding value</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Default:</td><td><code>encoding=utf-8</code></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>order</td>
-                                    <td>Order data by a attribute.</td>
+                                    <td>order<br/><small>optional</small></td>
+                                    <td>Order data by a attribute.
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td><code>[ASC|DESC]</code></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td style="white-space: nowrap;">hstore <span class="label label-success">new</span></td>
-                                    <td>Defines if datasource uses hstore. Possible values: <code>[true|false]</code></td>
+                                    <td style="white-space: nowrap;">version <span class="label label-success">new</span><br/><small>optional</small></td>
+                                    <td>Version attribute.</td>
                                 </tr>
                                 <tr>
-                                    <td style="white-space: nowrap;">version <span class="label label-success">new</span></td>
-                                    <td>Version attribute. If <code>hstore=true</code> then hstore syntax is allowed e.g. <pre class="prettyprint"><code>version=hstore(tags)->'version'</code></pre></td>
+                                    <td style="white-space: nowrap;">ele <span class="label label-success">new</span><br/><small>optional</small></td>
+                                    <td>Elevation attribute.</td>
                                 </tr>
                                 <tr>
-                                    <td style="white-space: nowrap;">ele <span class="label label-success">new</span></td>
-                                    <td>Elevation attribute. If <code>hstore=true</code> then hstore syntax is allowed e.g. <pre class="prettyprint"><code>ele=hstore(tags)->'ele'</code></pre></td>
+                                    <td style="white-space: nowrap;">bbox <span class="label label-success">new</span><br/><small>optional</small></td>
+                                    <td>Max bounding box of the data.
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td>format is as follow: <code>min_x min_y max_x max_y</code></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td style="white-space: nowrap;">bbox <span class="label label-success">new</span></td>
-                                    <td>Max bounding box of the data in the format <code>min_x min_y max_x max_y</code></td>
-                                </tr>
-                                <tr>
-                                    <td style="white-space: nowrap;">geometry_type <span class="label label-success">new</span></td>
-                                    <td>Comma seperated list of geometry types <code>Point</code>, <code>Line</code> and/or <code>Polygon</code></td>
+                                    <td style="white-space: nowrap;">geometry_type <span class="label label-success">new</span><br/><small>optional</small></td>
+                                    <td>Comma seperated list of geometry types.
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td>comma seperated list of <code>Point</code>, <code>Line</code> and/or <code>Polygon</code></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                         </p>
                     </section>
+                    
+                    <section id="doc-c-dc-postgishstore">
+                        <header>
+                            <h2>PostGISHstore <span class="label label-success">new</span> <small>(configuration)</small></h2>
+                        </header>
+                        <p>PostGISHstore data source is derived from the <a href="#doc-c-dc-postgis">PostGIS</a> data source type. All the attributes of the <a href="#doc-c-dc-postgis">PostGIS</a> data source are valid too. In contrast, the syntax of the hstore attriburtes are different (more information you can find in the hstore manual). Additionally you can use the following attributes:
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Key</th><th>Value/Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>type<br/><small>required</small></td>
+                                    <td><code>PostGISHstore</code></td>
+                                </tr>
+                                <tr>
+                                    <td>hstore<br><small>required</small></td>
+                                    <td>hstore attribute in the datasource</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </p>
+                    </section>
+                    
                     
                     <section id="doc-c-dc-spatiallite">
                         <header>
@@ -548,60 +680,177 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>types</td>
+                                    <td>types<br/><small>required</small></td>
                                     <td><code>SpatialLite</code></td>
                                 </tr>
                                 <tr>
-                                    <td>title</td>
+                                    <td>title<br/><small>optional</small></td>
                                     <td>Title of the layer</td>
                                 </tr>
                                 <tr>
-                                    <td>abstract</td>
+                                    <td>abstract<br/><small>optional</small></td>
                                     <td>Short description of the layer</td>
                                 </tr>
                                 <tr>
-                                    <td>fid</td>
-                                    <td>Attribute name of the feature's id. Default is <code>fid=gid</code></td>
+                                    <td>fid<br/><small>optional</small></td>
+                                    <td>Attribute name of the feature's id.
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td>String value</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Default:</td><td><code>srid=gid</code></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>geometry</td>
-                                    <td>Attribute name that holds the geometry information. Default is <code>geometry=the_geom</code></td>
+                                    <td>geometry<br/><small>optional</small></td>
+                                    <td>Attribute name that holds the geometry information.
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td>String value</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Default:</td><td><code>geometry=the_geom</code></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>fe_attributes</td>
-                                    <td>Indicates whether the filter encoding attributes should be queried and included into the result or not. Values: <code>[true|false]</code>. Default is <code>geometry=true</code></td>
+                                    <td>fe_attributes<br/><small>optional</small></td>
+                                    <td>IIndicates whether the filter encoding attributes should be queried and included into the result or not.
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td><code>[true|false]</code></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Default:</td><td><code>fe_attributes=true</code></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>srid</td>
-                                    <td>Spatial Refernece System Identifier of the data stored in the datasource. Default is <code>srid=4326</code></td>
+                                    <td>srid<br/><small>optional</small></td>
+                                    <td>Spatial Refernece System Identifier of the data stored in the datasource.
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td>Valid SRS integer value useed by SpatiaLite</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Default:</td><td><code>srid=4326</code></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>srid_out</td>
-                                    <td>Spatial Refernece System Identifier of the data given back to the client. Default is <code>srid=4326</code></td>
+                                    <td>srid_out<br/><small>optional</small></td>
+                                    <td>Spatial Refernece System Identifier of the data given back to the client (srs transformation).
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td>Valid SRS integer value useed by SpatiaLite</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Default:</td><td><code>srid=4326</code></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>attribute_cols</td>
-                                    <td>A comma seperated list of attributes to be queried on the defined datasource. Default is <code>attribute_cols=*</code></td>
+                                    <td>attribute_cols<br/><small>optional</small></td>
+                                    <td>A comma seperated list of attributes to be queried on the defined datasource.
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td>comma seperated list</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Default:</td><td><code>attribute_cols=*</code></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>addtional_cols</td>
-                                    <td>It is also possible to add addtional columns to the output. This can be used, if you want to do some math like the following: <code>additional_cols=round(Area(Transform(the_geog, 21781))) as sqm</code></td>
+                                    <td>addtional_cols<br/><small>optional</small></td>
+                                    <td>It is also possible to add addtional information to the output. These information are only used for quering and ignored when updating or inserting a new feature into the data source. It can be used, if you want to do e.g. some math like the following: <code>additional_cols=round(Area(Transform(the_geog, 21781))) as sqm</code>
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td>comma seperated list</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>version</td>
+                                    <td>encoding<br/><small>optional</small></td>
+                                    <td>
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td>Valid encoding value</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Default:</td><td><code>encoding=utf-8</code></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>order<br/><small>optional</small></td>
+                                    <td>Order data by a attribute.
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td><code>[ASC|DESC]</code></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>version<br/><small>optional</small></td>
                                     <td>Version attribute.</td>
                                 </tr>
                                 <tr>
-                                    <td>ele</td>
+                                    <td>ele<br/><small>optional</small></td>
                                     <td>Elevation attribute.</td>
                                 </tr>
                                 <tr>
-                                    <td>bbox</td>
-                                    <td>Max bounding box of the data in the format <code>min_x min_y max_x max_y</code></td>
+                                    <td>bbox<br/><small>optional</small></td>
+                                    <td>Max bounding box of the data.
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td>format is as follow: <code>min_x min_y max_x max_y</code></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>geometry_type</td>
-                                    <td>Comma seperated list of geometry types <code>Point</code>, <code>Line</code> and/or <code>Polygon</code></td>
+                                    <td>geometry_type<br/><small>optional</small></td>
+                                    <td>Comma seperated list of geometry types.
+                                        <table class="config-kvp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Values:</td><td>comma seperated list of <code>Point</code>, <code>Line</code> and/or <code>Polygon</code></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
