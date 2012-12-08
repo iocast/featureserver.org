@@ -21,6 +21,8 @@
         
     </head>
     <body data-spy="scroll" data-target=".navbar">
+        <!-- Navigation
+         ================================================== -->
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
@@ -59,7 +61,10 @@
                 <p class="lead">Hmm ... what can I do with it?</p>
             </div>
         </header>
-                
+        
+        
+        <!-- Overview
+         ================================================== -->
         <div class="container">
             <section id="overview">
                 <header>
@@ -69,8 +74,11 @@
                 <ul class="nav nav-tabs" id="overviewTab">
                     <li class="active"><a href="#datasources">Data Sources</a></li>
                     <li><a href="#output-formats">Output Formats</a></li>
-                    <li><a href="#servcies">Servcies</a></li>
+                    <li><a href="#services">Services</a></li>
                 </ul>
+                
+                <!-- Data Sources
+                 ================================================== -->
                 <div class="tab-content">
                     <div class="tab-pane active" id="datasources">
                         <table class="table">
@@ -120,6 +128,12 @@
                                     <td><a href="#postgis-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
                                 </tr>
                                 <tr>
+                                    <td style="white-space: nowrap;">PostGISHstore <span class="label label-success">new</span></td>
+                                    <td>The PostGISHstore datasource implements a direct connection to PostGIS using the hstore extension, allowing for full featured editing/updating.</td>
+                                    <td><div style="white-space: nowrap;"><span class="label label-success">WFS</span> <span class="label label-success">WFS-T</span> <span class="label label-success">FE</span></div></td>
+                                    <td><a href="#postgishstore-config-modal" role="button" class="btn" data-toggle="modal">config</a></td>
+                                </tr>
+                                <tr>
                                     <td style="white-space: nowrap;">SpatialLite <span class="label label-success">new</span></td>
                                     <td>SpatiaLite is an open source library intended to extend the SQLite core to support fully fledged Spatial SQL capabilities.</td>
                                     <td><div style="white-space: nowrap;"><span class="label label-success">WFS</span> <span class="label label-success">WFS-T</span> <span class="label label-success">FE</span></div></td>
@@ -146,6 +160,9 @@
                             </tbody>
                         </table>
                     </div>
+                    
+                    <!-- Output Formats
+                     ================================================== -->
                     <div class="tab-pane" id="output-formats">
                         <table class="table">
                             <thead>
@@ -217,16 +234,26 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="tab-pane" id="servcies">
+                    
+                    <!-- Services
+                     ================================================== -->
+                    <div class="tab-pane" id="services">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Service</th><th>Description</th></th>
+                                    <th>Service</th>
+                                    <th>Description</th>
+                                    <th>Support</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>WFS</td><td>The Web Feature Service (WFS) represents a change in the way geographic information is created, modified and exchanged on the Internet. Rather than sharing geographic information at the file level using File Transfer Protocol (FTP), for example, the WFS offers direct fine-grained access to geographic information at the feature and feature property level. Web feature services allow clients to only retrieve or modify the data they are seeking, rather than retrieving a file that contains the data they are seeking and possibly much more. That data can then be used for a wide variety of purposes, including purposes other than their producers' intended ones.</td>
+                                    <td>WFS</td>
+                                    <td>The Web Feature Service (WFS) represents a change in the way geographic information is created, modified and exchanged on the Internet. Rather than sharing geographic information at the file level using File Transfer Protocol (FTP), for example, the WFS offers direct fine-grained access to geographic information at the feature and feature property level. Web feature services allow clients to only retrieve or modify the data they are seeking, rather than retrieving a file that contains the data they are seeking and possibly much more. That data can then be used for a wide variety of purposes, including purposes other than their producers' intended ones.</td>
+                                    <td>
+                                        <div style="white-space: nowrap;"><span class="label label-success">RESTful</span></div>
+                                        <div style="white-space: nowrap;"><span class="label label-info">GET</span> <span class="label label-info">POST</span></div>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -244,6 +271,10 @@
         </div>
         
         
+        
+        
+        <!-- Modal: Configuration
+         ================================================== -->
         <div class="modal hide" id="dbm-config-modal" tabindex="-1" role="dialog" aria-labelledby="dbm-config-modal" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -279,6 +310,31 @@ attribute_cols=name,some_interesting_column #optional</code></pre>
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
         </div>
+        
+        
+        <div class="modal hide" id="postgishstore-config-modal" tabindex="-1" role="dialog" aria-labelledby="postgishstore-config-modal" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 id="postgishstore-config-modal-label">PostGIS Configuration Example</h3>
+            </div>
+            <div class="modal-body">
+                <pre class="prettyprint"><code>[mylayer]
+type=PostGISHstore
+dsn=host=localhost dbname=mydata user=myuser password=1234
+layer=mylayer
+fid=gid #defaults to ogc_fid
+geometry=wkb_geometry # defaults to the_geom
+srid=26910 #defaults to 4326
+encoding=utf-8 #defaults to utf-8
+hstore=kvp
+attribut_cols=kvp
+additional_cols=hstore(kvp)->'name' as "name", hstore(kvp)->'description' as "description"</code></pre>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+        
         
         <div class="modal hide" id="wfs-config-modal" tabindex="-1" role="dialog" aria-labelledby="wfs-config-modal" aria-hidden="true">
             <div class="modal-header">
@@ -438,7 +494,8 @@ attributes=user.name,source</code></pre>
         
         
         
-        
+        <!-- Modal: Exceptions
+         ================================================== -->
         <div class="modal hide" id="wfs-exception-modal" tabindex="-1" role="dialog" aria-labelledby="wfs-exception-modal" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -598,7 +655,8 @@ xmlns:georss="http://www.georss.org/georss"&gt;
         </div>
         
         
-        
+        <!-- Footer
+         ================================================== -->
         <footer class="footer">
             <div class="container">
                 <p class="pull-right"><a href="#">Back to top</a></p>
@@ -609,6 +667,8 @@ xmlns:georss="http://www.georss.org/georss"&gt;
                     <li><a href="http://twitter.com/feature_server" target="_new">Twitter</a></li>
                     <li>|</li>
                     <li><a href="http://github.com/iocast/featureserver" target="_new">Source Code</a></li>
+                    <li>|</li>
+                    <li><a href="http://webchat.freenode.net/?channels=featureserver" target="_new" rel="tooltip" data-placement="top" data-original-title="channel #featureserver at irc.freenode.net">IRC</a></a></li>
                 </ul>
             </div>
         </footer>
