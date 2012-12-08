@@ -146,11 +146,11 @@
                         
                         <p>Every layer is bracket by <code>[&lt;layer&gt;]</code> and has to be on a sperate line as every key. Keys can vary from datasource to datasource. E.g. SpatialLite does not need to have a <code>dsn</code> in contrast for PostGIS it is mandatory to connect to the database. The following example shows a sample configuration for a SpatialLite datasource.</p>
                         <pre class="prettyprint linenums"><code>[sqlite_layer]
-                            type=SpatialLite
-                            file=/home/featureserver/test.sqlite
-                            layer=featureserver // table name
-                            fid=fid // id attribute
-                            attribute_cols=name // additional attributes to be displayed</code></pre>
+type=SpatialLite
+file=/home/featureserver/test.sqlite
+layer=featureserver // table name
+fid=fid // id attribute
+attribute_cols=name // additional attributes to be displayed</code></pre>
                         <p>The follwing sections describes all the possible keys for each supported datasource.</p>
                     </section>
                     
@@ -347,14 +347,14 @@
                         </p>
                         <p><span class="label">Note</span> Instead of using dburi in the config it is possible to pass the sqlalchemy session to the datasource. Developers using the FeatureServer API may choose to pass the session object instead. GeoAlchemy also supports the use of relations where the geometry column may be in a related table. The config in this would be:
                         <pre class="prettyprint linenums"><code>[mylayerexterior]
-                            type=GeoAlchemy
-                            dburi=postgres://user:password@dbhost/dbname
-                            model=mypackage.mymodule
-                            cls=MyLayer
-                            fid=id
-                            geometry=geom # defaults to the_geom
-                            geom_cls=Exterior
-                            geom_rel=exterior</code></pre>
+type=GeoAlchemy
+dburi=postgres://user:password@dbhost/dbname
+model=mypackage.mymodule
+cls=MyLayer
+fid=id
+geometry=geom # defaults to the_geom
+geom_cls=Exterior
+geom_rel=exterior</code></pre>
                         </p>
                     </section>
                     
@@ -401,10 +401,10 @@
                         </p>
                         <p> An example OGR configuration might look like:
                         <pre class="prettyprint linenums"><code>[myshape]
-                            type=OGR
-                            dsn=/home/example/myshape.shp
-                            layer=myshape
-                            attribute_cols=name,some_interesting_column #optional; only these columns will be returned.</code></pre>
+type=OGR
+dsn=/home/example/myshape.shp
+layer=myshape
+attribute_cols=name,some_interesting_column #optional; only these columns will be returned.</code></pre>
                         </p>
                     </section>
                     
@@ -888,7 +888,7 @@
                                 <tr>
                                     <td>layer</td>
                                     <td>Name of table. Defaults to layer name <pre class="prettyprint"><code>[lines]
-                                        type=SQLite</code></pre> goes to <code>layer=lines</code></td>
+type=SQLite</code></pre> goes to <code>layer=lines</code></td>
                                 </tr>
                             </tbody>
                         </table>
