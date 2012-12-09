@@ -141,7 +141,7 @@
                         <header>
                             <h2>Layer <small>(configuration)</small></h2>
                         </header>
-                        <p>A layer is a named section in the <small>featureserver.cfg</small> file. Using for a example WFS jargon, a layer is the value of the <code class="language-html">typename</code> parameter in the HTTP request</p>
+                        <p>A layer is a named section in the <small>featureserver.cfg</small> file. Using for a example WFS jargon, a layer is the value of the <code class="language-html">typename</code> parameter in the HTTP request. For more information consult the <a href="/api.html">API</a>.</p>
                         <pre class="prettyprint"><code class="language-html">featureserver.cgi?typename=pois</code></pre>
                         
                         <p>Every layer is bracket by <code>[&lt;layer&gt;]</code> and has to be on a sperate line as every key. Keys can vary from datasource to datasource. E.g. SpatialLite does not need to have a <code>dsn</code> in contrast for PostGIS it is mandatory to connect to the database. The following example shows a sample configuration for a SpatialLite datasource.</p>
@@ -265,7 +265,7 @@ attribute_cols=name // additional attributes to be displayed</code></pre>
                                         <table class="config-kvp">
                                             <tbody>
                                                 <tr>
-                                                    <td>Values:</td><td><code>[any|all]</code></td>
+                                                    <td>Values:</td><td><code>[ any | all ]</code></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Default:</td><td><code>tag_mode=any</code>, if <code>tags</code> is set.</td>
@@ -436,7 +436,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                 </tr>
                                 <tr>
                                     <td>osmxapi</td>
-                                    <td><code>[yes|no]</code> uses OSM Extended API and the main API respectively.</td>
+                                    <td><code>[ yes | no ]</code> uses OSM Extended API and the main API respectively.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -511,7 +511,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                         <table class="config-kvp">
                                             <tbody>
                                                 <tr>
-                                                    <td>Values:</td><td><code>[true|false]</code></td>
+                                                    <td>Values:</td><td><code>[ true | false ]</code></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Default:</td><td><code>fe_attributes=true</code></td>
@@ -598,7 +598,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                         <table class="config-kvp">
                                             <tbody>
                                                 <tr>
-                                                    <td>Values:</td><td><code>[ASC|DESC]</code></td>
+                                                    <td>Values:</td><td><code>[ ASC | DESC ]</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -727,7 +727,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                         <table class="config-kvp">
                                             <tbody>
                                                 <tr>
-                                                    <td>Values:</td><td><code>[true|false]</code></td>
+                                                    <td>Values:</td><td><code>[ true | false ]</code></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Default:</td><td><code>fe_attributes=true</code></td>
@@ -814,7 +814,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                         <table class="config-kvp">
                                             <tbody>
                                                 <tr>
-                                                    <td>Values:</td><td><code>[ASC|DESC]</code></td>
+                                                    <td>Values:</td><td><code>[ ASC | DESC ]</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
