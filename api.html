@@ -21,6 +21,8 @@
         
     </head>
     <body data-spy="scroll" data-target=".bs-docs-sidebar">
+        <!-- Navigation
+         ================================================== -->
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
@@ -60,29 +62,190 @@
             </div>
         </header>
         
-        
+        <!-- Overview
+         ================================================== -->
         <div class="container" id="api">
             <div class="row">
                 <div class="span3 bs-docs-sidebar">
                     <ul class="nav nav-list bs-docs-sidenav affix"  data-spy="affix" data-target=".bs-docs-sidebar">
                         <li class="nav-header">RESTful</li>
-                        <li><a href="#api-rest-basic"><i class="icon-chevron-right"></i> Basic</a></li>
+                        <li><a href="#api-rest-basics"><i class="icon-chevron-right"></i> Basics</a></li>
+                        <li><a href="#api-rest-wfs-v1"><i class="icon-chevron-right"></i> WFS 1.1.0</a></li>
+                        <li><a href="#api-rest-wfs-v2"><i class="icon-chevron-right"></i> WFS 2.0.0</a></li>
                         <li class="nav-header">XML</li>
                         <li><a href="#api-xml-basic"><i class="icon-chevron-right"></i> Basic</a></li>
                     </ul>
                 </div>
                 
                 <div class="span9">
-                    <section id="api-rest-basci">
+                    <!-- API: RESTFul
+                     ================================================== -->
+                    <section id="api-rest-basics">
                         <header>
-                            <h2>Basic <small>(RESTful)</small></h2>
+                            <h2>Basics <small>(RESTful)</small></h2>
+                        </header>
+                        
+                        <!-- HTTP Method -->
+                        <header>
+                            <h3>HTTP Methods <small>(RESTful --&gt; Basics)</small></h3>
                         </header>
                         <p>
-                        For all RESTful calls the <code>service</code> which should be invoked by the server is the first parameter after the base url as follow:<br/>
+                        <table class="table">
+                            <thead>
+                                <tr><th>Method</th><th>Description</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>GET</td>
+                                    <td>only for requesting features</td>
+                                </tr>
+                                <tr>
+                                    <td>POST / PUT</td>
+                                    <td>for creating or changing (if feature id is set) features</td>
+                                </tr>
+                                <tr>
+                                    <td>DELETE</td>
+                                    <td>for deleting features</td>
+                                </tr>
+                                <tr>
+                                    <td>OPTIONS</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </p>
+                        
+                        <!-- Service -->
+                        <header>
+                            <h3>Service <small>(RESTful --&gt; Basics)</small></h3>
+                        </header>
+                        <p>For all RESTful calls the <code>service</code> which should be invoked by the server is the first parameter after the base url (depending on your deployment) as follow:<br/>
                         <pre class="prettyprint linenums"><code>http://featureserver.org/{service}/</code></pre>
+                        Supported services can be found <a href="/overview.html">here</a>.</p>
+                        
+                        <!-- Typename/Layer/Datasource -->
+                        <header>
+                            <h3>Layer / typeName <small>(RESTful --&gt; Basics)</small></h3>
+                            <h4>Single Layer <small>(RESTful --&gt; Basics --&gt; Layer / typeName)</small></h4>
+                        </header>
+                        <p>If you want to request a <strong>single</strong> layer, then it is possible to use the layer name after the <code>{service}</code> parameter:
+                        <pre class="prettyprint linenums"><code>http://featureserver.org/{service}/{layer}/</code></pre>
+                        or as parameter:
+                        <pre class="prettyprint linenums"><code>http://featureserver.org/{service}/?typeName={value}</code></pre>
+                        </p>
+                        
+                        <header>
+                            <h4>Multiple Layers <small>(RESTful --&gt; Basics --&gt; Layer / typeName)</small></h4>
+                        </header>
+                        In every other case, means when requesting <strong>multiple</strong> layers at a time, the layers need to be defined in the appropriate parameter, e.g. for service WFS 1.1.0 it is called <code>typeName</code> and WFS 2.0.0 it is <code>typeNames</code> following by a comma seperated list.
+                        </p>
+
+                        <!-- OutputFormat -->
+                        <header>
+                            <h3>OutputFormat <small>(RESTful --&gt; Basics)</small></h3>
+                        </header>
+                        <p>Using RESTful API, the output format is defined by the 'requested file extension' in the url like the following exmaple:
+                        <pre class="pretttyprint linenums"><code>http://featureserver.org/{service}/{layer}/{id}.{outputFormat}?{parameters}</code></pre>
+                        Supported output formats can be found <a href="/overview.html">here</a>.</p>
+                    </section>
+                    
+                    <section id="api-rest-wfs-v1">
+                        <header>
+                            <h2>WFS 1.1.0 <small>(RESTful)</small></h2>
+                        </header>
+                        <p>The following parameters are supported:
+                            <table class="table">
+                                <thead>
+                                    <tr><th>Parameter</th><th>Description</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>service<br/><small>optional</small></td>
+                                        <td>Defines which service should be invoked. If you invoke the service like described above (e.g. <code>http://featuresever.org/{service}/</code>), then this parameter is optional.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>request<br/><small>required</small></td>
+                                        <td>The following values are allowed:
+                                            <table class="config-kvp">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Values:</td><td><code>[ GetCapabilities | DescribeFeatureType | GetFeature ]</code></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>typeName<br/><small>required</small></td>
+                                        <td>Required for <code>request=DescribeFeatureType</code> and <code>request=GetFeature</code>
+                                            <table class="config-kvp">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Values:</td><td>comma seperated list</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>filter<br/><small>optional</small></td>
+                                        <td>A OGC Filter Encoding compliant XML.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>version<br/><small>required</small></td>
+                                        <td>For WFS 1.x only the following value is allowed:
+                                            <table class="config-kvp">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Value:</td><td><code>1.1.0</code></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>bbox<br/><small>optional</small></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>order<br/><small>optional</small></td>
+                                        <td>
+                                            <table class="config-kvp">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Value:</td><td><code>[ ASC | DESC ]</code></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>orderby<br/><small>optional</small></td>
+                                        <td>
+                                            <table class="config-kvp">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Value:</td><td>comma seperated list</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </p>
                     </section>
+                    
+                    <section id="api-rest-wfs-v2">
+                        <header>
+                            <h2>WFS 2.0.0 <small>(RESTful)</small></h2>
+                        </header>
+                        <p></p>
+                    </section>
 
+                    
+                    <!-- API: XML
+                     ================================================== -->
                 </div>
             </div>
         </div>
