@@ -5,7 +5,7 @@
 }
 
 .config-kvp td:first-child {
-    font-weight: bold;
+    font-weight: normal;
 }
 .config-kvp tr:first-child td {
     padding-top: 8px;
