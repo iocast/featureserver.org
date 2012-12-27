@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>FeatureServer :: Download</title>
+        <!-- Bootstrap -->
+        <link href="assets/css/bootstrap.css" rel="stylesheet"></link>
+        <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"></link>
+        <link href="assets/css/docs.css" rel="stylesheet"></link>
+        <link href="assets/css/prettify.css" rel="stylesheet"></link>
+        <link href="assets/css/application.css" rel="stylesheet"></link>
+        
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+         <![endif]-->
+        
+        <script src="assets/js/jquery.js"></script>
+        <script src="assets/js/bootstrap.js"></script>
+        <script src="assets/js/prettify.js"></script>
+        <script src="assets/js/application.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script type="text/javascript">
+            $(function() {
+              $.getJSON('https://api.github.com/repos/iocast/vectorformats/events?callback=?', function(data) {
+                        
+                        var list = $('#vectorformats-events');
+                        var i = 0;
+                        
+                        $(list).next().remove();
+                        
+                        $.each(data.data, function(key, val) {
+                               if (val.type == "PushEvent") {
+                               $.each(val.payload.commits, function(key2, val2) {
+                                      if(i <= 15) {
+                                      list.append('<p id="' + key + '.' + key2 + '"><a href="https://github.com/iocast/vectorformats/commit/' + val2.sha + '" target="_new">' + val2.message + '</a> [' + val.actor.login + ' @ ' + val.created_at + ']</p>');
+                                      }
+                                      i++;
+                                      });
+                               }
+                               });
+                        });
+              });
+            </script>
+        
+    </head>
+    <body data-spy="scroll" data-target=".navbar">
+        
+        <!-- Navigation
+         ================================================== -->
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <div class="nav-collapse">
+                        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="brand" href="vectorformats.html">VectorFormats</a>
+                        <ul class="nav">
+                            <li><a href="vectorformats.html">Home</a></li>
+                            <li class="active"><a href="vectorformats_download.html">Source &amp; Download</a></li>
+                            <li class="divider-vertical"></li>
+                            <li><a href="index.html">FeatureServer</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <!-- Subhead
+         ================================================== -->
+        <header class="jumbotron subhead" id="overview">
+            <div class="container">
+                <header>
+                    <h1>Source</h1>
+                </header>
+                <p class="lead">I want that ...</p>
+                
+                <div style="position:absolute; width: 100%; text-align: right; top: 0px">
+                    <p style="margin-bottom: 0px;">Please support this project:</p>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                        <input type="hidden" name="cmd" value="_s-xclick"/>
+                        <input type="hidden" name="hosted_button_id" value="BT79LEYB844FJ"/>
+                        <input type="image" src="/assets/img/donation.png" border="0" height="70px;" name="submit" alt="PayPal - The safer, easier way to pay online!"/>
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"/>
+                    </form>
+                </div>
+            </div>
+        </header>
+        
+        <div class="container">
+            
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span10">
+                        
+                        <section id="source">
+                            <p style="margin-top: 30px;">Current source is available at the new location <a href="http://github.com/iocast/vectorformats" target="_new">github://iocast/featureserver</a> or take the <a href="/download/vectorformats.tar.gz">latest version</a></p>
+                        </section>
+                        
+                        
+                        <section id="releases">
+                            <p><span class="label label-info">Info</span> If you have wishes, found bugs, or want to give some comments, please feel free to use the <a href="http://lists.osgeo.org/mailman/listinfo/featureserver" target="_new">mailing list</a> to do so.
+                            <div class="dropdown">A list of all <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="">Releases <b class="caret"></b></a> can be found below:
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                    <li><a href="#upcoming">Upcoming (0.2)</a></li>
+                                    <li class="divider"></li>
+                                </ul>
+                            </div></p>
+                        </section>
+                        
+                        
+                        <section id="upcoming">
+                            <header>
+                                <h3>Upcoming 0.2 <sup style="font-weight:normal;"><a href="#releases">up <span class="icon-chevron-up"></span></a></sup></h3>
+                            </header>
+                            <ul>
+                                <li></li>
+                            </ul>
+                        </section>
+                        
+                        
+                        
+                    </div>
+                    <div class="span2">
+                        <section>
+                            <header>
+                                <h3>What's going on</h3><h4>(dev feed)</h4>
+                            </header>
+                            <p id="vectorformats-events"><div><span class="ajax-loader"></span> Loading events ...</div></p>
+                        </section>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+        
+        
+        
+        <!-- Footer
+         ================================================== -->
+        <footer class="footer">
+            <div class="container">
+                <p class="pull-right"><a href="#">Back to top</a></p>
+                <p>&copy; 2012 FeatureServer.org. Design by <a href="http://twitter.github.com/bootstrap/" target="_new">Twitter Bootstrap</a></p>
+                <ul class="footer-links">
+                    <li><a href="http://lists.osgeo.org/mailman/listinfo/featureserver" target="_new">Mailing List</a></li>
+                    <li>|</li>
+                    <li><a href="http://twitter.com/feature_server" target="_new">Twitter</a></li>
+                    <li>|</li>
+                    <li><a href="http://github.com/iocast/featureserver" target="_new">Source Code</a></li>
+                    <li>|</li>
+                    <li><a href="http://webchat.freenode.net/?channels=featureserver" target="_new" rel="tooltip" data-placement="top" data-original-title="channel #featureserver at irc.freenode.net">IRC</a></a></li>
+                </ul>
+            </div>
+        </footer>
+        
+        
+    </body>
+</html>
