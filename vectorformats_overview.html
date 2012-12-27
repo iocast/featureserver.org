@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>FeatureServer :: Thanks a lot</title>
+        <title>VectorFormats :: Overview</title>
         <!-- Bootstrap -->
         <link href="assets/css/bootstrap.css" rel="stylesheet"></link>
         <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"></link>
@@ -17,12 +17,13 @@
         <script src="assets/js/jquery.js"></script>
         <script src="assets/js/bootstrap.js"></script>
         <script src="assets/js/prettify.js"></script>
-        
         <script src="assets/js/application.js" type="text/javascript" charset="utf-8"></script>
         
     </head>
     <body data-spy="scroll" data-target=".navbar">
-        <div class="navbar navbar-fixed-top">
+        <!-- Navigation
+         ================================================== -->
+        <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
                     <div class="nav-collapse">
@@ -31,42 +32,48 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="brand" href="index.html">FeatureServer</a>
+                        <a class="brand" href="vectorformats.html">VectorFormats</a>
                         <ul class="nav">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="overview.html">Overview</a></li>
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Documentation <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="configuration.html">Configuration</a></li>
-                                    <li><a href="api.html">API 1.0</a></li>
-                                    <li><a href="development.html">Development</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="demo.html">Demo</a></li>
-                            <li><a href="download.html">Source &amp; Download</a></li>
+                            <li><a href="vectorformats.html">Home</a></li>
+                            <li class="active"><a href="#">Overview</a></li>
+                            <li><a href="vectorformats_download.html">Source &amp; Download</a></li>
                             <li class="divider-vertical"></li>
-                            <li><a href="vectorformats.html">VectorFormats</a></li>
+                            <li><a href="index.html">FeatureServer</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-
-
         
-        <!-- Masthead
+        
+        <!-- Subhead
          ================================================== -->
-        <div class="jumbotron masthead" id="donation-thanks">
+        <header class="jumbotron subhead" id="overview">
             <div class="container">
-                <h1>Thanks a lot for your support</h1>
-                <p class="lead">You really helped this project.</p>
-                
-                <ul class="masthead-links">
-                    <li><a href="/download.html">back to download page</a></li>
-                </ul>
-
+                <h1>Overview</h1>
+                <p class="lead">Hmm ... what is included?</p>
             </div>
+        </header>
+        
+        
+        <div class="container">
+            <section id="overview">
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Format</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>WFS</td>
+                            <td>asdf</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
         </div>
         
         
@@ -81,13 +88,12 @@
                     <li>|</li>
                     <li><a href="http://twitter.com/feature_server" target="_new">Twitter</a></li>
                     <li>|</li>
-                    <li><a href="http://github.com/iocast/featureserver" target="_new">Source Code</a></li>
+                    <li><a href="http://github.com/iocast/vectorformats" target="_new">Source Code</a></li>
                     <li>|</li>
                     <li><a href="http://webchat.freenode.net/?channels=featureserver" target="_new" rel="tooltip" data-placement="top" data-original-title="channel #featureserver at irc.freenode.net">IRC</a></a></li>
                 </ul>
             </div>
         </footer>
         
-
     </body>
 </html>
