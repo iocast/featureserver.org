@@ -51,7 +51,7 @@
                 </div>
             </div>
         </div>
-
+        
         
         <!-- Subhead
          ================================================== -->
@@ -70,15 +70,17 @@
                     <ul class="nav nav-list bs-docs-sidenav affix"  data-spy="affix" data-target=".bs-docs-sidebar">
                         <li class="nav-header">RESTful</li>
                         <li><a href="#api-rest-basics"><i class="icon-chevron-right"></i> Basics</a></li>
-                        <li><a href="#api-rest-wfs-v1"><i class="icon-chevron-right"></i> WFS 1.1.0</a></li>
-                        <li><a href="#api-rest-wfs-v2"><i class="icon-chevron-right"></i> WFS 2.0.0</a></li>
+                        <li><a href="#api-rest-wfs"><i class="icon-chevron-right"></i> WFS</a></li>
+                        <li class="nav-header">Special Parameters</li>
+                        <li><a href="#api-rest-keywords"><i class="icon-chevron-right"></i> Keywords</a></li>
+                        <li><a href="#api-rest-geojson"><i class="icon-chevron-right"></i> GeoJSON</a></li>
                         <li class="nav-header">XML</li>
                         <li><a href="#api-xml-basic"><i class="icon-chevron-right"></i> Basic</a></li>
                     </ul>
                 </div>
                 
                 <div class="span9">
-                    <!-- API: RESTFul
+                    <!-- API: RESTFul Basic
                      ================================================== -->
                     <section id="api-rest-basics">
                         <header>
@@ -132,117 +134,357 @@
                         <pre class="prettyprint linenums"><code>http://featureserver.org/{service}/{layer}/</code></pre>
                         or as parameter:
                         <pre class="prettyprint linenums"><code>http://featureserver.org/{service}/?typeName={value}</code></pre>
+                        Name of the parameter is defined by the invoked service.
                         </p>
                         
                         <header>
                             <h4>Multiple Layers <small>(RESTful --&gt; Basics --&gt; Layer / typeName)</small></h4>
                         </header>
-                        In every other case, means when requesting <strong>multiple</strong> layers at a time, the layers need to be defined in the appropriate parameter, e.g. for service WFS 1.1.0 it is called <code>typeName</code> and WFS 2.0.0 it is <code>typeNames</code> following by a comma seperated list.
+                        In every other case, means when requesting <strong>multiple</strong> layers at a time, the layers need to be defined in the appropriate parameter, e.g. for service WFS 1.1.0 it is called <code>typeName</code> and WFS 2.0.0 it is <code>typeNames</code> followed by a comma seperated list.
                         </p>
-
+                        
                         <!-- OutputFormat -->
                         <header>
                             <h3>OutputFormat <small>(RESTful --&gt; Basics)</small></h3>
                         </header>
-                        <p>Using RESTful API, the output format is defined by the 'requested file extension' in the url like the following exmaple:
-                        <pre class="pretttyprint linenums"><code>http://featureserver.org/{service}/{layer}/{id}.{outputFormat}?{parameters}</code></pre>
+                        <p>Using RESTful API, the output format is defined by the 'requested file extension' in the url like the following example:
+                        <pre class="prettyprint linenums"><code>http://featureserver.org/{service}/{layer}/{id}.{outputFormat}?{parameters}</code></pre>
+                        or as parameter called <code>outputFormat</code>
+                        <pre class="prettyprint linenums"><code>http://featureserver.org/{service}/{layer}/{id}?outputFormat={value}</code></pre>
                         Supported output formats can be found <a href="/overview.html">here</a>.</p>
                     </section>
                     
-                    <section id="api-rest-wfs-v1">
+                    
+                    <!-- API: RESTFul WFS Base
+                     ================================================== -->
+                    <section id="api-rest-wfs">
                         <header>
-                            <h2>WFS 1.1.0 <small>(RESTful)</small></h2>
+                            <h2>WFS <small>(RESTful)</small></h2>
                         </header>
-                        <p>The following parameters are supported:
-                            <table class="table">
-                                <thead>
-                                    <tr><th>Parameter</th><th>Description</th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>service<br/><small>optional</small></td>
-                                        <td>Defines which service should be invoked. If you invoke the service like described above (e.g. <code>http://featuresever.org/{service}/</code>), then this parameter is optional.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>request<br/><small>required</small></td>
-                                        <td>The following values are allowed:
-                                            <table class="config-kvp">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Values:</td><td><code>[ GetCapabilities | DescribeFeatureType | GetFeature ]</code></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>typeName<br/><small>required</small></td>
-                                        <td>Required for <code>request=DescribeFeatureType</code> and <code>request=GetFeature</code>
-                                            <table class="config-kvp">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Values:</td><td>comma seperated list</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>filter<br/><small>optional</small></td>
-                                        <td>A OGC Filter Encoding compliant XML.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>version<br/><small>required</small></td>
-                                        <td>For WFS 1.x only the following value is allowed:
-                                            <table class="config-kvp">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Value:</td><td><code>1.1.0</code></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>bbox<br/><small>optional</small></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>order<br/><small>optional</small></td>
-                                        <td>
-                                            <table class="config-kvp">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Value:</td><td><code>[ ASC | DESC ]</code></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>orderby<br/><small>optional</small></td>
-                                        <td>
-                                            <table class="config-kvp">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Value:</td><td>comma seperated list</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <p><span class="label label-warning">independent</span> A parameter applied to all feature types listed in the reuqest. In the following example the boudning box is independent and would therefore be applied to both layers, means all returned features are inside the given BBOX.
+                        <pre class="prettyprint"><code>typename=FEAT1,FEAT2&amp;BBOX=5.9559,45.8180,10.4920,47.8084</code></pre></p>
+                        <p><span class="label label-success">dependent</span> Parameters consisting of lists shall use the comma (",") as the delimiter between items in the list. In addition, multiple lists can be specified as the value of a parameter by enclosing each list in parentheses; "(", ")". The characters ",", "(" and ")" may be escaped using the "\" character. An example look likes this:
+                        <pre class="prettyprint"><code>typename=FEAT1,FEAT2&amp;filter=(<Filter>... FEAT1 filter...</Filter>)(<Filter>... FEAT2 filter...</Filter>)</code></pre></p>
+                        
+                        
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#api-rest-wfs-common">Common</a>
+                            </li>
+                            <li><a href="#api-rest-wfs-v1">1.1.0</a></li>
+                            <li><a href="#api-rest-wfs-v2">2.0.0</a></li>
+                            <li><a href="#api-rest-wfs-special">Special</a></li>
+                        </ul>
+                        
+                        <div class="tab-content">
+                            
+                            <!-- API: RESTFul WFS Common
+                             ================================================== -->
+                            <div class="tab-pane active" id="api-rest-wfs-common">
+                                <header>
+                                    <h3>Common <small>(RESTful --&gt; WFS)</small></h3>
+                                </header>
+                                
+                                <p>The following parameters can be used to define the request and are defined by OGC.
+                                <table class="table">
+                                    <thead>
+                                        <tr><th>Parameter</th><th>Description</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>service<br/><small>optional</small></td>
+                                            <td>Defines which service should be invoked. If you invoke the service like described above (e.g. <code>http://featuresever.org/{service}/</code>), then this parameter is optional.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>request<br/><small>required</small></td>
+                                            <td>The following values are allowed:
+                                                <table class="config-kvp">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Values:</td><td><code>[ GetCapabilities | DescribeFeatureType | GetFeature ]</code></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <br/>Special <a href="#api-rest-keywords">keywords</a> exists for the different requests types. See below.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>version<br/><small>required</small></td>
+                                            <td>For WFS 1.x only the following value is allowed:
+                                                <table class="config-kvp">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Value:</td><td><code>[ 1.1.0 | 2.0.0 ]</code></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>filter<br/><small>optional</small></td>
+                                            <td>A OGC <a href="http://www.opengeospatial.org/standards/filter" target="_new" rel="popover" data-placement="bottom" data-original-title="OGC Filte Encoding" data-content="describes an XML and KVP encoding of a system neutral syntax for expressing projections, selection and sorting clauses collectively called a query expression.">Filter Encoding</a> compliant XML.
+                                                <table class="config-kvp">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Applies to:</td>
+                                                            <td>the index of the feature type in the list <span class="label label-success">dependent</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Supported by:</td>
+                                                            <td>
+                                                                <span class="label label-info">SpatialLite</span>
+                                                                <span class="label label-info">PostGIS</span>
+                                                                <span class="label label-info">PostGISHstore</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>bbox<br/><small>optional</small></td>
+                                            <td>A bounding box (BBOX) <strong>applies to all feature types</strong> listed in the request.
+                                                <table class="config-kvp">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Format:</td>
+                                                            <td><code>lcc1,lcc2,...,lccN,ucc1,ucc2,...uccN</code><br/>where <i>lcc</i> means Lower Corner Coordinate, <i>ucc</i> means Upper Corner Coordinate</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Applies to:</td>
+                                                            <td>all feature types listed in the request <span class="label label-warning">independent</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Supported by:</td>
+                                                            <td>
+                                                                <span class="label label-info"></span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>sortby<br/><small>optional</small></td>
+                                            <td>The <code>sortby</code> parameter is used to specify a list of property names whose values should be used to order (upon presentation) the set of feature instances that satisfy the query. The value of the <code>sortby</code> parameter shall have the form <code>PropertyName [ASC|DESC][,PropertyName [ASC|DESC],...]</code> where the letters <i>ASC</i> are used to indicate an ascending sort and the letters <i>DESC</i> are used to indicate a descending sort. If neither <i>ASC</i> nor <i>DESC</i> are specified, the default sort order shall be ascending.
+                                                <table class="config-kvp">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Format:</td>
+                                                            <td><code>PropertyName [ASC|DESC][,PropertyName [ASC|DESC],...]</code></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Applies to:</td>
+                                                            <td>all feature types listed in the request <span class="label label-warning">independent</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Supported by:</td>
+                                                            <td>
+                                                                <span class="label label-info"></span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </p>
+                            </div>
+                            
+                            
+                            
+                            <!-- API: RESTFul WFS 1.1.0
+                             ================================================== -->
+                            <div class="tab-pane" id="api-rest-wfs-v1">
+                                <header>
+                                    <h3>WFS 1.1.0 <small>(RESTful --&gt; WFS)</small></h3>
+                                </header>
+                                <p>
+                                <table class="table">
+                                    <thead>
+                                        <tr><th>Parameter</th><th>Description</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>typeName<br/><small>required</small></td>
+                                            <td>Required for <code>request=DescribeFeatureType</code> and <code>request=GetFeature</code>. A list of feature type names to query.
+                                                <table class="config-kvp">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Values:</td><td>comma seperated list</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </p>
+                                
+                            </div>
+                            
+                            
+                            <!-- API: RESTFul WFS 2.0.0
+                             ================================================== -->
+                            <div class="tab-pane" id="api-rest-wfs-v2">
+                                <header>
+                                    <h3>WFS 2.0.0 <small>(RESTful --&gt; WFS)</small></h3>
+                                </header>
+                                <p>
+                                <table class="table">
+                                    <thead>
+                                        <tr><th>Parameter</th><th>Description</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>typeNames<br/><small>required</small></td>
+                                            <td>Required for <code>request=DescribeFeatureType</code> and <code>request=GetFeature</code>. A list of feature type names to query.
+                                                <table class="config-kvp">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Values:</td><td>comma seperated list</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </p>
+                            </div>
+                            
+                            
+                            <!-- API: RESTFul WFS Special
+                             ================================================== -->
+                            <div class="tab-pane" id="api-rest-wfs-special">
+                                <header>
+                                    <h3>Special <small>(RESTful --&gt; WFS)</small></h3>
+                                </header>
+                                <p>These parameters are special parameters and not definded by OGC WFS standard.
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Parameter</th><th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>order<br/><small>optional</small></td>
+                                            <td>Applies ordering on the result set, means on <strong>all</strong> requested data sources.
+                                                <table class="config-kvp">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Value:</td><td><code>[ ASC | DESC ]</code></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Applies to:</td>
+                                                            <td>the index of the feature type in the list <span class="label label-success">dependent</span></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>order_by<br/><small>optional</small></td>
+                                            <td>List of attributes to be ordered by. Ordering is important and would be applied to the result set, means on <strong>all</strong> requested data sources, thus the list is the least common denominator of all attributes in every data source.
+                                                <table class="config-kvp">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Value:</td><td>comma seperated list</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Applies to:</td>
+                                                            <td>the index of the feature type in the list <span class="label label-success">dependent</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Supported by:</td>
+                                                            <td>
+                                                                <span class="label label-info"></span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </p>
+                            </div>
+
+                            
+                        </div>
+                    </section>
+                    
+                    
+                    
+                    
+                    <!-- API: RESTFul Keywords
+                     ================================================== -->
+                    <section id="api-rest-keywords">
+                        <header>
+                            <h2>Keywords <small>(Special Parameters)</small></h2>
+                        </header>
+                        <p>Some keywords exist for getting the server's capabilities, describing layers or getting features.
+                        <table class="table">
+                            <thead>
+                                <tr><th>Keyword</th><th>Description</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>capabilities</td>
+                                    <td>Is used to get the capabilities of a service. It can be used as follow:
+                                        <pre class="prettyprint"><code>http://featureserver.org/{service}/capabilities.{outputFormat}</code></pre>
+                                        This keyword replaces <code>request=GetCapabilities</code></td>
+                                </tr>
+                                <tr>
+                                    <td>describe</td>
+                                    <td>Use it to get a description of a single or multiple layers. To get the describption of a <strong>single</strong> layer you can use the following format:
+                                        <pre class="prettyprint"><code>http://featureserver.org/{service}/{layer}/describe.{outputFormat}</code></pre>
+                                        and for <strong>multiple</strong> layers use id as follow:
+                                        <pre class="prettyprint"><code>http://featureserver.org/{service}/describe.{outputFormat}?typeName={value}</code></pre>
+                                        where <code>{value}</code> is a comma seperated list of values and the parameter name <code>typeName</code> depends on the invoked service and version.<br/><br/>
+                                        This keyword replaces <code>request=DescribeFeatureType</code></td>
+                                </tr>
+                                <tr>
+                                    <td>features</td>
+                                    <td>As described you can use the feature's id as filename to request its information as follow:
+                                        <pre class="prettyprint"><code>http://featureserver.org/{service}/{layer}/{id}.{outputFormat}</code></pre>
+                                        In addition it is also possible to request a bunch of features using the keyword <code>features</code> instead of the <code>id</code>:
+                                        <pre class="prettyprint"><code>http://featureserver.org/{service}/{layer}/features.{outputFormat}</code></pre>
+                                        In the above example a specific layer would be queried. For multiple layers you can define the layers a parameters
+                                        <pre class="prettyprint"><code>http://featureserver.org/{service}/features.{outputFormat}?typeName={value}</code></pre>
+                                        where <code>{value}</code> is a comma seperated list and <code>typeName</code> depends on invoked service and version.<br/><br/>
+                                        This keyword replaces <code>request=GetFeature</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
                         </p>
                     </section>
                     
-                    <section id="api-rest-wfs-v2">
+                    
+                    <!-- API: RESTFul GeoJSON
+                     ================================================== -->
+                    <section id="api-rest-geojson">
                         <header>
-                            <h2>WFS 2.0.0 <small>(RESTful)</small></h2>
+                            <h2>GeoJSON <small>(Special Parameters)</small></h2>
                         </header>
-                        <p></p>
+                        <p>In addition to the described parameters in section <a href="#api-rest-wfs">WFS Base</a> you can use the following addtional parameters for the GeoJSON output format:
+                        <table class="table">
+                            <thead>
+                                <tr><th>Parameter</th><th>Description</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>callback<br/><small>optional</small></td>
+                                    <td>A Javascript callback function (JSONP).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </p>
                     </section>
-
+                    
+                    
                     
                     <!-- API: XML
                      ================================================== -->
