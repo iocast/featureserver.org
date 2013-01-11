@@ -65,8 +65,8 @@
                 <div class="span3 bs-docs-sidebar">
                     <ul class="nav nav-list bs-docs-sidenav affix-top" data-spy="affix" data-target=".bs-docs-sidebar">
                         <li class="nav-header">Installation</li>
-                        <li><a href="#doc-inst-pip"><i class="icon-chevron-right"></i> PIP</a></li>
-                        <li><a href="#doc-inst-manual"><i class="icon-chevron-right"></i> Manual</a></li>
+                        <li><a href="#doc-inst-installation"><i class="icon-chevron-right"></i> Installation</a></li>
+                        <li><a href="#doc-inst-dependencies"><i class="icon-chevron-right"></i> Dependencies</a></li>
                         <li class="nav-header">API</li>
                         <li><a href="#doc-api-usage"><i class="icon-chevron-right"></i> Usage</a></li>
                         <li><a href="#doc-api-ext"><i class="icon-chevron-right"></i> Extending</a></li>
@@ -77,24 +77,35 @@
                 </div>
                 
                 <div class="span9">
-                    <!-- Installation: PIP
+                    <!-- Installation: Installation
                      ================================================== -->
-                    <section id="doc-inst-pip">
+                    <section id="doc-inst-installation">
                         <header>
-                            <h2>PIP <small>(installation)</small></h2>
+                            <h2>Installation <small>(installation)</small></h2>
+                            <h3>PIP <small>(installation --&gt; installation)</small></h3>
                         </header>
                         <p>This project is listed in the <a href="http://pypi.python.org/" target="_new">Python Package Index</a> under the project id <a href="http://pypi.python.org/pypi/vectorformats" target="_new">vectorformats</a>. You can install this libraray using pip as follow:
                         <pre class="prettyprint"><code>pip install vectorformats</code></pre></p>
-                    </section>
-                    
-                    <!-- Installation: Manual
-                     ================================================== -->
-                    <section id="doc-inst-manual">
+                        
                         <header>
-                            <h2>Manual <small>(installation)</small></h2>
+                            <h3>Manual <small>(installation --&gt; installation)</small></h3>
                         </header>
                         <p>An other way is to download the latest version from the <a href="/vectorformats_download.html">download section</a> and using the provided installation script:
                         <pre class="prettyprint"><code>python setup.py isntall</code></pre></p>
+                    </section>
+                    
+                    <!-- Installation: Dependencies
+                     ================================================== -->
+                    <section id="doc-inst-dependencies">
+                        <header>
+                            <h2>Dependencies <small>(installation)</small></h2>
+                        </header>
+                        <p>It depence on:
+                            <ul>
+                                <li>dxfwrite >= 1.2.0</li>
+                                <li>pyspatialite >= 3.0.1</li>
+                            </ul>
+                        </p>
                     </section>
                     
 
