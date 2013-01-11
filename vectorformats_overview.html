@@ -36,6 +36,7 @@
                         <ul class="nav">
                             <li><a href="vectorformats.html">Home</a></li>
                             <li class="active"><a href="#">Overview</a></li>
+                            <li><a href="vectorformats_documentation.html">Documentation</a></li>
                             <li><a href="vectorformats_download.html">Source &amp; Download</a></li>
                             <li class="divider-vertical"></li>
                             <li><a href="index.html">FeatureServer</a></li>
@@ -68,8 +69,65 @@
                     </thead>
                     <tbody>
                         <tr>
+                            <td>CSV</td>
+                            <td>A list of simple features encoded to CSV, where each feature's attribute value is comma-separated.</td>
+                        </tr>
+                        <tr>
+                            <td>Django</td>
+                            <td>This class is designed to decode a Django QuerySet object into Feature.Vector objects. Simply pass a query_set to the decode method, and it will return
+                                a list of Features.</td>
+                        </tr>
+                        <tr>
+                            <td>DXF</td>
+                            <td>Data Exchange File is a two-dimensional graphics file format supported by virtually all CAD products. Compatible with release 11 and 12 and supports Point, LineString and Polygon.</td>
+                        </tr>
+                        <tr>
+                            <td>GeoJSON</td>
+                            <td>The most complete Format in VectorFormats library. This class is designed to use the fastest available JSON library to encode/decode to/from GeoJSON strings.</td>
+                        </tr>
+                        <tr>
+                            <td>GeoRSS</td>
+                            <td>Input and output of Points/Lines/Polygons (no rings/holes) in GeoRSS Simple (Atom). This allows one to take any GeoRSS Simple Atom feed and feed it to FeatureServer for storage.</td>
+                        </tr>
+                        <tr>
+                            <td>GPX</td>
+                            <td>GPX (the GPS Exchange Format) is a light-weight XML data format for the interchange of GPS data (waypoints, routes, and tracks) between applications and Web services on the Internet. E.g. it can be used for Garmin devices.<br/><span class="label label-info">Info</span> Points are converted to <code>wpt</code> and LineStrings to <code>trkseg</code>. Polygons are first converted to LineString and then treated as LineString.</td>
+                        </tr>
+                        <tr>
+                            <td>HTML</td>
+                            <td>Uses Cheetah to format a list of features. It is possible to use your own templates by providing a <code>default_file</code> and <code>exception_file</code> template.</td>
+                        </tr>
+                        <tr>
+                            <td>KML</td>
+                            <td>Input and output of Points, Lines, and Polygons from KML.</td>
+                        </tr>
+                        <tr>
+                            <td>OGR</td>
+                            <td>OGR reading and writing.</td>
+                        </tr>
+                        <tr>
+                            <td>OSM</td>
+                            <td>Output-only support of features as OpenStreetMap '.osm' files. (These files can be opened using JOSM and posted to the OSM server.)</td>
+                        </tr>
+                        <tr>
+                            <td>OV2</td>
+                            <td>TomTom Points of Interest Database. Supports only Point type.</td>
+                        </tr>
+                        <tr>
+                            <td>SHP</td>
+                            <td>The Esri shapefile or simply a shapefile is a popular geospatial vector data format for geographic information systems software. It is developed and regulated by Esri as a (mostly) open specification for data interoperability among Esri and other software products.</td>
+                        </tr>
+                        <tr>
+                            <td>SpatiaLite</td>
+                            <td>SpatiaLite is an open source library intended to extend the SQLite core to support fully fledged Spatial SQL capabilities.</td>
+                        </tr>
+                        <tr>
                             <td>WFS</td>
-                            <td>asdf</td>
+                            <td>WFS-like GML writer.</td>
+                        </tr>
+                        <tr>
+                            <td>WKT</td>
+                            <td>Converts a single chunk of WKT to a list of 1 feature.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -86,7 +144,7 @@
                 <ul class="footer-links">
                     <li><a href="http://lists.osgeo.org/mailman/listinfo/featureserver" target="_new">Mailing List</a></li>
                     <li>|</li>
-                    <li><a href="http://twitter.com/feature_server" target="_new">Twitter</a></li>
+                    <li><a href="http://twitter.com/vector_formats" target="_new">Twitter</a></li>
                     <li>|</li>
                     <li><a href="http://github.com/iocast/vectorformats" target="_new">Source Code</a></li>
                     <li>|</li>

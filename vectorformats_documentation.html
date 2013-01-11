@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>VectorFormats :: Documentation</title>
+        <!-- Bootstrap -->
+        <link href="assets/css/bootstrap.css" rel="stylesheet"></link>
+        <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"></link>
+        <link href="assets/css/docs.css" rel="stylesheet"></link>
+        <link href="assets/css/prettify.css" rel="stylesheet"></link>
+        <link href="assets/css/application.css" rel="stylesheet"></link>
+        
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+         <![endif]-->
+        
+        <script src="assets/js/jquery.js"></script>
+        <script src="assets/js/bootstrap.js"></script>
+        <script src="assets/js/prettify.js"></script>
+        <script src="assets/js/application.js" type="text/javascript" charset="utf-8"></script>
+        
+    </head>
+    <body data-spy="scroll" data-target=".bs-docs-sidebar">
+        
+        <!-- Navigation
+         ================================================== -->
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <div class="nav-collapse">
+                        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="brand" href="vectorformats.html">VectorFormats</a>
+                        <ul class="nav">
+                            <li><a href="vectorformats.html">Home</a></li>
+                            <li><a href="vectorformats_overview.html">Overview</a></li>
+                            <li class="active"><a href="#">Documentation</a></li>
+                            <li><a href="vectorformats_download.html">Source &amp; Download</a></li>
+                            <li class="divider-vertical"></li>
+                            <li><a href="index.html">FeatureServer</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <!-- Subhead
+         ================================================== -->
+        <header class="jumbotron subhead" id="overview">
+            <div class="container">
+                <header>
+                    <h1>Documentation</h1>
+                </header>
+                <p class="lead">VectorFormats is installed ... and now ...</p>
+            </div>
+        </header>
+        
+        <div class="container" id="api">
+            <div class="row">
+                <div class="span3 bs-docs-sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav affix-top" data-spy="affix" data-target=".bs-docs-sidebar">
+                        <li class="nav-header">Installation</li>
+                        <li><a href="#doc-inst-pip"><i class="icon-chevron-right"></i> PIP</a></li>
+                        <li><a href="#doc-inst-manual"><i class="icon-chevron-right"></i> Manual</a></li>
+                        <li class="nav-header">API</li>
+                        <li><a href="#doc-api-usage"><i class="icon-chevron-right"></i> Usage</a></li>
+                        <li><a href="#doc-api-ext"><i class="icon-chevron-right"></i> Extending</a></li>
+                        <li class="nav-header">Interface</li>
+                        <li><a href="#doc-if-format"><i class="icon-chevron-right"></i> Format</a></li>
+                        <li><a href="#doc-if-feature"><i class="icon-chevron-right"></i> Feature</a></li>
+                    </ul>
+                </div>
+                
+                <div class="span9">
+                    <!-- Installation: PIP
+                     ================================================== -->
+                    <section id="doc-inst-pip">
+                        <header>
+                            <h2>PIP <small>(installation)</small></h2>
+                        </header>
+                        <p>This project is listed in the <a href="http://pypi.python.org/" target="_new">Python Package Index</a> under the project id <a href="http://pypi.python.org/pypi/vectorformats" target="_new">vectorformats</a>. You can install this libraray using pip as follow:
+                        <pre class="prettyprint"><code>pip install vectorformats</code></pre></p>
+                    </section>
+                    
+                    <!-- Installation: Manual
+                     ================================================== -->
+                    <section id="doc-inst-manual">
+                        <header>
+                            <h2>Manual <small>(installation)</small></h2>
+                        </header>
+                        <p>An other way is to download the latest version from the <a href="/vectorformats_download.html">download section</a> and using the provided installation script:
+                        <pre class="prettyprint"><code>python setup.py isntall</code></pre></p>
+                    </section>
+                    
+
+                    
+                
+                    <!-- API: Usage
+                     ================================================== -->
+                    <section id="doc-api-usage">
+                        <header>
+                            <h2>Usage <small>(API)</small></h2>
+                        </header>
+                        <p>All supported vector formats listed in the <a href="/vectorformats_overview.html">overview section</a> can be instantiated by importing the right package and clases. In the following explenations we use the CSV vector format as an example.</p>
+                        
+                        <p>First of all we need to import the Python class as follow:
+                        <pre class="prettyprint"><code>from vectorformats.formats.csv import CSV</code></pre><p>
+                        
+                        <p>Next step is to create a new <code>Feature</code> instance, which will be decocded afterwards. Import the feature definition
+                        <pre class="prettyprint"><code>import vectorformats.feature import Feature</code></pre>
+                        and create a new <code>Feature</code> object
+                        <pre class="prettyprint"><code>feat = Feature(1, {"type":"Point", "coordinates":[1,1]}, {"a":"b"})</code></pre></p>
+                        
+                        <p>Now a new vector format can be instantiated an decoded to the corresponding format like
+                        <pre class="prettyprint"><code>c = CSV()
+print c.encode([feat])</code></pre></p>
+                    </section>
+                
+                    <!-- API: Extending
+                     ================================================== -->
+                    <section id="doc-api-ext">
+                        <header>
+                            <h2>Extending <small>(API)</small></h2>
+                        </header>
+                        <p>It is possbile to extend the vector format library by adding a new format (Source code can be downloaded <a href="/vectorformats_download.html">here</a>). All new formats need to extend from the class <code>Format</code> located in the package <code>vectorformats.format</code>.</p>
+                        
+                        <p>For encoding a <code>Feature</code> object to the new format then you need to overwrite the <code>encode</code> method, which gets a list of features</code></p>
+                        
+                        <p> To decode a feature from the new  format to the <code>Feature</code> object, the method <code>decode</code> method does it by getting a data object. The type of the data object is defined by the new format object itself</p>
+                        
+                        <p>An example could look like this:
+                        <pre class="prettyprint linenums"><code>from ..feature import Feature
+from .format import Format
+import StringIO
+
+class MyFormat (Format):
+    
+    def encode(self, features, **kwargs):
+        s = StringIO.StringIO()
+        for feature in features:
+            ''' do something '''
+        return s
+    
+    def decode(self, data, **kwargs):
+        results = []
+        ''' do something '''
+        return results</code></pre></p>
+                    </section>
+                    
+                    
+
+                    
+                    <!-- Interface: Format
+                     ================================================== -->
+                    <section id="doc-if-format">
+                        <header>
+                            <h2>Format <small>(interface)</small></h2>
+                        </header>
+                        <p>The <code>Format</code> class is the base class which sets properties on the subclasses by passing them as <code>kwargs</code> to your format constructor. In general, each new subclass need to implement the <code>encode</code> and <code>decode</code> methods, where the former returns a format specific object and the latter a list of <code>Feature</code>.</p>
+                        <p>
+                        <pre class="prettyprint linenums"><code>class Format(object):
+    def __init__(self, *args, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+    
+    def encode(self, features, **kwargs):
+        ''' returns a format specific object (e.g. StringIO)'''
+        pass
+    def decode(self, data, **kwargs):
+        ''' returns a list of Feature '''
+        pass</code></pre></p>
+                    </section>
+
+                    <!-- Interface: Feature
+                     ================================================== -->
+                    <section id="doc-if-feature">
+                        <header>
+                            <h2>Feature <small>(interface)</small></h2>
+                        </header>
+                        <p>A <code>Feature</code> class represents a simple feature holding the attributes:
+                            <table class="table">
+                                <thead>
+                                    <tr><th>attribute</th><th>description</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>id</td>
+                                        <td>A unique identifier</td>
+                                    </tr>
+                                    <tr>
+                                        <td>geometry</td>
+                                        <td>A dictionary holding the attributes <code>type</code> and <code>coordinates</code>. For a point it could look like this: <pre class="prettyprint"><code>{'type':'Point', 'coordinates':[1.0,2.0]}</code></pre></td>
+                                    </tr>
+                                    <tr>
+                                        <td>geometry_attr</td>
+                                        <td>Name of the geometry. Is e.g. used in WFS/GML output as XML node name for the geometry coordinates.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>properties</td>
+                                        <td>A dictionary of key value pairs. You can loop over it <pre class="prettyprint"><code>for key, value in feature.properties.items():</code></pre></td>
+                                    </tr>
+                                    <tr>
+                                        <td>bbox</td>
+                                        <td>A list of coordinates <code>[ min_x, min_y, max_x, max_y ]</code>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>srs</td>
+                                        <td>Spatial Reference System of the feature's coordinates</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </p>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <!-- Footer
+         ================================================== -->
+        <footer class="footer">
+            <div class="container">
+                <p class="pull-right"><a href="#">Back to top</a></p>
+                <p>&copy; 2012 FeatureServer.org. Design by <a href="http://twitter.github.com/bootstrap/" target="_new">Twitter Bootstrap</a></p>
+                <ul class="footer-links">
+                    <li><a href="http://lists.osgeo.org/mailman/listinfo/featureserver" target="_new">Mailing List</a></li>
+                    <li>|</li>
+                    <li><a href="http://twitter.com/vector_formats" target="_new">Twitter</a></li>
+                    <li>|</li>
+                    <li><a href="http://github.com/iocast/vectorformats" target="_new">Source Code</a></li>
+                    <li>|</li>
+                    <li><a href="http://webchat.freenode.net/?channels=featureserver" target="_new" rel="tooltip" data-placement="top" data-original-title="channel #featureserver at irc.freenode.net">IRC</a></a></li>
+                </ul>
+            </div>
+        </footer>
+        
+        
+    </body>
+</html>
