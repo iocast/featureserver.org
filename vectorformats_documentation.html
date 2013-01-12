@@ -200,6 +200,10 @@ class MyFormat (Format):
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td>layer</td>
+                                        <td>Name of the layer</td>
+                                    </tr>
+                                    <tr>
                                         <td>id</td>
                                         <td>A unique identifier</td>
                                     </tr>
@@ -216,12 +220,12 @@ class MyFormat (Format):
                                         <td>A dictionary of key value pairs. You can loop over it <pre class="prettyprint"><code>for key, value in feature.properties.items():</code></pre></td>
                                     </tr>
                                     <tr>
-                                        <td>bbox</td>
-                                        <td>A list of coordinates <code>[ min_x, min_y, max_x, max_y ]</code>.</td>
-                                    </tr>
-                                    <tr>
                                         <td>srs</td>
                                         <td>Spatial Reference System of the feature's coordinates</td>
+                                    </tr>
+                                    <tr>
+                                        <td>bbox</td>
+                                        <td>Is automatically calculated from the geometry attribute.</td>
                                     </tr>
                                 </tbody>
                             </table>
