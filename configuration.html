@@ -146,7 +146,7 @@
                         <p>A layer is a named section in the <small>featureserver.cfg</small> file. Using for a example WFS jargon, a layer is the value of the <code class="prettyprint">typename</code> parameter in the HTTP request. For more information consult the <a href="/api.html">API</a>.</p>
                         <pre class="prettyprint">featureserver.cgi?typename=pois</pre>
                         
-                        <p>Every layer is bracket by <code>[&lt;layer&gt;]</code> and has to be on a sperate line as every key. Keys can vary from datasource to datasource. E.g. SpatialLite does not need to have a <code class="prettyprint">dsn</code> in contrast for PostGIS it is mandatory to connect to the database. The following example shows a sample configuration for a SpatialLite datasource.</p>
+                        <p>Every layer is bracket by <code class="prettyprint">[&lt;layer&gt;]</code> and has to be on a sperate line as every key. Keys can vary from datasource to datasource. E.g. SpatialLite does not need to have a <code class="prettyprint">dsn</code> in contrast for PostGIS it is mandatory to connect to the database. The following example shows a sample configuration for a SpatialLite datasource.</p>
                         <pre class="prettyprint linenums">[sqlite_layer]
 type=SpatialLite
 file=/home/featureserver/test.sqlite
@@ -161,7 +161,7 @@ attribute_cols=name // additional attributes to be displayed</pre>
                         <header>
                             <h2>Metadata <small>(configuration)</small></h2>
                         </header>
-                        <p>This is not a realy serive as all the others. This section (have to be called <coce class="prettyprint">[metadata]</code>) in the configuration file is used to define some meta information for the FeatureServer. The following keys could be used:
+                        <p>This is not a realy serive as all the others. This section (have to be called <code class="prettyprint">[metadata]</code>) in the configuration file is used to define some meta information for the FeatureServer. The following keys could be used:
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -285,7 +285,7 @@ attribute_cols=name // additional attributes to be displayed</pre>
                                                     <td>Values:</td><td>comma seperated list</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Default:</td><td><code>attributes=*</code></td>
+                                                    <td>Default:</td><td><code class="prettyprint">attributes=*</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -326,15 +326,15 @@ attribute_cols=name // additional attributes to be displayed</pre>
                                 </tr>
                                 <tr>
                                     <td>dburi</td>
-                                    <td>Connection information to the respective database. E.g. <code>postgres://user:password@dbhost/dbname</code></td>
+                                    <td>Connection information to the respective database. E.g. <code class="prettyprint">postgres://user:password@dbhost/dbname</code></td>
                                 </tr>
                                 <tr>
                                     <td>model</td>
-                                    <td>Path to the model definition. E.g. <code>mypackage.mymodule</code></td>
+                                    <td>Path to the model definition. E.g. <code class="prettyprint">mypackage.mymodule</code></td>
                                 </tr>
                                 <tr>
                                     <td>cls</td>
-                                    <td>Class name inside the model definition. E.g. <code>MyLayer</code></td>
+                                    <td>Class name inside the model definition. E.g. <code class="prettyprint">MyLayer</code></td>
                                 </tr>
                                 <tr>
                                     <td>fid</td>
@@ -342,7 +342,7 @@ attribute_cols=name // additional attributes to be displayed</pre>
                                 </tr>
                                 <tr>
                                     <td>geometry</td>
-                                    <td>Attribute name of the geometry data. Default is <code>the_geom</code></td>
+                                    <td>Attribute name of the geometry data. Default is <code class="prettyprint">the_geom</code></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -877,8 +877,8 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                 </tr>
                                 <tr>
                                     <td>layer</td>
-                                    <td>Name of table. Defaults to layer name <pre class="prettyprint"><code class="prettyprint">[lines]
-type=SQLite</code></pre> goes to <code>layer=lines</code></td>
+                                    <td>Name of table. Defaults to layer name <pre class="prettyprint">[lines]
+type=SQLite</pre> goes to <code class="prettyprint">layer=lines</code></td>
                                 </tr>
                             </tbody>
                         </table>
