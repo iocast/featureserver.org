@@ -85,13 +85,13 @@
                             <h3>PIP <small>(installation --&gt; installation)</small></h3>
                         </header>
                         <p>This project is listed in the <a href="http://pypi.python.org/" target="_new">Python Package Index</a> under the project id <a href="http://pypi.python.org/pypi/vectorformats" target="_new">vectorformats</a>. You can install this libraray using pip as follow:
-                        <pre class="prettyprint"><code>pip install vectorformats</code></pre></p>
+                        <pre class="prettyprint">pip install vectorformats</pre></p>
                         
                         <header>
                             <h3>Manual <small>(installation --&gt; installation)</small></h3>
                         </header>
                         <p>An other way is to download the latest version from the <a href="/vectorformats_download.html">download section</a> and using the provided installation script:
-                        <pre class="prettyprint"><code>python setup.py isntall</code></pre></p>
+                        <pre class="prettyprint">python setup.py isntall</pre></p>
                     </section>
                     
                     <!-- Installation: Dependencies
@@ -120,16 +120,16 @@
                         <p>All supported vector formats listed in the <a href="/vectorformats_overview.html">overview section</a> can be instantiated by importing the right package and clases. In the following explenations we use the CSV vector format as an example.</p>
                         
                         <p>First of all we need to import the Python class as follow:
-                        <pre class="prettyprint"><code>from vectorformats.formats.csv import CSV</code></pre><p>
+                        <pre class="prettyprint">from vectorformats.formats.csv import CSV</pre><p>
                         
-                        <p>Next step is to create a new <code>Feature</code> instance, which will be decocded afterwards. Import the feature definition
-                        <pre class="prettyprint"><code>import vectorformats.feature import Feature</code></pre>
-                        and create a new <code>Feature</code> object
-                        <pre class="prettyprint"><code>feat = Feature(1, {"type":"Point", "coordinates":[1,1]}, {"a":"b"})</code></pre></p>
+                        <p>Next step is to create a new <code class="prettyprint">Feature</code> instance, which will be decocded afterwards. Import the feature definition
+                        <pre class="prettyprint">import vectorformats.feature import Feature</pre>
+                        and create a new <code class="prettyprint">Feature</code> object
+                        <pre class="prettyprint">feat = Feature(1, {"type":"Point", "coordinates":[1,1]}, {"a":"b"})</pre></p>
                         
                         <p>Now a new vector format can be instantiated an decoded to the corresponding format like
-                        <pre class="prettyprint"><code>c = CSV()
-print c.encode([feat])</code></pre></p>
+                        <pre class="prettyprint">c = CSV()
+print c.encode([feat])</pre></p>
                     </section>
                 
                     <!-- API: Extending
@@ -138,14 +138,14 @@ print c.encode([feat])</code></pre></p>
                         <header>
                             <h2>Extending <small>(API)</small></h2>
                         </header>
-                        <p>It is possbile to extend the vector format library by adding a new format (Source code can be downloaded <a href="/vectorformats_download.html">here</a>). All new formats need to extend from the class <code>Format</code> located in the package <code>vectorformats.format</code>.</p>
+                        <p>It is possbile to extend the vector format library by adding a new format (Source code can be downloaded <a href="/vectorformats_download.html">here</a>). All new formats need to extend from the class <code class="prettyprint">Format</code> located in the package <code class="prettyprint">vectorformats.format</code>.</p>
                         
-                        <p>For encoding a <code>Feature</code> object to the new format then you need to overwrite the <code>encode</code> method, which gets a list of features</code></p>
+                        <p>For encoding a <code class="prettyprint">Feature</code> object to the new format then you need to overwrite the <code class="prettyprint">encode</code> method, which gets a list of features</code></p>
                         
-                        <p> To decode a feature from the new  format to the <code>Feature</code> object, the method <code>decode</code> method does it by getting a data object. The type of the data object is defined by the new format object itself</p>
+                        <p> To decode a feature from the new  format to the <code class="prettyprint">Feature</code> object, the method <code class="prettyprint">decode</code> method does it by getting a data object. The type of the data object is defined by the new format object itself</p>
                         
                         <p>An example could look like this:
-                        <pre class="prettyprint linenums"><code>from ..feature import Feature
+                        <pre class="prettyprint linenums">from ..feature import Feature
 from .format import Format
 import StringIO
 
@@ -160,7 +160,7 @@ class MyFormat (Format):
     def decode(self, data, **kwargs):
         results = []
         ''' do something '''
-        return results</code></pre></p>
+        return results</pre></p>
                     </section>
                     
                     
@@ -172,9 +172,9 @@ class MyFormat (Format):
                         <header>
                             <h2>Format <small>(interface)</small></h2>
                         </header>
-                        <p>The <code>Format</code> class is the base class which sets properties on the subclasses by passing them as <code>kwargs</code> to your format constructor. In general, each new subclass need to implement the <code>encode</code> and <code>decode</code> methods, where the former returns a format specific object and the latter a list of <code>Feature</code>.</p>
+                        <p>The <code class="prettyprint">Format</code> class is the base class which sets properties on the subclasses by passing them as <code class="prettyprint">kwargs</code> to your format constructor. In general, each new subclass need to implement the <code class="prettyprint">encode</code> and <code class="prettyprint">decode</code> methods, where the former returns a format specific object and the latter a list of <code class="prettyprint">Feature</code>.</p>
                         <p>
-                        <pre class="prettyprint linenums"><code>class Format(object):
+                        <pre class="prettyprint linenums">class Format(object):
     def __init__(self, *args, **kwargs):
         for key, value in kwargs.items():
             setattr(self, key, value)
@@ -184,7 +184,7 @@ class MyFormat (Format):
         pass
     def decode(self, data, **kwargs):
         ''' returns a list of Feature '''
-        pass</code></pre></p>
+        pass</pre></p>
                     </section>
 
                     <!-- Interface: Feature
@@ -193,7 +193,7 @@ class MyFormat (Format):
                         <header>
                             <h2>Feature <small>(interface)</small></h2>
                         </header>
-                        <p>A <code>Feature</code> class represents a simple feature holding the attributes:
+                        <p>A <code class="prettyprint">Feature</code> class represents a simple feature holding the attributes:
                             <table class="table">
                                 <thead>
                                     <tr><th>attribute</th><th>description</th></tr>
@@ -209,7 +209,7 @@ class MyFormat (Format):
                                     </tr>
                                     <tr>
                                         <td>geometry</td>
-                                        <td>A dictionary holding the attributes <code>type</code> and <code>coordinates</code>. For a point it could look like this: <pre class="prettyprint"><code>{'type':'Point', 'coordinates':[1.0,2.0]}</code></pre></td>
+                                        <td>A dictionary holding the attributes <code  class="prettyprint">type</code> and <code  class="prettyprint">coordinates</code>. For a point it could look like this: <pre class="prettyprint">{'type':'Point', 'coordinates':[1.0,2.0]}</pre></td>
                                     </tr>
                                     <tr>
                                         <td>geometry_attr</td>
@@ -217,7 +217,7 @@ class MyFormat (Format):
                                     </tr>
                                     <tr>
                                         <td>properties</td>
-                                        <td>A dictionary of key value pairs. You can loop over it <pre class="prettyprint"><code>for key, value in feature.properties.items():</code></pre></td>
+                                        <td>A dictionary of key value pairs. You can loop over it <pre class="prettyprint">for key, value in feature.properties.items():</pre></td>
                                     </tr>
                                     <tr>
                                         <td>srs</td>

@@ -134,14 +134,14 @@
                             </header>
                             <ul>
                                 <li><b>Multi-layer</b> support as defined in WFS 1.1.0 and 2.0.0.</li>
-                                <li>Addtional configuration key to indicate if requested FE attributes should be included into result list <code>fe_attributes=[true|false]</code></li>
-                                <li>Addtional configuration key for Twitter and Flickr. Key <code>attributes</code> defines which values should be included in the response.</li>
+                                <li>Addtional configuration key to indicate if requested FE attributes should be included into result list <code class="prettyprint">fe_attributes=[true|false]</code></li>
+                                <li>Addtional configuration key for Twitter and Flickr. Key <code class="prettyprint">attributes</code> defines which values should be included in the response.</li>
                                 <li>PostGIS became PostGIS and PostGISHstore where PostGISHstore is derived from PostGIS</li>
                                 <li>Renamings / Definitions:
                                     <ul>
                                         <li>Servcie was renamed to <b>OutputFormat</b></li>
                                         <li>Vector format and output format 'SQLite' was renamed to <b>SpatialLite</b></li>
-                                        <li><b>Service</b> became the same definition as descried by OGC. Each servcie can be called as the first parameter in the URL e.g. <cdoe>http://featureserver.org/{service}/...</code> or a <code>service</code> attribute need to be set in the GET parameters or POST payload which should be parsable.</li>
+                                        <li><b>Service</b> became the same definition as descried by OGC. Each servcie can be called as the first parameter in the URL e.g. <code class="prettyprint">http://featureserver.org/{service}/...</code> or a <code class="prettyprint">service</code> attribute need to be set in the GET parameters or POST payload which should be parsable.</li>
                                     </ul>
                                 </li>
                                 <li>Several bug fixes:
@@ -178,7 +178,7 @@
                                     Returning error messages in format of the requested service if it is supported. Else it takes the default format if supported, WFS/GML otherweise.
                                     <ul>
                                         <li>CSV, GeoJSON, GeoRSS, GML/WFS, HTML</li>
-                                        <li>Addtional key <code>default_exception</code> (optional) indicates the service to be used if an error occures.</li>
+                                        <li>Addtional key <code class="prettyprint">default_exception</code> (optional) indicates the service to be used if an error occures.</li>
                                     </ul>
                                 </li>
                                 <li>Several bug fixes:
