@@ -1,5 +1,9 @@
 /* doc.css enhancement
 -------------------------------------------------- */
+section > header:first-child {
+    border-top: 1px dashed #555555;
+}
+
 .table td small {
     color: #7F7F7F;
 }
