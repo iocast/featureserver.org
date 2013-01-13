@@ -123,13 +123,13 @@
                         </header>
                         <p>
                         download the recent version of virtualenv.py from <a href="http://pypi.python.org/pypi/virtualenv">http://pypi.python.org/pypi/virtualenv</a></p>
-                        <pre class="prettyprint"><code class="language-sh">curl https://raw.github.com/pypa/virtualenv/master/virtualenv.py -o virtualenv.py</code></pre>
-                        <p>To create a new environment with the name <code>featureserver</code> run:</p>
-                        <pre class="prettyprint"><code class="language-sh">python virtualenv.py featureserver</code></pre>
+                        <pre class="prettyprint">curl https://raw.github.com/pypa/virtualenv/master/virtualenv.py -o virtualenv.py</pre>
+                        <p>To create a new environment with the name <code class="prettyprint">featureserver</code> run:</p>
+                        <pre class="prettyprint">python virtualenv.py featureserver</pre>
                         <p>To activate the virtual env call:</p>
-                        <pre class="prettyprint"><code class="language-sh">source featureserver/bin/activate</code></pre>
-                        <p>Now you can install the needed dependencies using the command <code class="language-sh">pip install</code> as follow:</p>
-                        <pre class="prettyprint"><code class="language-sh">pip install lxml</code></pre>
+                        <pre class="prettyprint">source featureserver/bin/activate</pre>
+                        <p>Now you can install the needed dependencies using the command <code class="prettyprint">pip install</code> as follow:</p>
+                        <pre class="prettyprint">pip install lxml</pre>
                     </section>
                     
                     <section id="doc-i-osx">
@@ -143,16 +143,16 @@
                         <header>
                             <h2>Layer <small>(configuration)</small></h2>
                         </header>
-                        <p>A layer is a named section in the <small>featureserver.cfg</small> file. Using for a example WFS jargon, a layer is the value of the <code class="language-html">typename</code> parameter in the HTTP request. For more information consult the <a href="/api.html">API</a>.</p>
-                        <pre class="prettyprint"><code class="language-html">featureserver.cgi?typename=pois</code></pre>
+                        <p>A layer is a named section in the <small>featureserver.cfg</small> file. Using for a example WFS jargon, a layer is the value of the <code class="prettyprint">typename</code> parameter in the HTTP request. For more information consult the <a href="/api.html">API</a>.</p>
+                        <pre class="prettyprint">featureserver.cgi?typename=pois</pre>
                         
-                        <p>Every layer is bracket by <code>[&lt;layer&gt;]</code> and has to be on a sperate line as every key. Keys can vary from datasource to datasource. E.g. SpatialLite does not need to have a <code>dsn</code> in contrast for PostGIS it is mandatory to connect to the database. The following example shows a sample configuration for a SpatialLite datasource.</p>
-                        <pre class="prettyprint linenums"><code>[sqlite_layer]
+                        <p>Every layer is bracket by <code>[&lt;layer&gt;]</code> and has to be on a sperate line as every key. Keys can vary from datasource to datasource. E.g. SpatialLite does not need to have a <code class="prettyprint">dsn</code> in contrast for PostGIS it is mandatory to connect to the database. The following example shows a sample configuration for a SpatialLite datasource.</p>
+                        <pre class="prettyprint linenums">[sqlite_layer]
 type=SpatialLite
 file=/home/featureserver/test.sqlite
 layer=featureserver // table name
 fid=fid // id attribute
-attribute_cols=name // additional attributes to be displayed</code></pre>
+attribute_cols=name // additional attributes to be displayed</pre>
                         <p>The follwing sections describes all the possible keys for each supported datasource.</p>
                     </section>
                     
@@ -161,7 +161,7 @@ attribute_cols=name // additional attributes to be displayed</code></pre>
                         <header>
                             <h2>Metadata <small>(configuration)</small></h2>
                         </header>
-                        <p>This is not a realy serive as all the others. This section (have to be called <coce>[metadata]</code>) in the configuration file is used to define some meta information for the FeatureServer. The following keys could be used:
+                        <p>This is not a realy serive as all the others. This section (have to be called <coce class="prettyprint">[metadata]</code>) in the configuration file is used to define some meta information for the FeatureServer. The following keys could be used:
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -175,7 +175,7 @@ attribute_cols=name // additional attributes to be displayed</code></pre>
                                     </tr>
                                     <tr>
                                         <td>default_exception<br/><small>optional</small></td>
-                                        <td>(optional) Use it to define a service that is able to return a excpetion report. If it is <b>not</b> set, then FeatureServer would try to return the exception report in the format of the requested service. If that is not possible too, it takes the <code>default_service</code> if it is able and WFS otherwise.</td>
+                                        <td>(optional) Use it to define a service that is able to return a excpetion report. If it is <b>not</b> set, then FeatureServer would try to return the exception report in the format of the requested service. If that is not possible too, it takes the <code class="prettyprint">default_service</code> if it is able and WFS otherwise.</td>
                                     </tr>
                                     <tr>
                                         <td>error_log<br/><small>optional</small></td>
@@ -202,7 +202,7 @@ attribute_cols=name // additional attributes to be displayed</code></pre>
                             <tbody>
                                 <tr>
                                     <td>type</td>
-                                    <td><code>DBM</code></td>
+                                    <td><code class="prettyprint">DBM</code></td>
                                 </tr>
                                 <tr>
                                     <td style="white-space: nowrap;">title <span class="label label-success">new</span></td>
@@ -235,7 +235,7 @@ attribute_cols=name // additional attributes to be displayed</code></pre>
                             <tbody>
                                 <tr>
                                     <td>type<br/><small>required</small></td>
-                                    <td><code>Flickr</code></td>
+                                    <td><code class="prettyprint">Flickr</code></td>
                                 </tr>
                                 <tr>
                                     <td>title<br/><small>optional</small></td>
@@ -259,18 +259,18 @@ attribute_cols=name // additional attributes to be displayed</code></pre>
                                 </tr>
                                 <tr>
                                     <td>tags<br/><small>optional</small></td>
-                                    <td>Comma seperated list of tags that need to be matched according to the search strategy <code>tag_mode</code>. For example you could use <code>tags=zurich,outdoor</code></td>
+                                    <td>Comma seperated list of tags that need to be matched according to the search strategy <code class="prettyprint">tag_mode</code>. For example you could use <code class="prettyprint">tags=zurich,outdoor</code></td>
                                 </tr>
                                 <tr>
                                     <td>tag_mode<br/><small>optional</small></td>
-                                    <td>Mode / strategy of matching <code>tags</code>. Either any for an OR combination of tags, or 'all' for an AND combination.
+                                    <td>Mode / strategy of matching <code class="prettyprint">tags</code>. Either any for an OR combination of tags, or 'all' for an AND combination.
                                         <table class="config-kvp">
                                             <tbody>
                                                 <tr>
-                                                    <td>Values:</td><td><code>[ any | all ]</code></td>
+                                                    <td>Values:</td><td><code class="prettyprint">[ any | all ]</code></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Default:</td><td><code>tag_mode=any</code>, if <code>tags</code> is set.</td>
+                                                    <td>Default:</td><td><code class="prettyprint">tag_mode=any</code>, if <code class="prettyprint">tags</code> is set.</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -295,7 +295,7 @@ attribute_cols=name // additional attributes to be displayed</code></pre>
                         </table>
                         </p>
                         <p>
-                        <span class="label label-info">Info</span> You can request a new <code>api_key</code> and <code>api_secret</code> for your application on Flickr's API website <a href="http://www.flickr.com/services/api/keys/" target="_new">services/api/keys</a>.
+                        <span class="label label-info">Info</span> You can request a new <code class="prettyprint">api_key</code> and <code class="prettyprint">api_secret</code> for your application on Flickr's API website <a href="http://www.flickr.com/services/api/keys/" target="_new">services/api/keys</a>.
                         </p>
                     </section>
                     
@@ -314,7 +314,7 @@ attribute_cols=name // additional attributes to be displayed</code></pre>
                             <tbody>
                                 <tr>
                                     <td>type</td>
-                                    <td><code>GeoAlchemy</code></td>
+                                    <td><code class="prettyprint">GeoAlchemy</code></td>
                                 </tr>
                                 <tr>
                                     <td style="white-space: nowrap;">title <span class="label label-success">new</span></td>
@@ -348,7 +348,7 @@ attribute_cols=name // additional attributes to be displayed</code></pre>
                         </table>
                         </p>
                         <p><span class="label">Note</span> Instead of using dburi in the config it is possible to pass the sqlalchemy session to the datasource. Developers using the FeatureServer API may choose to pass the session object instead. GeoAlchemy also supports the use of relations where the geometry column may be in a related table. The config in this would be:
-                        <pre class="prettyprint linenums"><code>[mylayerexterior]
+                        <pre class="prettyprint linenums">[mylayerexterior]
 type=GeoAlchemy
 dburi=postgres://user:password@dbhost/dbname
 model=mypackage.mymodule
@@ -356,7 +356,7 @@ cls=MyLayer
 fid=id
 geometry=geom # defaults to the_geom
 geom_cls=Exterior
-geom_rel=exterior</code></pre>
+geom_rel=exterior</pre>
                         </p>
                     </section>
                     
@@ -366,7 +366,7 @@ geom_rel=exterior</code></pre>
                             <h2>OGR <small>(configuration)</small></h2>
                         </header>
                         <p>The OGR datasource allows you to take any OGR datasource - such as a shapefile, PostGIS database, GML file, or other formats supported by OGR - and use it as a backend for a FeatureServer layer.</p>
-                        <p>The OGR layer requires a <code>dsn</code> property and a <code>layer</code> property. In many cases, the layer is part of the DSN.
+                        <p>The OGR layer requires a <code class="prettyprint">dsn</code> property and a <code class="prettyprint">layer</code> property. In many cases, the layer is part of the DSN.
                         <table class="table">
                             <thead>
                                 <tr>
@@ -376,7 +376,7 @@ geom_rel=exterior</code></pre>
                             <tbody>
                                 <tr>
                                     <td>type</td>
-                                    <td><code>OGR</code></td>
+                                    <td><code class="prettyprint">OGR</code></td>
                                 </tr>
                                 <tr>
                                     <td style="white-space: nowrap;">title <span class="label label-success">new</span></td>
@@ -396,17 +396,17 @@ geom_rel=exterior</code></pre>
                                 </tr>
                                 <tr>
                                     <td>attribute_cols</td>
-                                    <td>A comma seperated list of attributes to be queried on the defined datasource. Default is <code>attribute_cols=*</code></td>
+                                    <td>A comma seperated list of attributes to be queried on the defined datasource. Default is <code class="prettyprint">attribute_cols=*</code></td>
                                 </tr>
                             </tbody>
                         </table>
                         </p>
                         <p> An example OGR configuration might look like:
-                        <pre class="prettyprint linenums"><code>[myshape]
+                        <pre class="prettyprint linenums">[myshape]
 type=OGR
 dsn=/home/example/myshape.shp
 layer=myshape
-attribute_cols=name,some_interesting_column #optional; only these columns will be returned.</code></pre>
+attribute_cols=name,some_interesting_column #optional; only these columns will be returned.</pre>
                         </p>
                     </section>
                     
@@ -415,7 +415,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                             <h2>OSM <small>(configuration)</small></h2>
                         </header>
                         <p>Allows for requests to hit the OpenStreetMap API to request data. No configuration necessary. Only supports query-by-bounding-box and query-by-id. The latter will only search for 'ways', not nodes or relations. Relations are not handled at all.</p>
-                        <p>It is possible to add an <code>osmxapi=yes</code> option. This will use the OSM Extended API instead of the main API. This API may be several hours out of date, but it does allow attribute queries: see <a href="http://wiki.openstreetmap.org/index.php/Osmxapi" target="_new">http://wiki.openstreetmap.org/index.php/Osmxapi</a> . It does not support ID queries, and if one is sent, it will instead be redirected to the main API.
+                        <p>It is possible to add an <code class="prettyprint">osmxapi=yes</code> option. This will use the OSM Extended API instead of the main API. This API may be several hours out of date, but it does allow attribute queries: see <a href="http://wiki.openstreetmap.org/index.php/Osmxapi" target="_new">http://wiki.openstreetmap.org/index.php/Osmxapi</a> . It does not support ID queries, and if one is sent, it will instead be redirected to the main API.
                         
                         <table class="table">
                             <thead>
@@ -426,7 +426,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                             <tbody>
                                 <tr>
                                     <td>type</td>
-                                    <td><code>OSM</code></td>
+                                    <td><code class="prettyprint">OSM</code></td>
                                 </tr>
                                 <tr>
                                     <td style="white-space: nowrap;">title <span class="label label-success">new</span></td>
@@ -438,7 +438,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                 </tr>
                                 <tr>
                                     <td>osmxapi</td>
-                                    <td><code>[ yes | no ]</code> uses OSM Extended API and the main API respectively.</td>
+                                    <td><code class="prettyprint">[ yes | no ]</code> uses OSM Extended API and the main API respectively.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -449,7 +449,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                         <header>
                             <h2>PostGIS <small>(configuration)</small></h2>
                         </header>
-                        <p>The PostGIS datasource implements a direct connection to PostGIS. This datasource requires a <code>dsn</code> parameter and a <code>layer</code> parameter. It also accepts a variety of optional parameters, some of which you may need to override the default value of, depending on your schema.
+                        <p>The PostGIS datasource implements a direct connection to PostGIS. This datasource requires a <code class="prettyprint">dsn</code> parameter and a <code class="prettyprint">layer</code> parameter. It also accepts a variety of optional parameters, some of which you may need to override the default value of, depending on your schema.
                         <table class="table">
                             <thead>
                                 <tr>
@@ -459,7 +459,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                             <tbody>
                                 <tr>
                                     <td>type<br/><small>required</small></td>
-                                    <td><code>PostGIS</code></td>
+                                    <td><code class="prettyprint">PostGIS</code></td>
                                 </tr>
                                 <tr>
                                     <td style="white-space: nowrap;">title <span class="label label-success">new</span><br/><small>optional</small></td>
@@ -486,7 +486,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                                     <td>Values:</td><td>String value</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Default:</td><td><code>fid=gid</code></td>
+                                                    <td>Default:</td><td><code class="prettyprint">fid=gid</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -501,7 +501,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                                     <td>Values:</td><td>String value</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Default:</td><td><code>geometry=the_geom</code></td>
+                                                    <td>Default:</td><td><code class="prettyprint">geometry=the_geom</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -513,10 +513,10 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                         <table class="config-kvp">
                                             <tbody>
                                                 <tr>
-                                                    <td>Values:</td><td><code>[ true | false ]</code></td>
+                                                    <td>Values:</td><td><code class="prettyprint">[ true | false ]</code></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Default:</td><td><code>fe_attributes=true</code></td>
+                                                    <td>Default:</td><td><code class="prettyprint">fe_attributes=true</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -531,7 +531,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                                     <td>Values:</td><td>Valid SRS integer value useed by PostGIS</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Default:</td><td><code>srid=4326</code></td>
+                                                    <td>Default:</td><td><code class="prettyprint">srid=4326</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -546,7 +546,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                                     <td>Values:</td><td>Valid SRS integer value used by PostGIS</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Default:</td><td><code>srid_out=4326</code></td>
+                                                    <td>Default:</td><td><code class="prettyprint">srid_out=4326</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -561,7 +561,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                                     <td>Values:</td><td>comma seperated list</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Default:</td><td><code>attribute_cols=*</code></td>
+                                                    <td>Default:</td><td><code class="prettyprint">attribute_cols=*</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -569,7 +569,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                 </tr>
                                 <tr>
                                     <td>additional_cols<br/><small>optional</small></td>
-                                    <td>It is also possible to add addtional information to the output. These information are only used for quering and ignored when updating or inserting a new feature into the data source. It can be used, if you want to do e.g. some math like the following: <code>additional_cols=round(ST_Area2d(ST_Transform(the_geog, 21781))) as sqm</code>
+                                    <td>It is also possible to add addtional information to the output. These information are only used for quering and ignored when updating or inserting a new feature into the data source. It can be used, if you want to do e.g. some math like the following: <code class="prettyprint">additional_cols=round(ST_Area2d(ST_Transform(the_geog, 21781))) as sqm</code>
                                         <table class="config-kvp">
                                             <tbody>
                                                 <tr>
@@ -588,7 +588,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                                     <td>Values:</td><td>Valid encoding value</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Default:</td><td><code>encoding=utf-8</code></td>
+                                                    <td>Default:</td><td><code class="prettyprint">encoding=utf-8</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -600,7 +600,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                         <table class="config-kvp">
                                             <tbody>
                                                 <tr>
-                                                    <td>Values:</td><td><code>[ ASC | DESC ]</code></td>
+                                                    <td>Values:</td><td><code class="prettyprint">[ ASC | DESC ]</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -620,7 +620,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                         <table class="config-kvp">
                                             <tbody>
                                                 <tr>
-                                                    <td>Values:</td><td>format is as follow: <code>min_x min_y max_x max_y</code></td>
+                                                    <td>Values:</td><td>format is as follow: <code class="prettyprint">min_x min_y max_x max_y</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -632,7 +632,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                         <table class="config-kvp">
                                             <tbody>
                                                 <tr>
-                                                    <td>Values:</td><td>comma seperated list of <code>Point</code>, <code>Line</code> and/or <code>Polygon</code></td>
+                                                    <td>Values:</td><td>comma seperated list of <code class="prettyprint">Point</code>, <code class="prettyprint">Line</code> and/or <code class="prettyprint">Polygon</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -657,7 +657,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                             <tbody>
                                 <tr>
                                     <td>type<br/><small>required</small></td>
-                                    <td><code>PostGISHstore</code></td>
+                                    <td><code class="prettyprint">PostGISHstore</code></td>
                                 </tr>
                                 <tr>
                                     <td>hstore<br><small>required</small></td>
@@ -683,7 +683,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                             <tbody>
                                 <tr>
                                     <td>type<br/><small>required</small></td>
-                                    <td><code>SpatialLite</code></td>
+                                    <td><code class="prettyprint">SpatialLite</code></td>
                                 </tr>
                                 <tr>
                                     <td>title<br/><small>optional</small></td>
@@ -702,7 +702,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                                     <td>Values:</td><td>String value</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Default:</td><td><code>srid=gid</code></td>
+                                                    <td>Default:</td><td><code class="prettyprint">srid=gid</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -717,7 +717,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                                     <td>Values:</td><td>String value</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Default:</td><td><code>geometry=the_geom</code></td>
+                                                    <td>Default:</td><td><code class="prettyprint">geometry=the_geom</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -729,10 +729,10 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                         <table class="config-kvp">
                                             <tbody>
                                                 <tr>
-                                                    <td>Values:</td><td><code>[ true | false ]</code></td>
+                                                    <td>Values:</td><td><code class="prettyprint">[ true | false ]</code></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Default:</td><td><code>fe_attributes=true</code></td>
+                                                    <td>Default:</td><td><code class="prettyprint">fe_attributes=true</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -747,7 +747,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                                     <td>Values:</td><td>Valid SRS integer value useed by SpatiaLite</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Default:</td><td><code>srid=4326</code></td>
+                                                    <td>Default:</td><td><code class="prettyprint">srid=4326</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -762,7 +762,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                                     <td>Values:</td><td>Valid SRS integer value useed by SpatiaLite</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Default:</td><td><code>srid=4326</code></td>
+                                                    <td>Default:</td><td><code class="prettyprint">srid=4326</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -777,7 +777,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                                     <td>Values:</td><td>comma seperated list</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Default:</td><td><code>attribute_cols=*</code></td>
+                                                    <td>Default:</td><td><code class="prettyprint">attribute_cols=*</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -785,7 +785,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                 </tr>
                                 <tr>
                                     <td>additional_cols<br/><small>optional</small></td>
-                                    <td>It is also possible to add addtional information to the output. These information are only used for quering and ignored when updating or inserting a new feature into the data source. It can be used, if you want to do e.g. some math like the following: <code>additional_cols=round(Area(Transform(the_geog, 21781))) as sqm</code>
+                                    <td>It is also possible to add addtional information to the output. These information are only used for quering and ignored when updating or inserting a new feature into the data source. It can be used, if you want to do e.g. some math like the following: <code class="prettyprint">additional_cols=round(Area(Transform(the_geog, 21781))) as sqm</code>
                                         <table class="config-kvp">
                                             <tbody>
                                                 <tr>
@@ -804,7 +804,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                                     <td>Values:</td><td>Valid encoding value</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Default:</td><td><code>encoding=utf-8</code></td>
+                                                    <td>Default:</td><td><code class="prettyprint">encoding=utf-8</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -824,7 +824,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                         <table class="config-kvp">
                                             <tbody>
                                                 <tr>
-                                                    <td>Values:</td><td>format is as follow: <code>min_x min_y max_x max_y</code></td>
+                                                    <td>Values:</td><td>format is as follow: <code class="prettyprint">min_x min_y max_x max_y</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -836,7 +836,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                         <table class="config-kvp">
                                             <tbody>
                                                 <tr>
-                                                    <td>Values:</td><td>comma seperated list of <code>Point</code>, <code>Line</code> and/or <code>Polygon</code></td>
+                                                    <td>Values:</td><td>comma seperated list of <code class="prettyprint">Point</code>, <code class="prettyprint">Line</code> and/or <code class="prettyprint">Polygon</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -861,7 +861,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                             <tbody>
                                 <tr>
                                     <td>type</td>
-                                    <td><code>SQLite</code></td>
+                                    <td><code class="prettyprint">SQLite</code></td>
                                 </tr>
                                 <tr>
                                     <td style="white-space: nowrap;">title <span class="label label-success">new</span></td>
@@ -877,7 +877,7 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                                 </tr>
                                 <tr>
                                     <td>layer</td>
-                                    <td>Name of table. Defaults to layer name <pre class="prettyprint"><code>[lines]
+                                    <td>Name of table. Defaults to layer name <pre class="prettyprint"><code class="prettyprint">[lines]
 type=SQLite</code></pre> goes to <code>layer=lines</code></td>
                                 </tr>
                             </tbody>
@@ -901,7 +901,7 @@ type=SQLite</code></pre> goes to <code>layer=lines</code></td>
                             <tbody>
                                 <tr>
                                     <td>type<br/><small>required</small></td>
-                                    <td><code>Twitter</code></td>
+                                    <td><code class="prettyprint">Twitter</code></td>
                                 </tr>
                                 <tr>
                                     <td>title<br/><small>optional</small></td>
@@ -937,18 +937,18 @@ type=SQLite</code></pre> goes to <code>layer=lines</code></td>
                                 </tr>
                                 <tr>
                                     <td>query<br/><small>optional</small></td>
-                                    <td>Search query of 1,000 characters maximum, including operators. E.g. <code>query=#zurich</code></td>
+                                    <td>Search query of 1,000 characters maximum, including operators. E.g. <code class="prettyprint">query=#zurich</code></td>
                                 </tr>
                                 <tr>
                                     <td>attributes<br/><small>optional</small></td>
-                                    <td>A comma seperated list of attributes that need to be returned. E.g. <code>attribute_cols=user.name,source,place.name,place.place_type,place.country</code> where the dot indicates the seperator to traverse the JSON tree. If <code>user_id</code> or <code>screen_name</code> is set a list of possible attributes can be found on section example request at <a href="http://dev.twitter.com/docs/api/1.1/get/statuses/user_timeline" target="_new">statuses/user_timeline</a>, if a specific tweet is reuqested using its <code>id</code> consult <a href="http://dev.twitter.com/docs/api/1.1/get/statuses/show/%3Aid" target="_new">statuses/show/:id</a> and <a href="http://dev.twitter.com/docs/api/1.1/get/search/tweets" target="_new">search/tweets</a> oterwhise.
+                                    <td>A comma seperated list of attributes that need to be returned. E.g. <code class="prettyprint">attribute_cols=user.name,source,place.name,place.place_type,place.country</code> where the dot indicates the seperator to traverse the JSON tree. If <code class="prettyprint">user_id</code> or <code class="prettyprint">screen_name</code> is set a list of possible attributes can be found on section example request at <a href="http://dev.twitter.com/docs/api/1.1/get/statuses/user_timeline" target="_new">statuses/user_timeline</a>, if a specific tweet is reuqested using its <code class="prettyprint">id</code> consult <a href="http://dev.twitter.com/docs/api/1.1/get/statuses/show/%3Aid" target="_new">statuses/show/:id</a> and <a href="http://dev.twitter.com/docs/api/1.1/get/search/tweets" target="_new">search/tweets</a> oterwhise.
                                         <table class="config-kvp">
                                             <tbody>
                                                 <tr>
                                                     <td>Values:</td><td>comma seperated list</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Default:</td><td><code>attributes=*</code></td>
+                                                    <td>Default:</td><td><code class="prettyprint">attributes=*</code></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -977,7 +977,7 @@ type=SQLite</code></pre> goes to <code>layer=lines</code></td>
                             <tbody>
                                 <tr>
                                     <td>type</td>
-                                    <td><code>WFS</code></td>
+                                    <td><code class="prettyprint">WFS</code></td>
                                 </tr>
                                 <tr>
                                     <td style="white-space: nowrap;">title <span class="label label-success">new</span></td>

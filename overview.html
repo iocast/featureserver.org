@@ -197,7 +197,7 @@
                                 </tr>
                                 <tr>
                                     <td style="white-space: nowrap;">GPX <span class="label label-success">new</span></td>
-                                    <td>GPX (the GPS Exchange Format) is a light-weight XML data format for the interchange of GPS data (waypoints, routes, and tracks) between applications and Web services on the Internet. E.g. it can be used for Garmin devices.<br/><span class="label label-info">Info</span> Points are converted to <code>wpt</code> and LineStrings to <code>trkseg</code>. Polygons are first converted to LineString and then treated as LineString.</td>
+                                    <td>GPX (the GPS Exchange Format) is a light-weight XML data format for the interchange of GPS data (waypoints, routes, and tracks) between applications and Web services on the Internet. E.g. it can be used for Garmin devices.<br/><span class="label label-info">Info</span> Points are converted to <code class="prettyprint">wpt</code> and LineStrings to <code class="prettyprint">trkseg</code>. Polygons are first converted to LineString and then treated as LineString.</td>
                                     <td>not supported<br/>if you think it is needed please leave a message on the mailing list.</td>
                                 </tr>
                                 <tr>
@@ -272,9 +272,9 @@
                 <h3 id="dbm-config-modal-label">DBM Configuration Example</h3>
             </div>
             <div class="modal-body">
-                <pre class="prettyprint"><code>[scribble]
+                <pre class="prettyprint">[scribble]
 type=DBM
-file=/home/example/scribble.db</code></pre>
+file=/home/example/scribble.db</pre>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -287,7 +287,7 @@ file=/home/example/scribble.db</code></pre>
                 <h3 id="postgis-config-modal-label">PostGIS Configuration Example</h3>
             </div>
             <div class="modal-body">
-                <pre class="prettyprint"><code>[mylayer]
+                <pre class="prettyprint">[mylayer]
 type=PostGIS
 dsn=host=localhost dbname=mydata user=myuser password=1234
 layer=mylayer
@@ -295,7 +295,7 @@ fid=gid #defaults to ogc_fid
 geometry=wkb_geometry # defaults to the_geom
 srid=26910 #defaults to 4326
 encoding=utf-8 #defaults to utf-8
-attribute_cols=name,some_interesting_column #optional</code></pre>
+attribute_cols=name,some_interesting_column #optional</pre>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -309,7 +309,7 @@ attribute_cols=name,some_interesting_column #optional</code></pre>
                 <h3 id="postgishstore-config-modal-label">PostGIS Configuration Example</h3>
             </div>
             <div class="modal-body">
-                <pre class="prettyprint"><code>[mylayer]
+                <pre class="prettyprint">[mylayer]
 type=PostGISHstore
 dsn=host=localhost dbname=mydata user=myuser password=1234
 layer=mylayer
@@ -319,7 +319,7 @@ srid=26910 #defaults to 4326
 encoding=utf-8 #defaults to utf-8
 hstore=kvp
 attribut_cols=kvp
-additional_cols=hstore(kvp)->'name' as "name", hstore(kvp)->'description' as "description"</code></pre>
+additional_cols=hstore(kvp)->'name' as "name", hstore(kvp)->'description' as "description"</pre>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -333,10 +333,10 @@ additional_cols=hstore(kvp)->'name' as "name", hstore(kvp)->'description' as "de
                 <h3 id="wfs-config-modal-label">WFS Configuration Example</h3>
             </div>
             <div class="modal-body">
-                <pre class="prettyprint"><code>[wfs]
+                <pre class="prettyprint">[wfs]
 type=WFS
 url=http://zuluviz.sdsu.edu:8080/geoserver/wfs
-typename=topp:states</code></pre>
+typename=topp:states</pre>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -349,11 +349,11 @@ typename=topp:states</code></pre>
                 <h3 id="ogr-config-modal-label">OGR Configuration Example</h3>
             </div>
             <div class="modal-body">
-                <pre class="prettyprint"><code>[myshape]
+                <pre class="prettyprint">[myshape]
 type=OGR
 dsn=/home/example/myshape.shp
 layer=myshape
-attribute_cols=name,some_interesting_column #optional; only these columns will be returned.</code></pre>
+attribute_cols=name,some_interesting_column #optional; only these columns will be returned.</pre>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -366,14 +366,14 @@ attribute_cols=name,some_interesting_column #optional; only these columns will b
                 <h3 id="flickr-config-modal-label">Flickr Configuration Example</h3>
             </div>
             <div class="modal-body">
-                <pre class="prettyprint"><code>[fs_flickr]
+                <pre class="prettyprint">[fs_flickr]
 type=Flickr
 api_key=&lt;api_key&gt;
 api_secret=&lt;api_secret&gt;
 user_id=89665068@N04
 tags=zurich,outdoor
 tag_mode=any
-attributes=title,description</code></pre>
+attributes=title,description</pre>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -386,9 +386,9 @@ attributes=title,description</code></pre>
                 <h3 id="osm-config-modal-label">OSM Configuration Example</h3>
             </div>
             <div class="modal-body">
-                <pre class="prettyprint"><code>[osm]
+                <pre class="prettyprint">[osm]
 type=OSM
-osmxapi=no</code></pre>
+osmxapi=no</pre>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -403,15 +403,15 @@ osmxapi=no</code></pre>
             </div>
             <div class="modal-body">
                 <p>The actual geoalchemy model definition may lie in a separate package. This makes it easy to integrate feature server with other applications / frameworks. A basic GeoAlchemy configuration might look like:
-                <pre class="prettyprint"><code>[mylayer]
+                <pre class="prettyprint">[mylayer]
 type=GeoAlchemy
 dburi=postgres://user:password@dbhost/dbname
 model=mypackage.mymodule
 cls=MyLayer
 fid=id
-geometry=geom # defaults to the_geom</code></pre></p>
+geometry=geom # defaults to the_geom</pre></p>
                 <p>Instead of using dburi in the config it is possible to pass the sqlalchemy session to the datasource. Developers using the FeatureServer API may choose to pass the session object instead. GeoAlchemy also supports the use of relations where the geometry column may be in a related table. The config in this would be
-                <pre class="prettyprint"><code>[mylayerexterior]
+                <pre class="prettyprint">[mylayerexterior]
 type=GeoAlchemy
 dburi=postgres://user:password@dbhost/dbname
 model=mypackage.mymodule
@@ -419,7 +419,7 @@ cls=MyLayer
 fid=id
 geometry=geom # defaults to the_geom
 geom_cls=Exterior
-geom_rel=exterior</code></pre></p>
+geom_rel=exterior</pre></p>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -432,14 +432,14 @@ geom_rel=exterior</code></pre></p>
                 <h3 id="spatiallite-config-modal-label">SpatialLite Configuration Example</h3>
             </div>
             <div class="modal-body">
-                <pre class="prettyprint"><code>[sqlite_test]
+                <pre class="prettyprint">[sqlite_test]
 type=SpatialLite
 file=/home/featureserver/test.sqlite
 layer=featureserver
 fid=fid
 srid=4326
 srid_out=432
-attribute_cols=name</code></pre>
+attribute_cols=name</pre>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -452,10 +452,10 @@ attribute_cols=name</code></pre>
                 <h3 id="sqlite-config-modal-label">SQLite Configuration Example</h3>
             </div>
             <div class="modal-body">
-                <pre class="prettyprint"><code>[lines]
+                <pre class="prettyprint">[lines]
 type=SQLite
 file=/home/featureserver/features.sqlite # if already exists, features table will be added
-layer=lines # name of table; defaults to layer name</code></pre>
+layer=lines # name of table; defaults to layer name</pre>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -468,14 +468,14 @@ layer=lines # name of table; defaults to layer name</code></pre>
                 <h3 id="twitter-config-modal-label">Twitter Configuration Example</h3>
             </div>
             <div class="modal-body">
-                <pre class="prettyprint"><code>[fs_twitter]
+                <pre class="prettyprint">[fs_twitter]
 type=Twitter
 consumer_key=&lt;consumer_key&gt;
 consumer_secret=&lt;consumer_secret&gt;
 token_key=&lt;token_key&gt;
 token_secret=&lt;token_secret&gt;
 screen_name=eFeatureServer
-attributes=user.name,source</code></pre>
+attributes=user.name,source</pre>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -494,14 +494,14 @@ attributes=user.name,source</code></pre>
             </div>
             <div class="modal-body">
                 <p><strong>Request:</strong></p>
-                <pre class="prettyprint"><code class="language-xml">http://featureserver.org/fs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=featureserver</code></pre>
+                <pre class="prettyprint">http://featureserver.org/fs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=featureserver</pre>
                 <p><strong>Response:</strong></p>
-                <pre class="prettyprint"><code class="language-xml">&lt;ExceptionReport xmlns="http://www.opengis.net/ows/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/ows/1.1 owsExceptionReport.xsd" version="1.0.0" xml:lang="en"&gt;
+                <pre class="prettyprint">&lt;ExceptionReport xmlns="http://www.opengis.net/ows/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/ows/1.1 owsExceptionReport.xsd" version="1.0.0" xml:lang="en"&gt;
     &lt;Exception exceptionCode="" locator="Request" layer="featureserver"&gt;
         &lt;ExceptionText&gt;Could not find the layer ...&lt;/ExceptionText&gt;
         &lt;ExceptionDump/&gt;
     &lt;/Exception&gt;
-&lt;/ExceptionReport&gt;</code></pre>
+&lt;/ExceptionReport&gt;</pre>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -516,9 +516,9 @@ attributes=user.name,source</code></pre>
             </div>
             <div class="modal-body">
                 <p><strong>Request:</strong></p>
-                <pre class="prettyprint"><code class="language-xml">http://featureserver.org/fs?SERVICE=GeoJSON&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=featureserver</code></pre>
+                <pre class="prettyprint">http://featureserver.org/fs?SERVICE=GeoJSON&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=featureserver</pre>
                 <p><strong>Response:</strong></p>
-                <pre class="prettyprint"><code>{"ExceptionReport":
+                <pre class="prettyprint">{"ExceptionReport":
     [
         {"Exception": {
             "locator": "Request",
@@ -528,7 +528,7 @@ attributes=user.name,source</code></pre>
             "exceptionCode": ""}
         }
     ]
-}</code></pre>
+}</pre>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -544,9 +544,9 @@ attributes=user.name,source</code></pre>
             </div>
             <div class="modal-body">
                 <p><strong>Request:</strong></p>
-                <pre class="prettyprint"><code class="language-xml">http://featureserver.org/fs?SERVICE=GeoRSSN&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=featureserver</code></pre>
+                <pre class="prettyprint">http://featureserver.org/fs?SERVICE=GeoRSSN&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=featureserver</pre>
                 <p><strong>Response:</strong></p>
-                <pre class="prettyprint"><code>&lt;feed xmlns="http://www.w3.org/2005/Atom" xmlns:app="http://www.w3.org/2007/app"
+                <pre class="prettyprint">&lt;feed xmlns="http://www.w3.org/2005/Atom" xmlns:app="http://www.w3.org/2007/app"
 xmlns:georss="http://www.georss.org/georss"&gt;
     &lt;title&gt;No title&lt;/title&gt;
     &lt;id&gt;http://localhost:8080&lt;/id&gt;
@@ -557,7 +557,7 @@ xmlns:georss="http://www.georss.org/georss"&gt;
         &lt;ExceptionText>Could not find the layer ...&lt;/ExceptionText&gt;
         &lt;ExceptionDump>&lt;/ExceptionDump&gt;
     &lt;/Exception&gt;
-&lt;/feed&gt;</code></pre>
+&lt;/feed&gt;</pre>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -571,10 +571,10 @@ xmlns:georss="http://www.georss.org/georss"&gt;
             </div>
             <div class="modal-body">
                 <p><strong>Request:</strong></p>
-                <pre class="prettyprint"><code class="language-xml">http://featureserver.org/fs?SERVICE=CSV&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=featureserver</code></pre>
+                <pre class="prettyprint">http://featureserver.org/fs?SERVICE=CSV&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=featureserver</pre>
                 <p><strong>Response:</strong></p>
-                <pre class="prettyprint"><code>exceptionCode,locator,layer,ExceptionText,ExceptionDump
-,SpatialLite,fs_polygon,Connection to the layer ...,</code></pre>
+                <pre class="prettyprint">exceptionCode,locator,layer,ExceptionText,ExceptionDump
+,SpatialLite,fs_polygon,Connection to the layer ...,</pre>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -589,10 +589,10 @@ xmlns:georss="http://www.georss.org/georss"&gt;
             </div>
             <div class="modal-body">
                 <p><strong>Request:</strong></p>
-                <pre class="prettyprint"><code class="language-xml">http://featureserver.org/fs?SERVICE=CSV&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=featureserver</code></pre>
+                <pre class="prettyprint">http://featureserver.org/fs?SERVICE=CSV&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=featureserver</pre>
                 <p><strong>Response:</strong></p>
-                <pre class="prettyprint"><code>exceptionCode,locator,layer,ExceptionText,ExceptionDump
-,SpatialLite,fs_polygon,Connection to the layer ...,</code></pre>
+                <pre class="prettyprint">exceptionCode,locator,layer,ExceptionText,ExceptionDump
+,SpatialLite,fs_polygon,Connection to the layer ...,</pre>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -607,9 +607,9 @@ xmlns:georss="http://www.georss.org/georss"&gt;
             </div>
             <div class="modal-body">
                 <p><strong>Request:</strong></p>
-                <pre class="prettyprint"><code class="language-xml">http://featureserver.org/fs?SERVICE=HTML&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=featureserver</code></pre>
+                <pre class="prettyprint">http://featureserver.org/fs?SERVICE=HTML&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=featureserver</pre>
                 <p><strong>Response:</strong></p>
-                <pre class="prettyprint"><code>&lt;html&gt;
+                <pre class="prettyprint">&lt;html&gt;
     &lt;head&gt;
         &lt;title&gt;FeatureServer : Exception Report&lt;/title&gt;
     &lt;/head&gt;
@@ -638,7 +638,7 @@ xmlns:georss="http://www.georss.org/georss"&gt;
         &lt;/table&gt;
         &lt;hr noshade="noshade" /&gt;
     &lt;/body&gt;
-&lt;/html&gt;</code></pre>
+&lt;/html&gt;</pre>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
