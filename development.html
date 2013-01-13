@@ -86,15 +86,17 @@
                             <h2>Service <small>(extending)</small></h2>
                         </header>
                         <p>A service is a distinct part of the functionality that is provided by an entity through interfaces. FeatureServer is based on a plugin architecture which invokes the requested service at runtime. As described in <a href="http://localhost:8000/api.html#api-rest-basics">API Basics (RESTful)</a> the to be invoked services follows after the base url as first parameter (see line 1) or could be set as <code>SERVICE</code> paramter (see line 2) as depict in the following example:
-                        <pre class="prettyprint linenums"><code>http://featureserver.org/wfs/
-http://featureserver.org?service=WFS</code></pre>
-                        FeatureServer tries to find the service name, where the pattern in line 1 would be preffered if both patterns are combined, and automatically invokes the service class in the module <code>featureserver.services.{service}</code>. Hence, if you want to add a new service simple do the following:
+                        <pre class="prettyprint linenums">http://featureserver.org/wfs/
+http://featureserver.org?service=WFS</pre>
+                        FeatureServer tries to find the service name, where the pattern in line 1 would be preffered if both patterns are combined, and automatically invokes the service class in the module <code class="prettyprint">featureserver.services.{service}</code>. Hence, if you want to add a new service simple do the following:
+                        <div class="bs-docs-frame bs-docs-frame-cookbook">
                         <ol>
-                            <li>Create a new file in the folder <code>featureserver/service</code> called {service}.py (have to be lowercase).</li>
+                            <li>Create a new file in the folder <code class="prettyprint">featureserver/services</code> called {service}.py (have to be lowercase).</li>
                             <li>Define a new class in upper case which is called as your service.</li>
-                            <li>Import the service interface <code>from service import Service</code></li>
-                            <li>Overwrite the method <code>def parse(self): pass</code></li>
+                            <li>Import the service interface <code class="prettyprint">from service import Service</code></li>
+                            <li>Overwrite the method <code class="prettyprint">def parse(self): pass</code></li>
                         </ol>
+                        </div>
                         When FeatureServer detectes the serivce, it imports the right module and instatiates the servcie class. Then it calls the parse parameter which is resonsible for the service specific request handling.
                         </p>
                     </section>
