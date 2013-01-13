@@ -125,7 +125,7 @@
                         <header>
                             <h3>Service <small>(RESTful --&gt; Basics)</small></h3>
                         </header>
-                        <p>For all RESTful calls the <code>service</code> which should be invoked by the server is the first parameter after the base url (depending on your deployment) as follow:<br/>
+                        <p>For all RESTful calls the <code class="prettyprint">service</code> which should be invoked by the server is the first parameter after the base url (depending on your deployment) as follow:<br/>
                         <pre class="prettyprint linenums">http://featureserver.org/{service}/</pre>
                         Supported services can be found <a href="/overview.html">here</a>.</p>
                         
@@ -134,7 +134,7 @@
                             <h3>Layer / typeName <small>(RESTful --&gt; Basics)</small></h3>
                             <h4>Single Layer <small>(RESTful --&gt; Basics --&gt; Layer / typeName)</small></h4>
                         </header>
-                        <p>If you want to request a <strong>single</strong> layer, then it is possible to use the layer name after the <code>{service}</code> parameter:
+                        <p>If you want to request a <strong>single</strong> layer, then it is possible to use the layer name after the <code class="prettyprint">{service}</code> parameter:
                         <pre class="prettyprint linenums">http://featureserver.org/{service}/{layer}/</pre>
                         or as parameter:
                         <pre class="prettyprint linenums">http://featureserver.org/{service}/?typeName={value}</pre>
@@ -253,7 +253,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>Format:</td>
-                                                            <td><code>lcc1,lcc2,...,lccN,ucc1,ucc2,...uccN</code><br/>where <i>lcc</i> means Lower Corner Coordinate, <i>ucc</i> means Upper Corner Coordinate</td>
+                                                            <td><code class="prettyprint">lcc1,lcc2,...,lccN,ucc1,ucc2,...uccN</code><br/>where <i>lcc</i> means Lower Corner Coordinate, <i>ucc</i> means Upper Corner Coordinate</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Applies to:</td>
@@ -313,7 +313,7 @@
                                     <tbody>
                                         <tr>
                                             <td>typeName<br/><small>required</small></td>
-                                            <td>Required for <code>request=DescribeFeatureType</code> and <code>request=GetFeature</code>. A list of feature type names to query.
+                                            <td>Required for <code class="prettyprint">request=DescribeFeatureType</code> and <code class="prettyprint">request=GetFeature</code>. A list of feature type names to query.
                                                 <table class="config-kvp">
                                                     <tbody>
                                                         <tr>
