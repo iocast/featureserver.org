@@ -144,7 +144,8 @@
                         <header>
                             <h4>Multiple Layers <small>(RESTful --&gt; Basics --&gt; Layer / typeName)</small></h4>
                         </header>
-                        In every other case, means when requesting <strong>multiple</strong> layers at a time, the layers need to be defined in the appropriate parameter, e.g. for service WFS 1.1.0 it is called <code>typeName</code> and WFS 2.0.0 it is <code>typeNames</code> followed by a comma seperated list.
+                        In every other case, means when requesting <strong>multiple</strong> layers at a time, the layers need to be defined in the appropriate parameter, e.g. for service WFS 1.1.0 it is called <code>typeName</code> and WFS 2.0.0 it is <code>typeNames</code> followed by a <strong>comma seperated list</strong>.
+                        <pre class="prettyprint linenums"><code>http://featureserver.org/{service}/=typeNames=layer1,layer2</code></pre>
                         </p>
                         
                         <!-- OutputFormat -->
@@ -236,7 +237,7 @@
                                                         <tr>
                                                             <td>Supported by:</td>
                                                             <td>
-                                                                <span class="label label-info">SpatialLite</span>
+                                                                <span class="label label-info">SpatiaLite</span>
                                                                 <span class="label label-info">PostGIS</span>
                                                                 <span class="label label-info">PostGISHstore</span>
                                                             </td>
@@ -284,7 +285,7 @@
                                                         <tr>
                                                             <td>Supported by:</td>
                                                             <td>
-                                                                <span class="label label-info"></span>
+                                                                <span class="label label-info">SpatiaLite</span>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -374,24 +375,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>order<br/><small>optional</small></td>
-                                            <td>Applies ordering on the result set, means on <strong>all</strong> requested data sources.
-                                                <table class="config-kvp">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Value:</td><td><code>[ ASC | DESC ]</code></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Applies to:</td>
-                                                            <td>the index of the feature type in the list <span class="label label-success">dependent</span></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>order_by<br/><small>optional</small></td>
-                                            <td>List of attributes to be ordered by. Ordering is important and would be applied to the result set, means on <strong>all</strong> requested data sources, thus the list is the least common denominator of all attributes in every data source.
+                                            <td>queryable<br/><small>optional</small></td>
+                                            <td>A list of attributes to be queried by. Each item in this list need to appear as seperate parameter in the URL including its operator and value. Between the operator and the attribute a double underline <code>__</code> have to be used as seperator. The operator will be invoked by the datasource, whereas each datasource suppports a different set of operators.
+                                                <pre class="prettyprint"><code>http://featureserver.org/wfs/points/features.wfs?version=1.1.0&amp;queryable=name,salary&amp;name__like=ohn&amp;salary__gte=120000</code></pre>
                                                 <table class="config-kvp">
                                                     <tbody>
                                                         <tr>
@@ -399,12 +385,12 @@
                                                         </tr>
                                                         <tr>
                                                             <td>Applies to:</td>
-                                                            <td>the index of the feature type in the list <span class="label label-success">dependent</span></td>
+                                                            <td>?? <span class="label label-success">dependent or independent?</span></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Supported by:</td>
                                                             <td>
-                                                                <span class="label label-info"></span>
+                                                                <span class="label label-info">SpatiaLite</span>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -490,8 +476,18 @@
                     
                     
                     
+                    
+                    
                     <!-- API: XML
                      ================================================== -->
+                    <section id="api-xml-basic">
+                        <header>
+                            <h2>Basic <small>(XML)</small></h2>
+                        </header>
+                        <p>To be documented</p>
+                    </section>
+                    
+
                 </div>
             </div>
         </div>
