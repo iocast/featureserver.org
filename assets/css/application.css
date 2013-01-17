@@ -4,6 +4,10 @@ section > header:first-child {
     border-top: 1px dashed #555555;
 }
 
+section:first-child > header:first-child {
+    border-top: 0px;
+}
+
 .table td small {
     color: #7F7F7F;
 }
