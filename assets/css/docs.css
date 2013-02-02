@@ -585,6 +585,9 @@ h2 + .row {
 .bs-docs-frame-cookbook:after {
     content: "Cookbook";
 }
+.bs-docs-frame-comment:after {
+    content: "Comment";
+}
 
 
 /* Remove spacing between a frame and it's code */

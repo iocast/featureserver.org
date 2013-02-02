@@ -91,7 +91,7 @@
                             <h3>Manual <small>(installation --&gt; installation)</small></h3>
                         </header>
                         <p>An other way is to download the latest version from the <a href="/vectorformats_download.html">download section</a> and using the provided installation script:
-                        <pre class="prettyprint">python setup.py isntall</pre></p>
+                        <pre class="prettyprint">python setup.py install</pre></p>
                     </section>
                     
                     <!-- Installation: Dependencies
@@ -103,8 +103,25 @@
                         <p>It depence on:
                             <ul>
                                 <li>dxfwrite >= 1.2.0</li>
-                                <li>pyspatialite >= 3.0.1</li>
                                 <li>pyshp >= 1.1.4</li>
+                                <li>pyspatialite >= 3.0.1<br/>
+                                    <div class="bs-docs-frame bs-docs-frame-comment">
+                                        <code class="prettyprint">setup.py</code> in version 3.0.1 raises an error when trying to download <code class="prettyprint">libspatialite-amalgamation.*</code>. Download <code class="prettyprint">pyspatialite</code> from PyPi and change the following lines in <code class="prettyprint">setup.py</code>:
+                                        <pre class="prettyprint linenums">
+    # find out what's current amalgamation ZIP file
+-    download_page = urllib.urlopen("https://www.gaia-gis.it/fossil/libspatialite/index").read()
++    download_page = urllib.urlopen("http://www.gaia-gis.it/gaia-sins/libspatialite-sources/").read()
+    pattern = re.compile("(libspatialite-amalgamation.*?\.zip)")
+-    download_file = pattern.findall(download_page)[0]
+-    amalgamation_url = "http://www.gaia-gis.it/gaia-sins/" + download_file
++    download_file = pattern.findall(download_page)[-1]
++    amalgamation_url = "http://www.gaia-gis.it/gaia-sins/libspatialite-sources/" + download_file
+    zip_dir = string.replace(download_file,'.zip','')
+    # and download it
+    urllib.urlretrieve(amalgamation_url, "tmp.zip")</pre>
+                                    </div>
+
+                                </li>
                             </ul>
                         </p>
                     </section>
